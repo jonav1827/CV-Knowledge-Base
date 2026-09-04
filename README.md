@@ -55,6 +55,10 @@ by CV's own licensing structure rather than the generic Processes/Products/Notes
   `Bidding.md`, `Countertops.md`, `CRM.md`, `Optimizer.md`, `Rendering.md`, `Reporting.md`,
   `Shaping.md`, `Machining.md` — every module gets a file so nothing's missing, even ones that stay
   thin because they're not in active use.
+- **Parameters.md** — foundational to Object Intelligence and xShaping: parameter types, the three
+  parameter styles (Standard/Attribute/Note), Static vs. Equation values, parametric equations, and
+  the 9 basic parameters every beginner should know. Big enough a topic to earn its own file rather
+  than living inside Core.md.
 - **Notes.md** — anecdotes/gotchas that span multiple modules rather than belonging to one.
 - **Reference/** — downloaded source material (the Hexagon module-features PDF, help docs, etc.).
 

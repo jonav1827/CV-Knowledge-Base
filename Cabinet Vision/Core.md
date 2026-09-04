@@ -45,17 +45,49 @@ up — *except* an Assembly that already had its own Door style set individually
 level. That one keeps its own override; the Room-level change simply never gets consulted for it,
 because CV already found what it needed at the Assembly level first.
 
+**Mechanically, what an override actually is (corrected):** an override is *not* an existing
+parameter's value flipping from Equation to Static. It's an entirely separate parameter, newly
+inserted into the Object Tree at the branch where the override happens — sitting directly in the
+path between the object doing the lookup and wherever the real information actually lives.
+
+Worked example — `TOEH` (toe height): a cabinet's toe height is normally defined once, up in the
+construction method / standards, not on the cabinet itself. So when a cabinet needs to know its toe
+height, it climbs the tree, finds `TOEH` defined up at the standard, and uses that. Override the toe
+height on that one cabinet, and CV places a brand-new `TOEH` parameter directly on the cabinet's own
+branch — somewhere it didn't exist before. Now when the cabinet looks up `TOEH`, it finds this
+override sitting right there *before* it ever has to climb as far as the standard, stops (first
+match wins, per the lookup rule above), and uses the override's value instead. "Clearing" an
+override means deleting that inserted parameter outright — with it gone, the lookup has nothing to
+stop it at that branch anymore, and it continues climbing to the real value.
+
+This is also what CV's `Visible with user override` Visibility value (`Reference/CV System
+Parameters.pdf`, and see `Parameters.md`) actually means: that specific parameter only exists on a
+branch — is only "visible" there at all — when it's been overridden. Its presence on the tree *is*
+the override.
+
+**An override defaults to Static, but doesn't have to stay that way.** A user-created override can
+usually be made "intelligent" with an Equation instead of a fixed value. And there's no fundamental
+difference between a user-created override and a **UCS-created** override (see `Parameters.md`) —
+both are the same inserted-parameter mechanism described above; the only real difference is *what*
+put it there, which is exactly what the person-icon vs. 3-lines-icon distinction in the Object Tree
+is showing you.
+
+**UCS-created overrides come with a real trap, though: you cannot simply delete them.** A UCS is
+code that runs on every rebuild. If a UCS is what's placing an override parameter on the tree, and
+you delete that parameter, the deletion itself triggers a rebuild — which re-runs the UCS code —
+which immediately reapplies the exact override you just deleted. The only way to actually remove a
+UCS-driven override is to go edit or disable the UCS itself, not the parameter it's placing. This
+is part of why UCS is considered advanced territory reserved for highly skilled technicians: a
+well-written UCS can massively extend CV and tailor it to a company's exact standards, but a poorly
+written one can cause real, hard-to-diagnose problems precisely because you can't just delete your
+way out of what it's doing.
+
 This is also framed as a **Global vs. Local** distinction: System-level changes are Global — they
 reach every future Job (not retroactively, unless deliberately imported into an existing Job).
 Room-level changes are Local — contained to that Room only. This containment is what makes it
 possible to run an Oak kitchen, a Cherry dining room, a laminate laundry room, and melamine garage
 cabinets all in the same Job without them bleeding into each other: each Room's overrides isolate
 its own Material/Construction/Hardware/Counter Top choices from every other Room.
-
-**Mechanically, what an override *is*:** an override is its own unique parameter that exists on
-the Object Tree only while it's active. "Clearing" an override, through whatever UI is offered for
-it, just removes that parameter. You can also clear one manually by finding it directly on the
-Object Tree and deleting the parameter yourself — same effect either way.
 
 ### Jon's notes
 
@@ -104,16 +136,23 @@ the Object Tree. See **The Object Tree** below.
 Jon's second fundamental, alongside the Level Hierarchy above — and not a separate or looser
 concept from it. The Object Tree **is** the exact hierarchy above, made literal and inspectable:
 System → Job → Room → Wall → Wall Face → Assembly → Case/Interior/Face → Part → Operation, all the
-way down, with every property along the way parametrized. Overrides that don't show up in a Room's
+way down, with every property along the way parametrized. Important: parameters themselves are
+**not** part of that branch structure — they don't occupy their own level the way Room or Part do.
+A parameter is a characteristic *of* whatever branch it lives on, not a child branch in its own
+right (see `Parameters.md`). Overrides that don't show up in a Room's
 Overrides tab, a Part's Overrides tab, or the Section Editor UI can still be found here, which
 makes it the closest thing to a universal place to check — with one correction: *most*, not all,
 parameters live visibly on the tree. Some are hidden — still real, still referenceable (in a
 formula/UCS, for instance), just not something you can see or click on directly in the tree view.
 Cabinet Vision's own system-parameter reference (saved in `Reference/CV System Parameters.pdf`)
 documents a `Visibility` property on every parameter — values seen include `Always`, `Never`,
-`Non-Visible`, `Visible with user override`, `User Added`, and `User Activated` — which is almost
-certainly the mechanism behind this: a `Never`/`Non-Visible` parameter is exactly the kind that's
-real and usable but won't appear in the tree itself.
+`Non-Visible`, `Visible with user override`, `User Added`, and `User Activated` — which plausibly
+relates to this. Worth being cautious here, though: Jon has found a lot of the documentation
+around Visibility unreliable in practice, and doesn't actually rely on checking it — in real work,
+finding a hidden parameter is a matter of knowing to look through the tree directly, not consulting
+its documented Visibility value. See `Parameters.md` for the distinction between Visibility and
+Style (Standard/Attribute/Note), which is the property that actually governs day-to-day work with
+a parameter.
 
 ### Jon's notes
 
@@ -166,5 +205,7 @@ show up with *either* icon depending on how the override was actually put there 
 (person icon) or driven by a UCS (3-lines icon). The icon tells you the *mechanism* behind an
 override, not just whether one exists.
 
-A full reference list of CV's system parameters is coming next — Jon has it, and it may already
-exist in the help documentation too, worth cross-checking once both are in hand.
+Parameters got big enough to warrant their own file — see `Parameters.md` for parameter types,
+the three parameter styles (Standard/Attribute/Note) and how they differ, Static vs. Equation
+values, parametric equations, Object Intelligence, and the 9 basic parameters every beginner
+should know.
