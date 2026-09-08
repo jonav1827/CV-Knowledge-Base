@@ -261,6 +261,35 @@ introduced further down, not overrides of something the parent already defines).
 principle as a Part having more parameters than a Room, just expressed through Layers instead of
 the object-property parameters covered earlier.
 
+**Critical clarification, straight from Jon: every branch in this tree is a genuinely separate,
+standalone view — nothing about a screen is actually shared between a parent and its child.**
+Nesting in the tree is purely about *inheritance* (a child starts out picking up its parent's
+settings, and can override them) — it says nothing about how the two views relate on screen. A
+child is not a sub-region of its parent's view, and a parent's screen doesn't contain its child's
+content. Confirmed with a concrete example: **Splash View** sits nested under Elevation View in
+the tree, but it isn't "the splash portion of a normal Elevation View" — it's the layer schedule
+for the dedicated **Splash** tool's own separate screen (the same "Splash" tool that sits in the
+Room Level sidebar alongside Walls, Objects, Auto Fill, Molding, Grain Match, Cross Section, and
+CAD, each of which opens its own distinct screen). Its position under Elevation View exists only so
+it inherits Elevation View's settings by default — reaching that screen at all requires activating
+its own dedicated tool, not navigating "into" Elevation View. Don't read tree position as screen
+containment anywhere in this hierarchy.
+
+**Why the nesting lands where it does, now confirmed:** Room Level's top tab bar — **Plan**,
+**Elevation**, **3D**, alongside Reports/Drawings/S2M CENTER — is what maps directly onto Layout
+(General)'s own top-level children (Floor Plan View ↔ Plan tab, Elevation View ↔ Elevation tab,
+Layout Perspective View ↔ 3D tab). Each of those tabs exposes its *own* set of sidebar tools, and
+that set isn't fixed — **Splash** and **Grain Match** only exist in the sidebar while the
+**Elevation** tab is active; they're absent entirely while in **Plan**. Conversely, **Tops (F4)**
+(the tool behind Counter Tops View) only exists while in **Plan**. A tool that exists in *both* tabs
+— **Molding** and **Cross Section** both do — opens a genuinely different dedicated screen
+depending on which tab you launched it from, which is exactly why Plan Molding View and Elev
+Molding View are two separate tree nodes instead of one, and why Vertical/Horizontal Cross Section
+View (reachable from Plan) are distinct from End/Wall Face Cross Section View (reachable from
+Elevation). **So a child view's position under a specific parent isn't arbitrary — it reflects
+which top-level tab's sidebar is the only place that tool/screen can actually be reached from,** on
+top of (not instead of) the inheritance relationship already established above.
+
 **Important caveat, straight from Jon: this is how the Layer hierarchy is *supposed* to work, and
 sometimes it does — but it's noticeably less reliable than the real Level Hierarchy/parameter
 system.** The clean override mechanism documented earlier (an override is its own deletable
@@ -349,8 +378,22 @@ instead of just exposing the four basic properties:
     parts that actually form the openings *behind* the doors. The Opening Outline only draws when a
     cabinet has more than one opening — a cabinet with no shelves/partitions (a single open cavity)
     won't get this outline at all.
-  - **Frame Overlay** dropdown — unresolved; Jon keeps this locked to "Frame Overlay" and hasn't
-    explored the other options. Flagged for a future check.
+  - **Frame Overlay** dropdown — partially resolved. The other option, **Frame Openings**, displays
+    each opening's height/width, functioning similarly to how dimensions display on frameless
+    cabinets. Jon's own note: he's not sure why these are two separate settings, since they appear
+    to do essentially the same thing. What "Frame Overlay" itself (the option he actually keeps it
+    locked to) specifically does differently is still unresolved — open item narrowed, not closed.
+  - **Roll Out Outline** — draws an outline of roll-out drawer boxes inside the cabinet.
+  - **Shelves: Single Line vs. Outline** — controls how a shelf is drawn: a single line, or a full
+    outline that more accurately represents the shelf's actual thickness. Same underlying idea as
+    the Door Swings Annotation-vs-Outline choice below — a simplified line vs. a
+    thickness-accurate outline.
+  - **The "Dimensions" checkbox group** — additional values displayed directly on the elevation
+    without having to manually dimension them: **Opening Width** (width of every opening),
+    **Opening Height** (height of every opening — not the space between adjustable shelves),
+    **Doors and Drawers Sizes** (height/width of every door/drawer front), **Opening Height for
+    Adjustable Shelves** (the height between adjustable shelves specifically), **Stiles** (width of
+    every stile), **Rails** (width of every rail).
   - **Closet Rods center-top clearance** — believed (not fully confirmed) to show the distance
     between the closet rod's center and the top of the hanging section's opening.
 
@@ -377,6 +420,17 @@ annotating a different kind of thing (dimension/callout-style labels) than a pla
 names and numbers), so the two "Annotations" dialogs solve genuinely different problems despite
 sharing a name. Don't assume a bold layer's sub-dialog is drawn from one fixed schema just because
 the label ("Annotations") is the same everywhere.
+
+**A third Annotations variant, confirmed on Elevation View:** shares the Show Object Names/Show
+Object Numbers/Stagger/label-format/Font fields with the plan-type schema, but swaps out Show Wall
+Labels and Show Object Drawers for fields specific to an elevation's own concerns — **Show End
+Types**, with a sub-option **Show Unfinished Ends**. Show End Types prints a single letter on each
+assembly identifying its finished-end type: `F` = Finished, `A` = Applied Finished End, `D` =
+Applied Door, `P` = Panelized, `E` = Extended, `S` = Skinned. Filler and No End carry no letter at
+all — Show Unfinished Ends controls whether an end with no real finish type still gets some marker
+rather than being left blank. So there are now (at least) three distinct Annotations schemas
+confirmed across three different view types — plan-type, Cross Section, and Elevation — each
+tailored to what that view actually needs to communicate.
 
 **What the Cross Section label/offset actually control, now confirmed:** creating a *static* Cross
 Section (Room Level sidebar, Cross Section tool) and sending it to Drawings pops a dialog with a
@@ -413,6 +467,13 @@ exist on Floor Plan View at all. Concrete example of the general rule noted earl
 introduce entirely new layer categories the parent never had, the same way a Part can carry more
 parameters than a Room.
 
+**A second confirmed example, on a direct child of Layout (General) this time:** Layout Perspective
+View's layer list includes **Floor** and **Ceiling** categories that don't exist on Floor Plan View
+or Elevation View. Confirmed why: Layout Perspective View is a full 3D view of the whole room, so
+floor and ceiling surfaces are actually visible in it and need their own visibility control —
+unlike the flatter 2D-style views, where those surfaces either aren't shown or aren't the point of
+the view.
+
 **Confirmed: views can be purpose-built narrow, not just purpose-built broad.** Layout (General)
 being "deliberately generalized" (noted above) is one end of this spectrum; Plan Molding View is
 the opposite end — a view built around a single layer category matching its own name/task, with the
@@ -425,6 +486,48 @@ step — it chains multiple levels deep just like the Level Hierarchy does. Conf
 Layout (General) → Floor Plan View → Counter Tops View (with Plan Molding View, Vertical Cross
 Section View, and Horizontal Cross Section View as further children/siblings under Floor Plan
 View). Counter Tops View is a grandchild of Layout (General), not a direct child of it.
+
+**Confirmed: sibling views (not just parent/child pairs) can have different layer categories from
+each other.** Horizontal Cross Section View's layer list has no Annotations entry at all — it isn't
+just missing the Show Object Drawers field the way Vertical Cross Section View is, it doesn't carry
+an Annotations bold layer in any form, checkbox-based or label-style-picker. Confirmed as expected:
+Horizontal Cross Section View, in Plan View, displays exactly like an ordinary Plan View — it just
+additionally lets you see inside cabinets. It has no cut-line-end labels to manage because it isn't
+built around the same vertical-cut-line concept Vertical Cross Section View uses.
+
+**Resolved — what actually determines the Annotations schema: not the branch, and not literally
+"horizontal vs. vertical," but whether the view introduces a real cut line at all.** End Cross
+Section View (nested under **Elevation View**, not Floor Plan View) uses the exact same
+label-shape-picker schema as Vertical Cross Section View (under Floor Plan View) — proving branch
+position isn't what decides this.
+
+Corrected mechanism, straight from Jon: CV's "Cross Section" views actually split into two
+different kinds, and it's *that* split — not cut orientation — that determines whether Annotations
+exists:
+- **See-through versions of an existing parent view** — **Horizontal Cross Section View**
+  reproduces Floor Plan View's exact vantage point, just with the added ability to see inside
+  cabinets. **Wall Face Cross Section View** reproduces Elevation View's exact vantage point the
+  same way (plus one extra capability standard Elevation View doesn't have: showing the *ends* of
+  cabinets on perpendicular walls). Neither of these introduces a genuinely new cutting line
+  distinct from the parent view it's simulating — there's nothing new to label, so there's no
+  Annotations layer at all.
+- **Views built around an actual new cut line** — Vertical Cross Section View and End Cross
+  Section View slice through the model along a real cut line that doesn't correspond to any
+  existing parent view's vantage point, producing two real endpoints worth labeling — hence the
+  label-shape-picker schema.
+
+So the real dividing line is "does this view simulate an existing parent view with extra
+see-through detail" vs. "does this view create a genuinely new cut," not the horizontal/vertical
+framing first guessed at. Plan-type and Elevation-type views get their own object-naming schemas
+for the separate reason that neither is built around a cut line in the first place.
+
+**The general rule underneath all of this, stated directly by Jon:** each branch only provides the
+layer settings that actually apply to it. Every specific example above — Show Object Drawers only
+on top-down/plan-type views, Vertical Cross Section View's label-style Annotations, Horizontal
+Cross Section View having no Annotations at all, a child carrying categories its parent lacks — is
+really just this one principle showing up differently depending on which branch you're looking at.
+Don't treat any one example as the special case; expect *every* branch's available settings to be
+shaped by what that branch is actually for.
 
 **Caution — dialog title bars are not Style names.** A bold layer's sub-dialog title can show extra
 context (e.g. a Dimensions dialog titled "Dimensions [Layout Counter Tops]" when opened from
@@ -557,6 +660,11 @@ above:
   it's only meaningful once outline-only mode is active. **Show Simple Doors** and **Show Simple
   Drawer Box**, despite appearing right next to it, are *not* tied to that toggle at all — they're
   locked or unlocked based on which specific view/scene is selected (not available in every view).
+  Confirmed: it's specifically about how door swings display in **Plan Views**, with three options —
+  **None** (no swing indicator at all), **Annotation** (a single line showing swing direction, the
+  same simplified-line-vs-real-geometry idea as the drawer Offset/Increment lines), and **Outline**
+  (the same idea as Annotation, but drawing the door's actual outline/thickness instead of a single
+  line — mirroring the Shop Annotations Shelves setting's Single-Line-vs-Outline choice).
 - **Force Drawing to Black**, when left unchecked, sends the view to Drawings with all of that
   view's Layer color settings intact — i.e. it's specifically an override that flattens everything
   to black for non-color printing, not a default-on behavior; the colored version is what you get
@@ -633,7 +741,10 @@ The per-view Dimensions dialog (e.g. "Dimensions [Layout Plan View]") is also wh
 sub-systems connect: it has its own **Style** dropdown — that's exactly where you pick which
 Dimension Style (see below) gets applied to that view's automatic dimension lines. The dialog also
 holds settings that apply across the whole view rather than one named line (Horizontal/Vertical
-Line Offset and Increment, Tail Dimensions).
+Line Offset and Increment, Tail Dimensions) — plus, confirmed on Elevation View specifically, a
+**Show Object Depth** checkbox: draws a small tick in the top-right corner of each assembly showing
+that assembly's depth. When several adjacent assemblies all share the same depth, the tick only
+appears on the **farthest-right** one of that group, not on every one of them.
 
 A second, independent place a Style gets chosen: when manually dimensioning an object directly
 with the **CAD** tool (Room Level sidebar, F7), you can select a Style right there for that specific
