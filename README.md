@@ -59,6 +59,8 @@ by CV's own licensing structure rather than the generic Processes/Products/Notes
   parameter styles (Standard/Attribute/Note), Static vs. Equation values, parametric equations, and
   the 9 basic parameters every beginner should know. Big enough a topic to earn its own file rather
   than living inside Core.md.
+- **UCS.md** — User Created Standards: the look-UP resolution model, parameter access prefixes,
+  UCS:M (legacy) and UCS:JS (JavaScript) syntax, validated patterns, and hard-won gotchas.
 - **Notes.md** — anecdotes/gotchas that span multiple modules rather than belonging to one.
 - **Reference/** — downloaded source material (the Hexagon module-features PDF, help docs, etc.).
 

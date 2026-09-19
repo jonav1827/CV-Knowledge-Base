@@ -155,7 +155,7 @@ even multiple conditional equations. Because it re-runs every rebuild, anything 
 tree can't just be deleted — deleting it triggers the rebuild that recreates it, so fixing a
 UCS-driven problem means editing the UCS itself. A well-written one can massively extend CV and
 tailor it to a company's standards; a poorly written one can cause real, hard-to-diagnose problems
-for exactly the same reason. Full syntax, structure, and real examples: later.
+for exactly the same reason. Full syntax, structure, and gotchas now live in `UCS.md`.
 
 ## The 9 Basic Parameters
 
