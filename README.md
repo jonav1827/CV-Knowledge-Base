@@ -59,6 +59,13 @@ by CV's own licensing structure rather than the generic Processes/Products/Notes
   parameter styles (Standard/Attribute/Note), Static vs. Equation values, parametric equations, and
   the 9 basic parameters every beginner should know. Big enough a topic to earn its own file rather
   than living inside Core.md.
+- **Materials & Schedules.md** — how CV assigns materials, profiles, hardware and layers through
+  schedules (material catalog vs schedule, part roles, priority, the kinds of schedule), built up
+  topic by topic.
+- **CVData Materials & SQL.md** — how CV stores every material type in the CVData database (tables,
+  columns, defaults, lookup tables, gotchas) and how to create many materials by script.
+- **Setup Packages.md** — how CV transfers custom objects (materials, schedules, doors, UCSs, catalogs and more)
+  between installations with a Setup Package: what can go in one, export, import and overwrite options.
 - **UCS.md** — User Created Standards: the look-UP resolution model, parameter access prefixes,
   UCS:M (legacy) and UCS:JS (JavaScript) syntax, validated patterns, and hard-won gotchas.
 - **Notes.md** — anecdotes/gotchas that span multiple modules rather than belonging to one.

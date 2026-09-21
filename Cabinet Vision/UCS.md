@@ -473,18 +473,35 @@ end if
   set, the hinge height is right, the applied pattern matches the condition, and the mirrored numbers
   match.
 
-## Creating objects with dim
+## The nine basic parameters in code, and creating objects with dim
 
-- `dim PEG as new pull` (or `part`, `line`, `hole`); then set `.X/.Y/.Z/.DX/.DY/.DZ/.AZ/.MATID/…`.
-  Re-`dim`ing the same object name creates a new distinct part each time; UCS-created objects are
+**The nine basics.** Every object carries X, Y, Z (position), DX, DY, DZ (size) and AX, AY, AZ
+(rotation); what each means is in `Parameters.md`. In code:
+- **UCS:M:** a bare name (`DX`) is the object the UCS is running on, `:DX` climbs to the parent,
+  `CHILD.DX` reads a child. Write with `:=` (`X := 5`).
+- **UCS:JS:** they are properties of `_this` (`_this.DX`) and readable with `GetParameterValue`.
+- **Position is measured from the parent's reference point to the object's own origin.**
+- **Rotation pivots about the object's origin.** The origin stays where X/Y/Z put it and the body
+  swings around it, so after a rotation the origin sits on a different corner of the visible outline.
+  That is why origins turn up on different sides (a rail's at its top, one stile's on its outside
+  edge and the other's on its inside). Work out which corner the origin is on, for the orientation in
+  question, before writing a position equation. CV's own UCS introduction gives the rotation order as
+  X, then Y, then Z, with the axes not moving with the part.
+
+**Making an object.**
+- `dim NAME as new <type>` (`part`, `pull`, `line`, `hole`, …) creates it. The nine basics are the
+  minimum you set on it, each with `NAME.PROPERTY := value`.
+- **Material and thickness come from the material schedule.** Most parts have a default material
+  assigned in the material schedules, so a dim'd part looks there for its material, and `DZ` follows
+  that material's thickness (which can still be overridden). Set `MATID` only to force a different
+  material. *(Material schedules are not yet covered in this Knowledge Base.)*
+- Re-`dim`ing the same object name creates a new distinct part each time; UCS-created objects are
   recreated fresh each rebuild rather than stacking.
 - Only a few material types can display 3D models, so a peg may have to be a `pull`. Model placement
   is set in the Material Manager relative to the dimmed parent's origin; the model carries its own
   size, so the dimmed object gets a placeholder dimension.
 - **`line` as a machining route:** `TOOLID` selects the tool, `DZ` is the cut depth, `_FACEWP := 1`,
   `_RCUT` picks the path (0 center-line, 1 inside cut, 2 outside cut, 3 outside door route).
-- **While-Do counter:** `i<int> := 0`, `while {i} < QTY do`, `dim` inside, `i<int> += 1`,
-  `end while`, then `delete i`.
 - `_FACEWP`: 1 = face, 2 = back. `_SPECIAL` (special-order flag): 1 Accessory, 2 Blum LEGRABOX,
   3 Docking Drawer. `DO` = drawer box interior (and `DO.DZ` is its height), `BBK` = drawer box back.
 - Switching a `DWR` between false front and real drawer makes CV treat it as a new part and wipe the
@@ -496,6 +513,116 @@ end if
   `S_HNGPLT` (the plate) lives on the door opening. CV numbers them bottom-up. Material is written with
   `MATID := <id>` on self and read back through `_M:MATID` (bare `MATID` reads 0).
 - A manually added part needs `UCSMOD = 1`; operations attach with `NewObj.Owner = Owner`.
+
+## Loops (while-do)
+
+**What a loop is.** A block of code that repeats for as long as a condition stays true. It has three
+parts, and a loop with any of them missing either never runs or never stops:
+1. **Start:** a counter is given a starting value.
+2. **Test:** the condition is checked *before every pass*. If it is false the first time, the body runs
+   zero times.
+3. **Step:** something inside the body changes the counter, otherwise the test never becomes false.
+
+```
+i<int> := 0
+while {i} < COUNT do
+    ;(body: runs once for each value of i)
+    i<int> += 1
+end while
+delete i
+```
+
+**Why the counter is reset and deleted.** The whole UCS runs again on every rebuild. Seed the counter
+fresh each time with `:=`, and `delete` it afterward so no scratch value is left on the object.
+
+**Braces.** `{}` is an inline evaluation. The bare `i` is the counter parameter itself (the thing being
+created, tested and stepped, as in `i<int> += 1`). `{i}` evaluates the counter *at that moment in the
+loop* and inserts its current value where a name or value is being built, so on pass 3 the path
+`ITEM@{i}` becomes `ITEM@3`. This is why `{i}` is required inside names and paths. The V-groove loop
+also used `{i}` in the loop test and in arithmetic, and the hinge work used the bare `i` in
+comparisons; both have been seen working.
+
+**Example 1: create N objects, centered across a width.** The count comes from the width and a
+spacing, the start position centers the array, and each pass places one object:
+
+```
+COUNT<int> := TRUNC(DX / :WIDGET_SPACING)
+START := (DX - (:WIDGET_SPACING * (COUNT - 1))) / 2
+
+i<int> := 0
+while {i} < COUNT do
+    dim MARK as new part
+        MARK.X := START + (:WIDGET_SPACING * {i})
+        MARK.Y := 0
+        MARK.Z := 0
+        MARK.DX := 1
+        MARK.DY := DY
+        MARK.DZ := .75
+        MARK.AX := 0
+        MARK.AY := 0
+        MARK.AZ := 0
+    i<int> += 1
+end while
+delete i
+```
+- `TRUNC` drops the fraction, so a partial slot is not made.
+- The array's span is `spacing * (COUNT - 1)`, which is why the start position is half of what is
+  left over.
+- `i` starts at 0, so pass `i` places the object `i` spacings from the start.
+- The nine basics are all set here. `DZ` is shown as a literal, but it would normally follow the
+  material schedule's thickness.
+
+Trace for `DX = 20` and `:WIDGET_SPACING = 6`, so `COUNT = TRUNC(20 / 6) = 3` and
+`START = (20 - 6 * 2) / 2 = 4`:
+
+| Pass | `i` at the test | `i < COUNT`? | Action | `i` after |
+|---|---|---|---|---|
+| 1 | 0 | 0 < 3, true | object at X = 4 | 1 |
+| 2 | 1 | 1 < 3, true | object at X = 10 | 2 |
+| 3 | 2 | 2 < 3, true | object at X = 16 | 3 |
+| end | 3 | 3 < 3, false | loop stops; `delete i` | (deleted) |
+
+The three objects span X = 4 to 16 inside a width of 20, leaving 4 on each side.
+
+**Example 2: walk N existing siblings.** Visit each same-named neighbor to count them and find this
+object's own position among them. The list ends when the next index does not exist, so the test is a
+**null check**, not `> 0` (hardware such as hinges has `DX = 0`, so `> 0` would stop before the first
+one):
+
+```
+COUNT<int> := 0
+MYPOS<int> := 0
+
+i<int> := 1
+while :.ITEM@{i}.DX != null do
+    COUNT += 1
+    if :.ITEM@{i}.Y == Y then
+        MYPOS := i
+    end if
+    i<int> += 1
+end while
+delete i
+```
+- `:.ITEM@{i}` means "up to the parent, then down to its i-th child named ITEM", which is a
+  sibling of the object the UCS is running on. `{i}` is required here because it builds the path.
+- Find your own place by matching a real position (`Y == Y`), not `.ID`, which does not come back
+  through a sibling path.
+- Indices start at 1, and `i` ends one past the last item, so the count is `i - 1` if it is not
+  tracked separately. CV numbers same-named hardware bottom-up.
+
+Trace for three siblings `ITEM@1`, `ITEM@2`, `ITEM@3` at `Y` = 10, 20 and 30, running on the one at
+`Y = 20`:
+
+| Pass | `i` | `:.ITEM@i.DX` exists? | `COUNT` after | `Y` match? | `MYPOS` after | `i` after |
+|---|---|---|---|---|---|---|
+| 1 | 1 | yes | 1 | 10 ≠ 20, no | 0 | 2 |
+| 2 | 2 | yes | 2 | 20 = 20, yes | 2 | 3 |
+| 3 | 3 | yes | 3 | 30 ≠ 20, no | 2 | 4 |
+| end | 4 | no (null), so the test is false | 3 | | 2 | loop stops; `delete i` |
+
+The result is `COUNT = 3` and `MYPOS = 2`; `i` ended at 4, which is one past the last item.
+- You can read a sibling's value through the path but you cannot assign through it; each object must
+  set its own values.
 
 ## One value, several jobs
 
