@@ -64,6 +64,8 @@ by CV's own licensing structure rather than the generic Processes/Products/Notes
   topic by topic.
 - **CVData Materials & SQL.md** — how CV stores every material type in the CVData database (tables,
   columns, defaults, lookup tables, gotchas) and how to create many materials by script.
+- **Materials Handoff.md** — where the Materials work stands: what's covered, open items, and the plan
+  for the next session. Read it first when resuming.
 - **Setup Packages.md** — how CV transfers custom objects (materials, schedules, doors, UCSs, catalogs and more)
   between installations with a Setup Package: what can go in one, export, import and overwrite options.
 - **UCS.md** — User Created Standards: the look-UP resolution model, parameter access prefixes,

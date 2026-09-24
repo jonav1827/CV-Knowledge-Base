@@ -611,9 +611,27 @@ objects (materials are only one), so they are covered in `Setup Packages.md`.
 ### Finishes, Finish Types and Textures
 
 The **Finish**, **Finish Type** and **Texture** buttons in the Material Manager open three libraries.
-- **A Finish** is a named color: a Name, Description, a color (red, green and blue, 0 to 255 each) and
-  a Luminance.
-- **A Finish Type** describes how a surface reflects light. It has a **Shader** (Glass, Gloss Metal,
+*(Confirmed against Jon's CV install unless marked otherwise. All three are opened from the Material
+Manager ribbon's **Finishes** set.)*
+
+- **A Finish** is a named color. The **Finishes** window has a selector dropdown (with a color chip),
+  a binoculars **Search**, and **New**, **Copy** and **Delete** buttons. Fields: **Name**, **Description**
+  and a read-only **ID**. Below them is a color palette (click to pick a starting color), three RGB
+  sliders with 0 to 255 boxes, a preview swatch, and one horizontal slider under the swatch. That slider
+  scales all three RGB values together: **left = every RGB value drops (darker), right = every RGB value
+  rises (lighter)**. The help calls this **Luminance**, but the window doesn't label it.
+  **There is no Save button: edits are written when you press Close.** The binoculars **Search** finds
+  finishes by name.
+- **A Finish Type** describes how a surface reflects light. The window has a selector dropdown and
+  **New**, **Copy** and **Delete** buttons, then Name, Description, a read-only ID, the Shader dropdown
+  and the sliders below, with a **Preview** panel on the right. **Jon's Finish Type list is mostly his
+  own**, not CV's out-of-the-box set (the help lists six system types; the Shader dropdown has seven
+  entries). Slider settings have no numeric readout. As an example, Jon's **Matte** (Wood shader) has
+  Ambient about mid-way, Diffuse low (about a quarter), and Specular, Shininess and Transparency at zero,
+  which fits the help's "Diffuse below 50% is more matte." **Jon's method for a new Finish Type: Copy
+  an existing one that's close, then adjust it while watching the Preview.** **Which Shader Jon uses:**
+  Wood for wood and woodgrain laminate, Plastic for solid colors, Metal for hardware (Glass and Mirror for
+  glass and mirrors). It has a **Shader** (Glass, Gloss Metal,
   Gloss Plastic, Metal, Mirror, Plastic or Wood) and sliders for **Ambient** (base color; typically
   50%), **Diffuse** (above 50% is shinier, below is more matte), **Specular** (mirror-like reflection),
   **Shininess** (how much it reflects) and **Transparency** (how much the texture below shows through,
@@ -633,8 +651,146 @@ The **Finish**, **Finish Type** and **Texture** buttons in the Material Manager 
   into. The help's example makes speaker cloth by creating a Miscellaneous material with the new
   texture on its face, then assigning that material to the flat-panel category in a Door material
   schedule. Textures can also be added from a job's 3D view.
-- The Finish Type window has a **Preview** area for testing the finish type against different finishes,
-  textures, light types and brightness.
+- The Finish Type window has a **Preview** area (a sphere) for testing the finish type against a
+  **Finish** picker, a **Light** picker (for example White Light), **Brightness**, and a **Texture**
+  checkbox with a browse button. **All of these are preview-only**, including the Texture checkbox:
+  nothing chosen there is saved onto the Finish Type.
+- **How the Texture Manager looks.** Toolbar: **New**, **Delete**, **List view** and **Thumbnail view**
+  (the help calls the New button "Import Image"). Left sidebar: a search pane and a category pane, mostly
+  manufacturers (Egger, Fenix, Kronospan, Prism, Wilsonart and so on) plus Glass, Wood and Metal. Groups
+  starting with **x** are Jon's own mark for "to be deleted"; ignore them. Columns: ID, Name, Description,
+  Path, World Width, World Height, Decal and Tile.
+
+**Adding a texture: the Import Texture window.** In the Texture Manager, pick the category, then press
+**New**. The **Import Texture** window opens. Top left is an **import-image button** (an image icon with a
+green arrow). Below it is a preview area, then **Name**, **Description**, **Tile** and **Decal** checkboxes,
+and a **World Size** group (**Width** and **Height**, both 0 by default), with **OK** and **Cancel**. When
+first opened, Name, Description, Tile, Decal, the World Size boxes and OK are all greyed out. **After you import
+an image, it shows in the preview and those fields (and OK) become editable.** You set the name, description,
+tile, decal and world size, then press OK.
+
+**Where texture images live, and how to update one (confirmed by Jon):** imported images are kept with the
+CV database, in the **`Graphics`** folder of the database directory (on Jon's work PC:
+`Z:\Planit\Common 2025\Database\Graphics`). The Texture Manager's Path column shows just the file name. A
+texture is **not easy to change once imported**. Deleting and recreating it works but is the slow way.
+**To update an image in place:** edit the source image, then copy it (**with the same file name**) into
+that `Graphics` folder and choose **overwrite** when Windows asks. The texture then shows the updated
+image.
+**How Decal, Tile and World size work (confirmed by Jon):**
+- **Tile OFF:** the image is **stretched once over the whole face**. World Width and World Height are
+  ignored (a texture with 0 and 0 is normal).
+- **Tile ON:** the image repeats at World Width x World Height across the surface, so those two values
+  matter only here (for example a 48 x 96 sheet image). **A non-seamless image (edges that don't match
+  their opposite edges) shows obvious seams when tiled and gives poor results.**
+- **Decal** decides whether the texture blends with the finish:
+  - **Decal OFF** for anything that would normally be **painted or stained** (raw wood, for example).
+    The texture blends with the finish color, which looks more realistic.
+  - **Decal ON** for **manufactured products** such as melamine, Chemetal and Cleaf. The finish would not
+    naturally be applied to them, so the texture stays unaffected by the finish.
+
+**Where library edits go (confirmed by Jon):** a job snapshots Finishes, Finish Types and Textures like
+materials. Editing the library changes existing jobs **only through Update Job**.
+
+**Where these get assigned, and how they resolve (confirmed by Jon):**
+1. **On the material:** each layer in Material Properties has a Finish, Finish Type and Texture. A
+   **locked color swatch** on a layer always wins. The word **Automatic** means the layer follows the
+   room's finish.
+2. **Room finishes:** a room has an **Interior** finish and an **Exterior** finish. They can be set at
+   **Job, Room, Assembly and Part** level, and the level nearest the part wins.
+3. **On a part (override):** right-click a part, **Properties**, **Finish** tab in **Part Properties**
+   (tabs: General, Comment, Flutes, Finish, Overrides, Parameters). There are four groups: **Front Face,
+   Back Face, Edges, End**. Each has an **Interior / Exterior / Select** choice (Select enables a finish
+   dropdown for that surface, greyed out otherwise) and a **Texture** button. **Interior and Exterior mean
+   the room's Interior and Exterior finish.** You can't change a material's own layers from a job; this
+   is a part-level **override** that stays until you remove it.
+
+**Where each level is edited (confirmed by Jon):**
+- **Job:** Job Properties → **Finish** tab.
+- **Room:** Room Properties → **Finish** tab. Room finishes/textures can also be changed **in the 3D
+  (perspective) view when nothing specific is selected**.
+- **Assembly:** Assembly Properties → **Finish** tab, or select the assembly in the 3D view. It
+  highlights, and its **current mappings appear in the sidebar** where they can be edited.
+- **Part:** Part Properties → **Finish** tab (above).
+
+**The 3D view sidebar (seen in Jon's CV 2025):**
+- **Nothing selected:** the sidebar shows **Camera, Lights, Finishes, Textures** and **CAD (F7)**, then
+  the Job Parameters and Room Parameters lists. **Finishes** opens a list of color swatches, one per room
+  surface: Assembly Exterior, Assembly Interior, Wall, Floor, Ceiling, Counter Top, Molding,
+  Doors/Windows, Appliances, Bath Fixtures and Sinks. **Textures** opens a matching list with texture
+  previews: Assembly Exterior, Assembly Interior, Wall, Floor, Ceiling, Counter Top, **Splash** and
+  Molding (Splash appears only in the Textures list). These are the room-level finishes and textures.
+- **An assembly selected:** it highlights (cyan outline) and the sidebar shows that assembly's name (for
+  example *MW Tall*) with a **Visual** group (**Exterior Finish**, **Interior Finish**, **Exterior
+  Texture**, **Interior Texture**) and a **Materials** group (**Assembly** material, **Pulls**).
+- **Texture choices include two special entries (Jon):** **Blank** (shown as **-None-** in the sidebar)
+  applies **no texture and uses just the finish**, and **Automatic** uses the **room's texture**. Blank is
+  a real choice, not an "unset" state; it is the same Blank a new hinge layer starts with.
+
+**The texture picker.** Choosing a texture (for example from a Texture button or field) opens the **Texture
+Manager** window itself, with a few additions compared with opening it from the Material Manager: a
+**Recent** group at the top of the category tree, an **Automatic** checkbox (bottom left), a **Blank**
+checkbox (bottom middle), and one extra icon in the toolbar next to the List and Thumbnail buttons.
+**Thumbnail view** shows a grid of image previews with names and is **Jon's preferred view**; **List view**
+shows the columns (ID, Name, Description, Path, World Width, World Height, Decal, Tile). In Jon's list the
+wood-grain textures (Alder, Baltic Birch, Rift Cut Walnut, Hickory and others) have **Decal off, Tile on**
+at sizes like 36 x 72 or 48 x 96, while flat or manufactured ones (Silk White, Light Gray, Particle Board,
+Stainless Steel) have **Decal on**, which matches the Decal rule above.
+
+The extra toolbar icon (yellow and blue) has the tooltip **"System Textures"** and nothing else. Jon
+believes it hides CV's system textures, but that is **unverified**, and the help doesn't document it.
+**Clicking it changes nothing visible in Jon's list** (possibly because no system textures are loaded);
+treat it as an unexplained control.
+
+**Extra facts from the help (not yet checked in Jon's CV):**
+- **Texture may decide one-sided versus two-sided panel stock for S2M (help only; Jon had believed texture
+  was purely visual and had not seen this, so treat it as UNVERIFIED until tested).** If the Face and Back layers have the
+  **same texture, or no texture**, the material is **two-sided** and S2M CENTER may flip parts to balance
+  operations. If the Face and Back **textures differ**, S2M treats it as one-sided, never flips parts, and
+  tells the operator which texture (by name) to put face up. For a material with no pattern, choose the
+  **Blank** texture on the layer.
+- **Jon's convention for panel stock layers:** set each material to **mimic reality**, including setting
+  the **Edge and End layers to the core** of the panel, so anything that looks off is easy to spot
+  visually in 3D. Solid lumber (Board Stock) and banding follow the same idea: a real look on every
+  layer. Face and Back textures therefore vary by material (some match, some differ), which is
+  why the S2M sidedness rule above is worth testing.
+- **Closing a Finish or Finish Type window asks whether to save** ("click Yes to save"), which matches
+  Jon's "saves when I close".
+- **3D view → Properties tab → Materials Visual and Finish Types Visual** list every material and finish
+  type in the current job and let you change their color, texture and finish type. **Changes there are for
+  visual purposes only** and it saves returning to the System level to tune a render.
+- **Rendering dependencies:** wood grain shows only in **Texture render mode or xRender**; see-through glass
+  needs Preferences → Views tab → **High Detail**; a **mirror's reflection** shows only in xRender's
+  **Architectural Render**. The Finish Type Preview itself uses PhotoVision.
+- **Smoked glass recipe (help):** make a very dark Finish (all RGB sliders to the top for black), **Copy**
+  the **Glass** Finish Type and tune **Shininess** and **Transparency**, then put that Finish, Finish Type
+  and the **Blank** texture on every layer of a Miscellaneous material, and drag that material onto the door
+  glass-panel part in a Door Material Schedule.
+- **System Textures icon:** the help has nothing on it (searched for system texture wording and the picker).
+
+**Troubleshooting a part that looks wrong in 3D (Jon's order):** check **the material mapped to that
+part** first. Only if the material is correct, dig into **overrides** (the part's Finish and Overrides tabs,
+then higher levels). **The material schedule carries the mapping for parts.** If the material a part is
+actually using differs from what the schedule says for that part, **the part's material has been
+overridden.** To read the material a part is actually using, open **Part Properties**, or look at a **report table of
+that assembly**. *(The full schedule walkthrough comes in step 3 of the build order.)*
+
+**Multi-window mode (Jon's side note):** CV can be run in a multi-window mode that shows several things at
+once, including a **live report of everything inside the view you're working in**. It is useful for
+checking materials while you work, and Jon doesn't use it as much as he thinks he should. At the assembly
+level the live report lists each part with its **Material**. Full details are in "Multi-Window Mode" in
+`Core.md`.
+
+**The part's Overrides tab** (Part Properties) **lists every override currently set on the part**, including
+finish and texture ones made from the Finish tab. An override stays until it is removed. Removing (clearing)
+one means deleting the parameter CV inserted on that branch, and where you do that depends on where it
+lives (a Part's Overrides tab, or the Object Tree). A UCS-created override can't simply be deleted because
+it is re-applied on rebuild. See "How overrides work" and "Clearing an override" in `Core.md`.
+
+**To remove one from a part:** open Part Properties → **Overrides** tab, **select the override's row, and
+press Delete/Remove**.
+
+*(Still to confirm: a fresh end-to-end walk-through of this whole section, since the last few answers were
+picked from lists and the exact button label and any confirmation prompt were not seen.)*
 
 ### Material types
 

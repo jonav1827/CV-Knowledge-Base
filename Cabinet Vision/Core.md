@@ -929,3 +929,40 @@ Static (different colors, visibility, anything), that static drawing will never 
 even though the live view updates immediately. Only Live captures downstream changes of any kind,
 cosmetic or structural — Static isn't "mostly current, minus recent edits," it's genuinely frozen in
 every respect.
+
+---
+
+## Multi-Window Mode (split views)
+
+*(Seen in Jon's CV 2025 screenshots; Jon says he under-uses it.)* CV can show several views at once
+instead of one, each with its own **live** content.
+
+**Turning it on:** Main tab → **View** group → **Window Mode** dropdown, which offers **Normal Window**,
+**Split Horizontal** and **Split Vertical**. Choose a split, then split again to get more panes. (A
+three-pane layout was shown, so a pane can itself be split.)
+
+**How the panes work:**
+- **Each pane has its own tab strip.** At Layout (room) level: Plan, Elevation, 3D, Reports, Drawings (and
+  S2M CENTER on the first pane). At Assembly level: Section, Face, Plan, End, 3D, Reports. Every pane can
+  show a different view, so you can watch Plan, 3D and a report at once.
+- Each pane has a **maximize button** in its top-right corner.
+- The **ribbon and sidebar change** depending on which pane is active. In two of the screenshots the ribbon's
+  View group showed **View Mode, Window Mode and Set Columns** and the sidebar showed **Order Entry, Bid
+  Center, Report Center, Plan & Elevation Sheet, Assembly Sheet and Part Sheet** (at assembly level: Order
+  Entry, Bid Center, Report Center, Assembly Sheet, Part Sheet). In the other two the ribbon showed Zoom,
+  Render Mode, Window Mode, Job/Room and Modifications tools and the sidebar showed the drawing tools (Walls,
+  Objects, Floors, Ceilings, Tops, Molding, Auto Fill, Cross Section, CAD). *(Which pane was active in each
+  shot wasn't recorded. Presumably the first set goes with a Reports pane.)*
+- **Set Columns** (ribbon) **shows or hides columns** in the report (Jon).
+- **CV remembers your split layout globally** (Jon): your last layout stays as your setting across jobs,
+  not per job.
+
+**The live report depends on the level you're working at:**
+- **At the room (Layout) level,** the Reports pane is a table of **assemblies**: Item, Part No., Width,
+  Height, Depth, Catalog, Door Style, Hinge, Finish, Qty, Type and Description.
+- **At the assembly level,** it is a table of **parts**: Qty, Name, Width, Length, Thick and **Material**
+  (for example "Finished Left End, 3/4 Prism SF237 Charcoal", "Exterior Banding, Prism SF237 Charcoal EB",
+  a drawer guide, hinges, and so on). This is the quickest place to **read the material each part is
+  actually using** and compare it against the material schedule (see `Materials & Schedules.md`).
+- The report updates as you change the job, so a change in a drawing pane shows in the report at once.
+  *(Shown live in the screenshots; the exact refresh behavior wasn't tested.)*
