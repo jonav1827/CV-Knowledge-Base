@@ -241,7 +241,7 @@ The most property-rich hardware type, because it sizes the drawer box. **Unit of
 | `Height` | Height | 25.4 | Guide height. |
 | `Depth` | Length | 400 | Guide length (the column is `Depth`, the window label is Length). |
 | `Extension` | Extension | 457.2 (18 in) | The graphic limit of how far the box opens in the open-drawer animation. |
-| `ScrewCenterRefTop` | Screw Center Reference to Top | 0 | If true, mounting bores reference the **top** of the drawer box; if false, the **bottom**. |
+| `ScrewCenterRefTop` | Screw Center Reference to Top | 0 | If true, mounting bores reference the **top** of the drawer box; if false, the **bottom** (per the reference). **Jon confirmed in CV: false = the bottom of the guide.** |
 | `ScrewCenterToBoxBottom` | Screw Center To Box Reference | 0 | Bore position from that reference. Helps set drawer box height when aligning to system boring. |
 | `GuideHoleOffset` | none | 32 | Distance from the assembly face to the first hole. This is the graphic reference point. |
 | `BackNotchLength` | Back Notch Length | 0 | A notch cut in the drawer back to clear the guide. |
@@ -532,7 +532,7 @@ build. **Layers:** `Primary Work Plane`, then `_FPRAIL`, a 19.05 x 19.05 mm sect
 
 | Column | CV property | Default | What it does |
 |---|---|---|---|
-| `BracketHoleOffset` | Bracket Hole Offset | 37 | Distance from the case front to the bracket's mounting hole center, mirroring `PlateHoleOffset` on hinge plates. **[inferred: no help page for this type]** |
+| `BracketHoleOffset` | **Inset** (the label in Material Properties; confirmed on Jon's material, shown as 1 15/32 = 37 mm) | 37 | Distance from the case front to the bracket's mounting hole center, mirroring `PlateHoleOffset` on hinge plates **[the "case front" meaning is still inferred; the preview shows it measured to the top hole]**. Operations tab fields: hole Diameter 3/16, Depth 15/32, Spacing 1 1/4 (not yet mapped to columns). |
 
 **Layers:** `Primary Work Plane`, then `_SHMB` (25.4 x 42.667 x 25.4 mm). **Models:** Yes. **Profile:** No.
 

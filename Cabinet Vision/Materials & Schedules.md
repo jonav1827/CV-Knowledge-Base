@@ -54,9 +54,13 @@ The catalog window. Its ribbon has a **Return** button, a **Materials** set (**N
 - **Right side:** a table of the materials in the selected folder, with tabs **Material**, **CNC**,
   **Size**, **Finishes**, **Finish Types** and **Textures**. The Material tab's columns are ID, Name,
   Description, Type, Unit Of Issue, Default Cost, Sell Price, Default Markup and Sales Tax.
-- **Naming pattern seen** (*to confirm it is a deliberate convention*): the name reads
-  thickness, manufacturer, code, color, then a pipe and the line or collection; the description repeats
-  the same pieces in a different order.
+- **Naming pattern** (Jon's company standard): the name reads thickness, manufacturer, code, color; the
+  description repeats the same pieces in a different order. **CV lets you name a material anything**; this is
+  just Ironwood's own standard, kept for consistency and easy searching. **Minimum for a name:
+  `<thickness> <material name> <type>`** (extras such as sheet size are optional). **Don't use `|`, `"` or
+  `'`** (script issues); a pipe appears on only one of Jon's materials, to list that material's textures.
+  Also avoid `#` (see Gotchas). **The description can be anything.** It doesn't have to follow the naming
+  standard.
 
 ### Searching, groups and the material area
 
@@ -96,7 +100,7 @@ Model Editor, including modified parameters and formulas**.
 but the Material Properties windows checked here (a panel stock sheet and a hinge) have neither: the
 Advanced ribbon is Kit, Composite, Parameters, Profile and Model, and the Material group runs from
 Description through Estimate, Load Model and S2M Material with no vendor row. The vendor features below are
-from the help and may be hidden, licensed separately, or off in this setup *(to confirm)*.
+from the help. **Jon says Vendors is licensed separately**, which is why it isn't visible here.
 
 Vendors are a separate list you manage in the **Vendor** utility (from the Material Manager), which
 also has **Return**, **New** and **Delete**. Each vendor has a name, address, phone, mobile, fax,
@@ -357,9 +361,10 @@ All from the CABINET VISION 2025 help unless noted.
 - **ID:** CV's internal number; not editable.
 - **Name:** anything that identifies the material, up to 50 characters. Use only letters, numbers and a
   `/` in fractions; quotation marks (`"`) and the pound symbol (`#`) cause errors in optimization and
-  the S2M Center. Write `1/2in Melamine`, not `1/2" Melamine`. *(Your names use a pipe (`|`); the help
-  doesn't mention it either way, so it is worth confirming it causes no trouble.)*
-- **Description:** up to 100 characters.
+  the S2M Center. Write `1/2in Melamine`, not `1/2" Melamine`. **Jon's rule:** also avoid `|` and `'` (script
+  issues; the pipe is used on only one of his materials, to list that material's textures). **Minimum for a
+  name: `<thickness> <material name> <type>`.**
+- **Description:** up to 100 characters. It can be anything and doesn't have to follow the naming standard.
 - **Type:** fixed when the material is created; not editable.
 - **Unit Of Issue:** the unit you buy the material in. The choices are BD FT (per board foot), BD M
   (per board meter), Cubic FT, Cubic M, Each, Pair (for drawer guides and other hardware sold in
@@ -393,23 +398,46 @@ part it is attached to.
 **CNC section (sheet and board stock):**
 - **Optimize:** whether the material is sent to the Optimizer/Nester. Set up sheet goods even if you
   don't own the module yet.
-- **Grain Dependent:** whether parts may be rotated across the sheet in the Optimizer/Nester.
+- **Grain Dependent:** whether parts may be rotated across the sheet in the Optimizer/Nester. **Jon's
+  practice:** Off for plain colors (parts may rotate freely), On for grained materials (grain direction
+  stays fixed).
 - **Drop Width / Drop Length:** the minimum width / length a leftover must have to count as an offcut
-  instead of scrap.
+  instead of scrap. A leftover has to meet **both** minimums to be an offcut; S2M tracks offcuts (counter,
+  optional labels and images). At 0 every leftover counts as an offcut. To pick values, use the smallest
+  piece you'd actually keep and reuse. **Jon's practice:** leaves both at 0.
 - **Feed Rate Percent / Spindle Speed Percent:** the percentage of the optimum tool feed rate / spindle
-  speed to use with this material.
+  speed to use with this material. **Jon's practice:** always 100.
 - **Minimize Face Chip:** the S2M Center's automatic tool selection tries for a down-shear bit.
 - **Minimize Back Chip:** it tries for an up-shear bit. With both on, it tries for a compression bit.
-- **Climb Cut:** whether the material is cut with a climb cut.
+  *(General CNC knowledge, not from the help and not yet confirmed by Jon: the three main spiral cutter types
+  are **up-shear** (up-cut, pulls chips up and out; leaves a clean bottom edge but can chip the top face),
+  **down-shear** (down-cut, pushes chips down and holds the sheet flat; leaves a clean top face but can
+  chip or burn the bottom), and **compression** (up-shear on the lower section and down-shear on the upper
+  section; clean on both faces, but the cut must go deep enough for the two sections to overlap the
+  material, so it suits full-depth through cuts better than shallow pockets and dados). "Face" is the side
+  that faces up on the nest, which S2M chooses; see `Unverified Knowledge.md` item M1.)*
+  **Jon's practice:** both options on for materials finished on **both sides**; **Face only** for one-sided
+  materials (unfinished back).
+- **Climb Cut:** whether the material is cut with a climb cut. Together with the tool's **Rotate Clockwise**
+  setting it decides the toolpath direction: with Climb Cut on, an outside pass runs in the same direction as
+  the tool's rotation, and an inside cut always runs opposite to an outside cut. *(General CNC knowledge, not
+  from the help: a climb cut has the bit rotating with the feed where it touches the material, which usually
+  gives a cleaner edge but pulls the bit along, so it needs a rigid machine and good hold-down; a conventional
+  cut rotates against the feed.)* **Jon's practice:** climb cutting is used primarily for **clean-up
+  passes**.
 - **Maximum Depth Per Pass:** the depth a tool can cut per pass in this material; the smaller of the
-  material's and the tool's value is used.
+  material's and the tool's value is used. A cut deeper than this takes several passes. **Jon's practice:**
+  it usually follows the tooling (leave it at the default) **unless the material is very thick, dense
+  hardwood**. *(What a value of 0 means isn't stated in the help; presumably "no limit from the material, use
+  the tool's value." Unverified.)*
 
 **Layer sections (Face, Back, Edge, End):** each layer has a **Finish**, a **Finish Type** and a
 **Texture**.
 - A fixed finish shows as a color swatch. **Automatic** means the finish comes from the
   job, room, assembly or part finish; choosing a finish **locks that color to the material**.
 - If a material has no pattern, give it the Blank texture.
-- **For CNC users, the textures decide whether the material is one-sided or two-sided.** If the face and
+- **For CNC users, the textures decide whether the material is one-sided or two-sided (from the help;
+  UNVERIFIED, see `Unverified Knowledge.md` item M1, and Jon had not seen this behavior).** If the face and
   back have the same texture (or none), the material is two-sided and the S2M Center may flip parts
   over when one side has more operations. If the face and back textures differ, the material is
   treated as one-sided and parts are not flipped. The S2M Center then decides which side faces up by
@@ -510,10 +538,11 @@ The **Laminate Oversize** is added to the part so the laminate can be trimmed fl
 | Connector | Type Rafix |
 | Shadowline Channel | Length 36 |
 | Finger Pull | Length 30; Edge Trim 3/4 |
-| Shadowline Bracket | Bracket Hole Offset 37 mm *(inferred: no help page)* |
+| Shadowline Bracket | **Inset** 1 15/32 (37 mm); the preview shows a two-hole bracket with the inset measured to the top hole. **Operations tab:** hole Diameter 3/16, Depth 15/32, Spacing 1 1/4. Layer: one, a locked grey with Metal - Matte and a Blank texture. Seen on Jon's material (no help page). *(The earlier guess "Bracket Hole Offset" was wrong; the window's label is Inset.)* |
 | Molding Set | Nothing of its own (unit Each) |
 
-**Counter Top** has no help page. Its fields, inferred from their names, are Cost Per Butt Joint, Cost Per
+**Counter Top** belongs to a **separate module that Ironwood doesn't have**, so it is not verified in Jon's CV
+and is out of scope for now. It has no help page. Its fields, inferred from their names, are Cost Per Butt Joint, Cost Per
 Miter Joint, Cost Per Cutout, Cost Per End Cap, Cost Per End Splash and Scribe Trim, plus a size (for
 example 16 deep by 8 ft by 3/4). It carries neither a model nor a profile.
 
@@ -528,7 +557,11 @@ example 16 deep by 8 ft by 3/4). It carries neither a model nor a profile.
 - **Sliding Door Roller:** Roller, Slot. Its **Slot Reference** is Center, Back or Front.
 - **Finger Pull:** only C-Rail exists in this build; the help also lists Flat-Rail and U-Rail.
 - **Shadowline Channel:** L-Channel, C-Channel and J-Channel exist as choices, but the material has no
-  field for them, so where the choice is stored is unverified.
+  field for them (confirmed on Jon's material: its only own field is **Length**, and the layer is a locked
+  grey with Metal - Matte and a Blank texture). **The channel type is chosen in the Assembly Wizard**
+  (Jon: "another VERY important area to cover"; not yet documented). Kit, Parameters and Model are
+  enabled on this type, Composite and Profile are not. Jon's example material carries an `x` name prefix
+  (his "to be deleted" mark).
 - **Molding:** Crown, Top Edging, Light Rail, Scribe, Base Board, Chair Rail, Casing, Applied, Ceiling,
   Bead, Outside Edge, Inside Edge, Raised Panel, Door Route, Finger Pull, Door Applied.
 - **Connector (21):** Rafix, Clamex P-10, Clamex P-15, Clamex P Medius 15/10, Tenso P-14, Connector
@@ -600,7 +633,19 @@ relying on either):
 - **Sliding Door Roller dado reference:** the help says 1 Back, 2 Center, 3 Front; the CVData lookup says
   1 Center, 2 Back, 3 Front.
 - **Drawer Guide screw center reference (`SCREF`):** the help says 0 = Top, 1 = Bottom; the CVData column
-  `ScrewCenterRefTop` reads as true = top.
+  `ScrewCenterRefTop` reads as true = top. **Confirmed in Jon's CV:** the window field is labeled **Screw
+  Center Reference to Top**, and **True** measures the screw
+  centers from the **top of the drawer box** and **False** from the **bottom of the guide** (Jon's
+  clarification). So True = top matches CVData and the label, and the help's 0/1 wording looks reversed.
+  `CVData Materials & SQL.md` says false references the bottom "of the drawer box", which differs from Jon's
+  "bottom of the guide"; treat Jon's wording as the confirmed one. **The help contradicts itself on this
+  field:** the General-tab entry says top of the **Drawer Box** (enabled) or the Drawer Box **bottom** (not
+  enabled); the Operations "Mount Holes → Top Reference" entry says top of the **Guide**; and the `SCREF`
+  parameter says 0 = Top, 1 = Bottom. *(What the "bottom" reference is exactly, and the value `_M:SCREF`
+  returns, are still unsettled.)* *(What `_M:SCREF` actually
+  returns for each setting was not tested; check the live value before a UCS relies on it.)*
+- **Wire Basket and Sliding Door Roller:** not checked, because Jon rarely uses them. Leave both
+  disagreements above as unverified.
 - The help lists the Closet Rod length parameter as applying to "Banding", which is a typo in the help.
 
 ### Setup packages

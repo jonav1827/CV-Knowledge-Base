@@ -30,6 +30,12 @@ Plus a `Reference/` subfolder (created as needed) for downloaded source material
 sheets, manuals — that the three files above can cite back to, so distilled knowledge and raw
 source documents don't get tangled together.
 
+## Unverified Knowledge.md
+
+A running checklist of everything in the Knowledge Base that isn't yet confirmed in Jon's CV, with how to
+test each item. Check it when picking what to verify next, tick items off when they're tested, and add new
+ones as they come up.
+
 ## Glossary.md
 
 A single, cross-cutting file at the top level (not filed under any one stage) mapping every

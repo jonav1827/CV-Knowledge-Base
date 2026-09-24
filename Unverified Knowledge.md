@@ -1,0 +1,80 @@
+# Unverified Knowledge (running checklist)
+
+Everything in the Knowledge Base that is **not yet confirmed in Jon's own CV**, in one place so it can be tested later.
+
+**How to use:**
+- Tick the box (`- [x]`) when an item is tested, and add the date and result on the line under it.
+- Then update the source file the item came from (remove its *unverified* flag or correct the text).
+- Add new items as they come up. The source file should also carry the *unverified* flag.
+- Keep ticked items in place until they're moved to "Resolved" at the bottom.
+
+Last compiled: 2026-09-24.
+
+## Materials & Schedules (`Cabinet Vision/Materials & Schedules.md`)
+
+- [ ] **M1. Texture decides one-sided vs two-sided panel stock in S2M.** The help says the same or no Face/Back texture = two-sided (S2M may flip parts), different textures = one-sided (no flipping, operator told which texture faces up). Jon believed texture was purely visual and hadn't seen this.
+  *Test:* send a part with more operations on one side to S2M using panel stock with matching Face/Back textures, then again with different ones. Note whether S2M flips the part and what the operator instruction says.
+- [ ] **M2. System Textures icon** in the Texture picker (tooltip "System Textures"). Not in the help; clicking it changes nothing visible in Jon's list.
+  *Test:* click it on an install that has system textures loaded, or ask Hexagon support.
+- [ ] **M3. Drawer Guide "Screw Center Reference to Top."** What the "bottom" reference is exactly (bottom of the guide vs bottom of the drawer box) and what `_M:SCREF` returns for each setting. The help contradicts itself (General tab: drawer box; Operations tab: guide; `SCREF`: 0 = Top). Jon's wording: True = top of the drawer box, False = bottom of the guide.
+  *Test:* flip the setting on a test guide and watch where the mount holes land, then read `_M:SCREF` in a UCS or the Object Tree.
+- [ ] **M4. Wire Basket type codes.** Help: 1 Side, 2 Top, 3 Bottom. CVData: 1 Side, 2 Bottom, 3 Top, 4 No Mount. Jon rarely uses baskets.
+  *Test:* create a basket of each type and read `_M:GT`.
+- [ ] **M5. Sliding Door Roller dado reference codes.** Help: 1 Back, 2 Center, 3 Front. CVData: 1 Center, 2 Back, 3 Front. Jon rarely uses rollers.
+  *Test:* set each Slot Reference and read `_M:MNTDADOREF`.
+- [ ] **M6. Which Properties tab holds which schedule**, and how a schedule is created and edited (Material Schedule Manager). Not yet written up.
+  *Test:* walk through Job / Room / Assembly Properties and note each schedule tab (build order step 3).
+- [ ] **M7. End-to-end walk-through of the Materials section.** The Material Manager and Properties text was drafted from the help and hasn't been checked against a live walk-through.
+  *Test:* Claude walks Jon through creating a material from the docs alone.
+- [ ] **M8. Which pane is active** when the ribbon shows Set Columns and the sidebar shows Order Entry / Bid Center (multi-window mode). The screenshots didn't record it.
+  *Test:* click into a Reports pane, then a drawing pane, and watch the ribbon and sidebar.
+- [ ] **M9. Counter Top material fields** (Cost Per Butt Joint, Miter Joint, Cutout, End Cap, End Splash, Scribe Trim). Separate module Ironwood doesn't have; inferred from column names.
+  *Test:* out of scope until the module is available.
+
+- [ ] **M10. Maximum Depth Per Pass = 0.** The help doesn't say what 0 means; presumed "no limit from the material, use the tool's value."
+  *Test:* leave a material at 0 and confirm the toolpath uses the tool's maximum depth.
+- [ ] **M11. General CNC explanations** in the CNC section (up-shear / down-shear / compression bits, climb vs conventional cutting) are Claude's general knowledge, not from the help and not yet confirmed by Jon.
+  *Test:* Jon reviews the wording in `Materials & Schedules.md` (CNC section) and corrects anything off.
+
+## CVData and SQL (`Cabinet Vision/CVData Materials & SQL.md`)
+
+- [ ] **D1. Creating Banding, Laminate, Molding, Composite and flat Miscellaneous materials by SQL.** Structurally simple and clonable but not verified end to end. Only Panel Stock and Board Stock are proven.
+  *Test:* follow the pre-flight checklist (Part 6.5), create one of each by cloning a wizard-made row, and check it in the Material Manager.
+- [ ] **D2. Materials with no Extra-Info row of their type** (for example banding without `MaterialExtraBandingInfo`): fine, or quietly broken?
+  *Test:* compare a working and a row-less material in a job.
+- [ ] **D3. Pre-flight checklist (Part 6.5)** has not been run against the live database.
+  *Test:* run the read-only queries and compare the results to the file.
+- [ ] **D4. Shadowline Channel type storage.** The Info table has no type column and the Material Properties window has no field. Jon says the type is chosen in the **Assembly Wizard**.
+  *Test:* document the Assembly Wizard, then check what it writes.
+- [ ] **D5. Shadowline Bracket:** the "case front" meaning of `BracketHoleOffset` (shown as **Inset** in the window), and mapping the Operations fields (Diameter, Depth, Spacing) to columns.
+  *Test:* change Inset on a test bracket and see where the holes move.
+
+## UCS (`Cabinet Vision/UCS.md`)
+
+- [ ] **U1. Bare-name `GetParameterValue`:** does it resolve up the tree or read only the immediate parent? Not yet proven.
+  *Test:* in a UCS:JS, read a parameter defined only on an ancestor.
+- [ ] **U2. Run-once / first-one-wins guard** for writing to the Room from a per-cabinet UCS (it currently writes once per cabinet).
+  *Test:* design a guard parameter on the Room and confirm it writes once.
+
+## Core (`Cabinet Vision/Core.md`)
+
+- [ ] **C1. Unmatched Connectors** (Hardware Filters) and **Unmatched Operations** (Primary Operations): what "unmatched" means. Jon couldn't trigger the condition.
+  *Test:* try to build a connector or operation with no matching definition.
+- [ ] **C2. Frame Overlay vs Frame Openings** (Shop Annotations): what Frame Overlay does differently.
+  *Test:* toggle each on a face-frame cabinet and compare the drawings.
+- [ ] **C3. Stack Dimensions:** what it does. Not in the help; Jon has never figured it out.
+  *Test:* toggle it in a job with stacked items and compare the dimensions.
+
+## Still to document (not verification, but gaps)
+
+- [ ] **Assembly Wizard.** Jon: "another VERY important area to cover." It sets the Shadowline Channel type, among other things.
+- [ ] **Setup Packages:** the Backup Utility in detail, and a walkthrough of the Setup Package window from screenshots (`Setup Packages.md`).
+- [ ] **Parts (Part Manager) and Schedules,** steps 2 to 4 of the build order in `Materials & Schedules.md`.
+
+## Resolved
+
+- [x] **Vendors not visible in Material Properties** (2026-09-24): licensed separately.
+- [x] **Material naming pattern** (2026-09-24): Ironwood's own standard (thickness, manufacturer, code, color | line); CV allows any name.
+- [x] **Shadowline Bracket field name** (2026-09-24): the window label is **Inset**, not Bracket Hole Offset.
+- [x] **Split-window layout memory** (2026-09-23): remembered globally.
+- [x] **Decal / Tile / World size behavior** (2026-09-23): confirmed by Jon (see `Materials & Schedules.md`).

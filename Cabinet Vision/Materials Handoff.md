@@ -72,7 +72,11 @@ Plastic for solid colors, Metal for hardware (Glass and Mirror for glass/mirrors
   Vertical), per-pane tabs, live Reports pane (assemblies at room level, parts with Material at assembly
   level), Set Columns shows/hides columns, layout remembered globally.
 
-## Open items (nothing below is confirmed)
+## Open items
+**The live list is now `Knowledge Base/Unverified Knowledge.md`** (a running checklist with a test for each
+item). Keep that file current; the list below is the original end-of-first-session snapshot, and items 3 and
+4 were since resolved (see the next section).
+
 1. **System Textures icon** (Texture picker toolbar): tooltip only says "System Textures"; clicking it
    changes nothing visible; the help doesn't mention it.
 2. **S2M one-sided/two-sided rule (help only):** the help says the Face/Back texture on panel stock decides
@@ -92,9 +96,20 @@ Plastic for solid colors, Metal for hardware (Glass and Mirror for glass/mirrors
 7. **CVData / SQL:** only Panel Stock and Board Stock creation by SQL is proven; the 9-step pre-flight
    checklist in `CVData Materials & SQL.md` has not been run on the live database.
 
+## Added in the continuation session (2026-09-24)
+- **Vendors:** licensed separately (resolved).
+- **Naming pattern:** Jon's own company standard; CV allows any name (resolved).
+- **Counter Top:** separate module Jon doesn't have; out of scope (resolved).
+- **Shadowline Bracket:** seen on Jon's material. The window's field is **Inset** (1 15/32), not "Bracket
+  Hole Offset" (that is the database column name, `BracketHoleOffset`); Operations has Diameter, Depth and
+  Spacing. Corrected in `Materials & Schedules.md` and `CVData Materials & SQL.md`.
+- **Shadowline Channel:** confirmed no L/C/J field on the material; the type is **chosen in the Assembly
+  Wizard**. Jon flagged the **Assembly Wizard as another VERY important area to cover** (not yet
+  documented; needs its own file or section).
+
 ## Next session
-1. Work through open items 3 and 4 one question at a time (ask Vendors again, or drop it).
-2. Optionally run the S2M texture test (item 2).
+1. Pick items from `Unverified Knowledge.md` to test (for example the S2M texture rule, M1).
+2. Document the **Assembly Wizard** (Jon: "VERY important").
 3. **The test:** Claude walks Jon through **creating a material** (New Material wizard, then Properties,
    layers with Finish/Finish Type/Texture, then checking it in the schedule). Claude should do this from the
    documentation alone, and every place it hesitates or Jon corrects it becomes an edit to
