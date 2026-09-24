@@ -36,6 +36,14 @@ Last compiled: 2026-09-24.
 - [ ] **M11. General CNC explanations** in the CNC section (up-shear / down-shear / compression bits, climb vs conventional cutting) are Claude's general knowledge, not from the help and not yet confirmed by Jon.
   *Test:* Jon reviews the wording in `Materials & Schedules.md` (CNC section) and corrects anything off.
 
+- [ ] **M12. "Missing board info" error and the Panel vs Board Stock rule** (MDF and engineered sheets = Panel Stock at every thickness; only solid species = Board Stock). Appears in `CVData Materials & SQL.md` section 5.5 and the Gotchas in `Materials & Schedules.md`. Not in the help; where it came from is unknown.
+  *Test:* create a panel-style material as Board Stock (and the reverse) in a test job and see whether the error appears; ask Jon whether he has seen it.
+
+- [ ] **M13a. Feed/speed math on output.** The help says tool feed rates at 1/4 in and 3/4 in cut depths are used to output varying feed rates by depth of cut and the material's percent. The calculation (interpolation, order of scaling) is inferred.
+  *Test:* post a job with a known tool and a material at 100 percent, then at 80 percent, and compare the feed values in the G-code.
+- [ ] **M13. S2M Automatic Tool Selection logic and how the material CNC settings interact with S2M tool settings.** The CV help defers to the separate S2M CENTER Help, which isn't in the Knowledge Base.
+  *Test / source:* add the S2M CENTER Help (PDF or text) to `Reference/`, then document how a Feed % or chip option changes the selected tool and output.
+
 ## CVData and SQL (`Cabinet Vision/CVData Materials & SQL.md`)
 
 - [ ] **D1. Creating Banding, Laminate, Molding, Composite and flat Miscellaneous materials by SQL.** Structurally simple and clonable but not verified end to end. Only Panel Stock and Board Stock are proven.
@@ -68,6 +76,7 @@ Last compiled: 2026-09-24.
 ## Still to document (not verification, but gaps)
 
 - [ ] **Assembly Wizard.** Jon: "another VERY important area to cover." It sets the Shadowline Channel type, among other things.
+- [ ] **Buyout material schedules.** Jon: schedule types can have a **Buyout** selection, and a Buyout schedule sends no parts to S2M even if the material is set to Optimize. Needs a full write-up with the schedules (build order step 3).
 - [ ] **Setup Packages:** the Backup Utility in detail, and a walkthrough of the Setup Package window from screenshots (`Setup Packages.md`).
 - [ ] **Parts (Part Manager) and Schedules,** steps 2 to 4 of the build order in `Materials & Schedules.md`.
 

@@ -666,7 +666,7 @@ material listed in S2M's catalog.
 
 `MaterialTypeID` decides which size table CV reads. Board Stock reads `MaterialExtraBoardInfo`; Panel
 Stock reads `MaterialExtraSizeInfo`. **Getting this wrong produces "missing board info" in jobs even when
-the size rows exist.** MDF and engineered sheets are Panel Stock at every thickness; only solid species
+the size rows exist. [unverified: not in the help; original source unknown, see `Unverified Knowledge.md` M12]** MDF and engineered sheets are Panel Stock at every thickness; only solid species
 belong in Board Stock.
 
 ### 5.6 Deleting

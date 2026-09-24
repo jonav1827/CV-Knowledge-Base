@@ -3,6 +3,68 @@
 Written 2026-09-23 at the end of a session on the Materials part of `Materials & Schedules.md`. Read this
 first when resuming. Everything here is a pointer; the real content lives in the files named below.
 
+## START HERE: latest state (updated 2026-09-24, end of the third session)
+
+**To resume on another machine:** run `git pull`, then read, in this order:
+1. This file (you're here).
+2. `Knowledge Base/Unverified Knowledge.md`: the running checklist of everything not yet confirmed in Jon's
+   CV, with a test for each item. Tick items off as they're tested.
+3. `Knowledge Base/Cabinet Vision/Walkthrough - Create a Panel Stock Material.md`: the **draft
+   walk-through** Jon is fine-tuning (see below).
+4. `Knowledge Base/Cabinet Vision/Materials & Schedules.md`: the full reference the walk-through draws on.
+
+**Where the Materials work stands**
+- **Finishes, Finish Types and Textures:** written up and confirmed against Jon's screenshots (see the
+  detailed section further down this file).
+- **Material properties, panel stock:** the Material section and the **CNC section** now have Jon's real
+  practice for every field, plus a plain-language explanation of each option and how it interacts with a
+  tool setting. Key points:
+  - **Optimize** varies by material (Off for hand-cut, outsourced or display-only materials). **A Buyout
+    material schedule sends no parts to S2M even if a material is set to Optimize.**
+  - **S2M Material:** set it On for any material set to Optimize.
+  - **Grain Dependent:** Off for plain colors, On for grained. **Drop Width/Length:** 0. **Feed/Spindle
+    %:** 100. **Chip options:** both on for two-sided finished, Face only for one-sided. **Climb Cut:**
+    clean-up passes. **Max Depth Per Pass:** follows the tooling unless very thick dense hardwood.
+  - The real cutting values (feed, RPM, depth, rotation) are **normally set in the tool definitions**; the
+    material's settings work with them. **Tooling itself is not documented yet**, and Jon asked to keep
+    tooling detail out of scope for now (a "tooling detail" paragraph in the file is marked for later).
+- **Naming:** minimum is `<thickness> <material name> <type>` (example `3/4 Hardrock Maple Sheet`). Avoid
+  `"`, `'`, `|` and `#`. The description can be anything.
+- **Resolved this session:** Vendors is licensed separately; Counter Top is a separate module (out of
+  scope); Shadowline Channel type is chosen in the **Assembly Wizard**; Shadowline Bracket's field is
+  **Inset**; Drawer Guide "Screw Center Reference to Top" is documented but partly unsettled (help
+  contradicts itself; checklist M3).
+
+**The walk-through draft** (`Walkthrough - Create a Panel Stock Material.md`): Jon called it "a solid
+walkthrough" that still needs fine-tuning. It is marked **(unchecked)** for the New Material wizard screens
+(steps 3 to 6), because those come from the help and Jon wasn't at CV to confirm them. **Next time at CV:**
+start a New material and confirm what each wizard screen shows, then edit the draft to match. Jon may also
+have made his own edits to that file: **re-read it before changing it.**
+
+**Skill-level discussion (started, not finished).** Jon shared a web-search summary of Beginner /
+Intermediate / Advanced / Expert Cabinet Vision skills (not to be saved verbatim; it's an unverified
+AI-style summary) to help define the tiers on his website and to calibrate his own level. Findings:
+- The website tiers (Beginner: UI, hierarchy, Job/Room/Assembly properties, overrides, basic drawings;
+  Intermediate: layers, simple assembly modification, parametric equations/basic object intelligence,
+  materials and schedules; Advanced: templates and titleblocks only; Expert: UCS, shaping and constraining)
+  place several things lower than the clip does (hierarchy, overrides, parametric equations), and the
+  **Advanced tier is nearly empty**.
+- Proposed framework: **Beginner = operate, Intermediate = configure, Advanced = build, Expert =
+  administer/integrate**, with the test "could a new hire do this independently after their first week?"
+- **Pending:** a sorting exercise (Claude proposes a tier for each website and Knowledge Base topic, Jon
+  corrects). Jon asked to park it and asked for this handoff instead. The website was **not** changed.
+
+**Also open (not started):** the **Assembly Wizard** (Jon: "VERY important"), the S2M CENTER Help (not in
+the Knowledge Base; Jon may be able to export it like the CV help), Setup Packages details, and Parts /
+Schedules (steps 2 to 4 of the build order).
+
+**Working notes for Claude:** one question at a time, multiple choice with "Other"; search the Knowledge
+Base and the help before asking; never state what a screenshot doesn't show; mark anything unconfirmed as
+unverified in the file. Markdown links to files with spaces did not open in the editor; tell Jon to use
+Ctrl+P to find a file by name. Jon asks for each commit and push explicitly; don't commit unprompted.
+
+---
+
 ## The goal
 Finish **step 1 (Materials)** of the build order in `Materials & Schedules.md` to the point where Claude
 could walk a brand-new user through it step by step, at or near 100% confidence. Jon's stated plan for the

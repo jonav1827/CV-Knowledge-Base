@@ -384,7 +384,13 @@ All from the CABINET VISION 2025 help unless noted.
   Cost" bid method.
 - **Load Model:** on materials that support 3D models only, whether the model is loaded into a job.
   Models can be large and slow a job down, so this turns them off for specific materials.
-- **S2M Material:** makes the material available in the S2M CENTER material catalog as well.
+- **S2M Material:** makes the material available in the S2M CENTER material catalog as well. **Jon's
+  practice:** if a material is set to **Optimize**, also set it as an **S2M Material**. These materials
+  naturally go to S2M on output, so there's no reason they shouldn't also exist in S2M as an S2M material.
+
+**Why width and length matter (Jon):** thickness is the most important size, but width and length are
+important in their own right. **Wrong sheet width or length gives bad nesting patterns and can lead to
+under- or over-ordering sheets.**
 
 **Size, by type:** Panel Stock has **Width, Length and Thickness**; Banding has Thickness and **Length
 Trim** (extra banding length to allow for feeding and end trimming on an edgebander); Board Stock has
@@ -395,9 +401,38 @@ front). **Thickness is the most important property of a material**, because cabi
 on it to produce a correct cut list. Banding's width is not entered: it takes the thickness of the
 part it is attached to.
 
+**Where the CNC settings are normally set, and how the material's values fit in.** Jon: the real feed
+rate, spindle speed, depth and rotation are **normally set in the tool definitions** (Tool catalog / S2M).
+The material's CNC section does not replace them; it works **with** the tool. From the help:
+- **Feed Rate Percent / Spindle Speed Percent** scale the tool's optimum feed rate and RPM. The help says
+  the material "will have an effect on the final feed rate," so **account for the material's % feed rate
+  when testing**. The tool holds the real values (feed in inches or mm per minute; spindle speed in RPM,
+  roughly 4000 to 24000, and some machines ignore it and use a preset speed).
+- **Maximum Depth Per Pass:** both the material and the tool have one, and the **smaller** is used.
+- **Climb Cut** (material) combines with the tool's **Rotate Clockwise** to set the toolpath direction.
+- **Minimize Face/Back Chip** guide S2M's **Automatic Tool Selection** logic. An operation's tool set to
+  **Auto Select** (the recommended default) follows that logic; a specifically chosen tool is used instead.
+  The logic itself is in the separate S2M CENTER Help, which is not in this Knowledge Base.
+
+**Tooling detail, to be covered when tooling is documented: how feed and speed are applied on output (from
+the help's Tools table reference; the exact math is inferred).** A tool stores its own **feed rate at a 1/4 in deep cut** and **at a 3/4 in deep cut**, plus a
+**descent rate** and a **spindle speed (RPM)**. The help says these are "used to dynamically output varying
+feed rates based on depth of cut and percentage value entered into Material Catalog." So the output feed
+rate for a cut depends on the **depth of that cut** (presumably worked out between the tool's 1/4 in and
+3/4 in values) and is then **adjusted by the material's Feed Rate Percent**. Spindle speed comes from the
+tool and is scaled by the material's Spindle Speed Percent. A **post processor** turns the result into
+G-code and handles units (the help's example: a MultiCAM post expects inches per minute but outputs inches
+per second). An RPM of 0 on a tool usually causes a G-code error, and some machines ignore the RPM value
+and use a preset speed for the tool. *(Inferred, not stated: the calculation order, and that feed is
+interpolated between the two depths.)*
+
 **CNC section (sheet and board stock):**
 - **Optimize:** whether the material is sent to the Optimizer/Nester. Set up sheet goods even if you
-  don't own the module yet.
+  don't own the module yet. **Jon's practice: it varies by material.** Reasons to leave it **Off**: the
+  material is **cut by hand**, is **outsourced**, or is used **primarily for display**. **Buyout override:**
+  certain schedule types have a **Buyout** selection, and a **BUYOUT material schedule sends none of its
+  parts to S2M, even for a material that is set to Optimize.** *(Buyout is not yet documented; to be covered
+  with the schedules.)*
 - **Grain Dependent:** whether parts may be rotated across the sheet in the Optimizer/Nester. **Jon's
   practice:** Off for plain colors (parts may rotate freely), On for grained materials (grain direction
   stays fixed).
@@ -478,6 +513,9 @@ that hardware (the help describes them under the New Material topic for that typ
 | **Connector** | Type | Types include Cabineo, Clamex, Divario, FastenLink, Lockdowel, Peanut, Rafix and Tenso, plus a generic Connector you define yourself in the Model Editor. Clamex and Tenso need a machine with Lamello's Clamex saw, and FastenLink needs a shaped tool in the S2M Center tool catalog. A connector's primary operation can run a UCS attached to the connector |
 
 ### Creating a material
+
+**The wizard is optional** (Jon): every setting in the New Material wizard can also be set or changed later
+in **Material Properties**. The one thing you can't change afterward is the material **Type**.
 
 1. Open the **Material Manager** (Main tab → **Material** button).
 2. Click **New** (in the Material Manager, or in Material Properties, where the new material goes into
@@ -575,13 +613,15 @@ example 16 deep by 8 ft by 3/4). It carries neither a model nor a profile.
 
 - **Never put a quotation mark in a name** (write `1/2in Melamine`, not `1/2" Melamine`); it breaks job
   optimization. The help also warns against `#`.
-- **Board Stock and Panel Stock read different size tables.** Choosing the wrong type gives "missing board
-  info" in jobs even when the sizes are filled in. MDF and engineered sheets are Panel Stock at every
-  thickness; only solid species are Board Stock.
+- **Board Stock and Panel Stock read different size tables.** *(UNVERIFIED: the "missing board info"
+  error and the MDF/solid-species rule come from `CVData Materials & SQL.md` section 5.5 and are not in the
+  help; their original source is unknown. See `Unverified Knowledge.md` item M12.)* The claim there is that
+  choosing the wrong type gives "missing board info" in jobs even when the sizes are filled in, and that MDF
+  and engineered sheets are Panel Stock at every thickness while only solid species are Board Stock.
 - **What decides whether parts reach S2M is Optimize plus a valid sheet size, not the S2M Material
-  flag.** S2M Material only lists the material in S2M CENTER's own material catalog (for per-material
-  overrides, adding a material to a job by hand, and stand-alone work such as Import Cutlist). Leave it
-  off unless you want that listing.
+  flag, and a Buyout schedule overrides both** (see Optimize under CNC section). S2M Material only lists the material in S2M CENTER's own material catalog (for per-material
+  overrides, adding a material to a job by hand, and stand-alone work such as Import Cutlist). **Jon sets it
+  On for every material that is set to Optimize**, since those materials go to S2M anyway.
 - **Drawer guide cost is per guide, not per pair.** Side Clearance is doubled and subtracted from the
   opening to get the drawer box width; Minimum Above Box, with the drawer construction method, sets the
   box height.
@@ -793,9 +833,10 @@ treat it as an unexplained control.
   operations. If the Face and Back **textures differ**, S2M treats it as one-sided, never flips parts, and
   tells the operator which texture (by name) to put face up. For a material with no pattern, choose the
   **Blank** texture on the layer.
-- **Jon's convention for panel stock layers:** set each material to **mimic reality**, including setting
-  the **Edge and End layers to the core** of the panel, so anything that looks off is easy to spot
-  visually in 3D. Solid lumber (Board Stock) and banding follow the same idea: a real look on every
+- **Jon's suggested practice for panel stock layers (a suggestion, not a rule):** set each material to
+  **mimic reality**, including setting the **Edge and End layers to the core** of the panel, so anything that
+  looks off is easy to spot visually in 3D. Doing this makes spotting discrepancies much easier than
+  combing through material reports. Solid lumber (Board Stock) and banding follow the same idea: a real look on every
   layer. Face and Back textures therefore vary by material (some match, some differ), which is
   why the S2M sidedness rule above is worth testing.
 - **Closing a Finish or Finish Type window asks whether to save** ("click Yes to save"), which matches
