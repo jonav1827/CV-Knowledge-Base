@@ -917,6 +917,47 @@ Two distinct ways to actually get from scenes in CV to a finished drawing:
    Drawings the same way a manual scene can, or printed straight to PDF, bypassing Drawings
    altogether.
 
+**The actual mechanics of "sending to Drawings," confirmed:** right-clicking a scene (in Plan,
+Elevation, 3D, etc.) surfaces the real menu commands — **To Drawing** and **To Live-Drawing** —
+confirmed as the literal names behind the Static/Live distinction above (To Drawing = Static, To
+Live-Drawing = Live).
+
+**Drawings is a genuine top-level destination, not a hidden sub-screen.** At Room Level, it sits as
+its own tab alongside Plan, Elevation, 3D, Reports, and S2M CENTER — a real page you navigate to,
+with its own Ribbonbar (Paper Sizes, Drawings Library, Measure Tools) and its own sidebar:
+- **Available Scenes** — the job-wide pool of every scene that's been sent to Drawings (via To
+  Drawing/To Live-Drawing), regardless of whether it's actually been placed on any sheet yet.
+- **Scenes on Current Sheet** — specifically what's placed on the sheet currently being viewed
+  (Sheets are navigable — Sheet 1, Sheet 2, etc. — with a New Sheet control, so a job can hold
+  multiple sheets/pages).
+- **Confirmed: "Paper" showing in Scenes on Current Sheet on a blank sheet is just the sheet/page
+  itself** — a placeholder entry, not an actual sent scene. Also confirmed: the **title block is
+  not accounted for anywhere in that scene list** — it's tied to the sheet/paper itself, separate
+  from the scene-tracking mechanism entirely.
+
+**Confirmed: multiple scenes can share one sheet.** Placing several scenes on the same sheet is
+supported, but they all scale together as a group — the more scenes crammed onto one page, the
+smaller each individual scene (and everything inside it) renders. Not a free "add unlimited detail"
+mechanic; it's a real trade-off between scene count and legibility per scene.
+
+**Confirmed: the Drawings/CAD page uses one plain, shared Layers/Dimensions setup — not the
+per-view independence documented throughout the Layers section above.** There's no separate layer
+schedule per sheet or per scene-on-a-sheet the way Floor Plan View and Elevation View each have
+their own; it's the same ordinary Layers/Dimensions system used everywhere, just applied at the
+page level. This is exactly where the earlier bulb/pencil distinction pays off directly: the
+**pencil** (Drawing area visibility) is specifically what governs what actually shows up here on
+the Drawings page — reinforcing that the bulb/pencil split exists precisely so live-view visibility
+and Drawings-output visibility can diverge on purpose.
+
+**The Drawings Library, confirmed, and Jon has real hands-on experience with it:** this is where
+CAD symbols and — critically — **custom Templates themselves get created and edited**. It's the
+actual authoring environment behind the Templates system referenced earlier in this section, not
+just a passive pull-from library.
+
+**Still genuinely unused/open: "Save Drawing Scenes to a Separate File"** (the x2D CAD module
+feature). Jon has never had a reason to use this one — still an open question whether it's just
+another name for Static or a distinct file-export mechanic.
+
 **When manual beats Templates:** some shops are particular enough about how their drawings look
 that a Template genuinely can't reproduce it — in that case, they build their own drawings manually
 instead. Templates handle the standard/repeatable case; manual placement is the fallback for a shop
@@ -966,3 +1007,99 @@ three-pane layout was shown, so a pane can itself be split.)
   actually using** and compare it against the material schedule (see `Materials & Schedules.md`).
 - The report updates as you change the job, so a change in a drawing pane shows in the report at once.
   *(Shown live in the screenshots; the exact refresh behavior wasn't tested.)*
+
+## Automatic CAD Text
+
+Jon's own framing: an "insanely valuable tool" for streamlining drawings, and one he says is easy to
+mix up the name of (Automatic CAD Text / CAD Automatic Text). Whenever text is added through the
+CAD tool anywhere in CV, it can hold **Text Variables** — placeholders written as `{ }` — that
+auto-fill from data already in the Job, instead of being hand-typed. A huge library of these exists
+(job/customer/ship-to/user/room/assembly/wall/part-level fields, material schedules, construction
+methods, dates, and more — see `Reference/` for the full official variable list), and critically,
+**any System or User Parameter can be referenced this way too**, not just the pre-built variables —
+`{cab.cabnote1}` pulls a custom parameter named `CabNote1` off the current cabinet exactly like the
+built-in ones. Confirmed: referencing a parameter through a tag simply returns that parameter's
+current value directly — there's no separate "value vs. parameter" distinction to worry about.
+
+**Title Blocks are built with this directly.** Editing one happens in ordinary CAD (F7) mode — the
+full CAD ribbon (Text, Dimensions, Leaders, Lines, Hatch, etc.) — with the raw `{tag}` text visible
+and editable as CAD text objects. A real title block is typically a mix of **static text** (a
+company's boilerplate/legal text, address) **and** Automatic Text tags (job number, customer name,
+dates, page count). Confirmed concretely: the "Pg X of Y" on a title block is literally
+`{draw.no}` of `{draw.total}`.
+
+**Correction — "Live"/"Static" isn't an official CV toggle for title blocks the way it is for
+scenes; it's descriptive, and Automatic Text is what actually earns the label.** A title block
+named "Live Title Block" (Jon's own naming, not a CV-imposed category) is "Live" specifically
+*because* it's built with Automatic CAD Text — that CAD content genuinely updates in real time as
+the underlying data changes. A title block built with zero Automatic Text (pure static CAD) would
+correctly be called "Static," since nothing in it is actually driving updates. Worth generalizing:
+Automatic CAD Text is the real mechanism that makes *any* piece of CAD content behave "live," not
+something exclusive to scenes sent via To Live-Drawing.
+
+**Corrected: Automatic Text *can* climb up the tree, much like a formula's colon-climbing — the
+earlier "no climbing at all" claim was wrong.** A tag placed on a cabinet can genuinely read data
+from the Wall it sits on, or the Room it's inside of, by climbing up that cabinet's own ancestor
+chain — the PDF's nested category menus (Cabinet → Wall Face → Wall → Room → Job) are literally
+showing that upward-climbing capability at work, not a fixed menu that reorganizes by sheet type.
+**Final, settled answer: it cannot look back down the tree at all, under any circumstances** — an
+initial guess that a very direct/explicit path might reach downward was floated and then
+retracted. Climbing with Automatic Text is strictly one-directional (up only), unlike a formula
+reference, which can also read down into a named child via period-addressing.
+
+**What's still true, though:** a tag still needs *some* valid anchoring context to climb from in
+the first place. A `{cab.something}` tag placed somewhere that isn't actually inside an assembly
+still won't resolve — there's no cabinet to climb from at all. A `{wall.x}` tag still won't resolve
+in Plan View; it has to sit directly on the relevant wall to have a wall to climb from. **You can
+place any tag anywhere — CV won't stop you — but it still needs a real anchor in the right kind of
+location to have anything to climb up toward.** Knowing *where* a tag needs to live remains the
+real skill, just for a more specific reason than "it can't climb at all."
+
+**The empty-vs-invisible behavior is a normal, low-stakes mechanic, not a real gotcha — with one
+real exception.** An unpopulated variable shows the literal variable name while in CAD (editing)
+mode, but is invisible in Normal View — a genuinely useful way to have a note that only appears
+when a UCS or condition actually populates it. The real gotcha is different: **a typo in a tag
+produces no visible sign of failure at all — it just silently shows nothing, indistinguishable from
+a tag that correctly resolved to empty.** Jon's own practice specifically guards against this: when
+referencing his own custom parameters via Automatic Text, he makes sure the parameter always
+resolves to *something* — even a literal "None/N/A" — rather than ever being legitimately blank, so
+a blank field on a drawing reliably means "something's wrong" rather than being ambiguous with
+"correctly empty."
+
+**Worked example of real leverage, straight from Jon:** a custom floating-shelf parameter
+continuously measures the distance to whatever object sits below it. Rather than manually drawing
+(and re-drawing, every time something changes) a dimension line to show that gap, he places an
+Automatic Text tag referencing that parameter directly on CAD saved with the shelf assembly. Since
+the parameter keeps recalculating and the tag just displays its current value, the measurement
+shown on the drawing is always current with zero manual maintenance — a direct extension of Object
+Intelligence (`Parameters.md`) into the drawing itself, not just the model.
+
+**Deferred/not pursued:** the three text-format modifiers (`u:`/`l:` force first-character
+case, `n:` parenthesizes negative numbers) — Jon has never had a reason to use them. The
+Modular-Catalog-only `{option#ID.label}`/`{option#ID.value}` variables are confirmed **safe to
+skip** — not part of how Ironwood works with catalogs.
+
+**Title blocks aren't kept per client.** Most of Jon's drawings are produced inside a client's own
+system, where their title block already exists, so he doesn't maintain separate title blocks for
+separate companies.
+
+**Second worked example — an appliance object that labels itself on elevations.** The appliance
+carries custom parameters for its type, manufacturer, model number, and whether it's panel ready,
+plus the built-in width (`DX`). CAD saved inside the appliance references them as tags (e.g.
+`{CAB.DX}" {CAB.APP_MANU} {CAB.APP_TYPE}`, then model and panel-ready on their own lines), so the
+elevation shows a complete, correct callout with no hand-typing. Same principle as the floating
+shelf: the data lives on the object as parameters, and the drawing text just reads it. Jon notes
+this is one of *many* such uses.
+
+**How Live vs. Static actually gets decided: it's the output path, not the Template.** Layers is
+where a Template is assigned to each view for printing/sending to Drawings. The same Template
+behaves differently depending on how it's sent:
+- **Sent as a Live Drawing:** Automatic CAD Text updates along with the rest of the drawing.
+- **Sent as a Static drawing:** nothing updates, Automatic Text included. It's a frozen image.
+- **Printed straight to PDF:** Jon's preferred method, using a well-designed Template that captures
+  most of each scene's elevation information. It has real drawbacks (details still to be
+  captured).
+
+**Jon's standing recommendation:** if a company can't build a Template it trusts to carry the
+drawing on its own, always recommend Live Drawings. Static should almost never be used, only once a
+job is ready to push into production, and even then Jon has reservations.
