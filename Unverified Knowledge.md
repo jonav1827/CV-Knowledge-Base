@@ -8,12 +8,17 @@ Everything in the Knowledge Base that is **not yet confirmed in Jon's own CV**, 
 - Add new items as they come up. The source file should also carry the *unverified* flag.
 - Keep ticked items in place until they're moved to "Resolved" at the bottom.
 
-Last compiled: 2026-09-24.
+Last compiled: 2026-09-25.
 
 ## Materials & Schedules (`Cabinet Vision/Materials & Schedules.md`)
 
-- [ ] **M1. Texture decides one-sided vs two-sided panel stock in S2M.** The help says the same or no Face/Back texture = two-sided (S2M may flip parts), different textures = one-sided (no flipping, operator told which texture faces up). Jon believed texture was purely visual and hadn't seen this.
-  *Test:* send a part with more operations on one side to S2M using panel stock with matching Face/Back textures, then again with different ones. Note whether S2M flips the part and what the operator instruction says.
+- [ ] **M1. Texture decides one-sided vs two-sided panel stock in S2M.** Now confirmed **directly in
+  Hexagon's S2M CENTER help** (`Reference/S2M Help/S2M Intro.txt`, the "Print" topic, with a worked
+  "Particle Board" example) — this is no longer just the CV help's word. Face-dependent (different
+  Face/Back textures) = one-sided, loaded a specific way; identical textures = two-sided, no load
+  indicator needed. Still not seen by Jon in his own output.
+  *Test remaining:* find or produce a real S2M pattern printout on Jon's system and confirm the load
+  indicator appears as described.
 - [ ] **M2. System Textures icon** in the Texture picker (tooltip "System Textures"). Not in the help; clicking it changes nothing visible in Jon's list.
   *Test:* click it on an install that has system textures loaded, or ask Hexagon support.
 - [ ] **M3. Drawer Guide "Screw Center Reference to Top."** What the "bottom" reference is exactly (bottom of the guide vs bottom of the drawer box) and what `_M:SCREF` returns for each setting. The help contradicts itself (General tab: drawer box; Operations tab: guide; `SCREF`: 0 = Top). Jon's wording: True = top of the drawer box, False = bottom of the guide.
@@ -33,16 +38,18 @@ Last compiled: 2026-09-24.
 
 - [ ] **M10. Maximum Depth Per Pass = 0.** The help doesn't say what 0 means; presumed "no limit from the material, use the tool's value."
   *Test:* leave a material at 0 and confirm the toolpath uses the tool's maximum depth.
-- [ ] **M11. General CNC explanations** in the CNC section (up-shear / down-shear / compression bits, climb vs conventional cutting) are Claude's general knowledge, not from the help and not yet confirmed by Jon.
-  *Test:* Jon reviews the wording in `Materials & Schedules.md` (CNC section) and corrects anything off.
+- [x] **M11. General CNC explanations** in the CNC section. Resolved 2026-09-25 — Jon: keep the Materials
+  section scoped to what each setting does and affects, not general machining education. The up-shear/
+  down-shear/compression and climb-vs-conventional explanations were trimmed out of `Materials &
+  Schedules.md` in favor of short pointers to `04 Machining/Products.md` (bit physics, sourced) and
+  `Machining.md` (the full Automatic Tool Selection Logic, which had also been moved there).
 
 - [ ] **M12. "Missing board info" error and the Panel vs Board Stock rule** (MDF and engineered sheets = Panel Stock at every thickness; only solid species = Board Stock). Appears in `CVData Materials & SQL.md` section 5.5 and the Gotchas in `Materials & Schedules.md`. Not in the help; where it came from is unknown.
   *Test:* create a panel-style material as Board Stock (and the reverse) in a test job and see whether the error appears; ask Jon whether he has seen it.
 
-- [ ] **M13a. Feed/speed math on output.** The help says tool feed rates at 1/4 in and 3/4 in cut depths are used to output varying feed rates by depth of cut and the material's percent. The calculation (interpolation, order of scaling) is inferred.
+- [ ] **M13a. Feed/speed math on output.** Both the CV help and the S2M help (`Reference/S2M Help/S2M Tid-Bits.txt`) use identical wording: tool feed rates at 1/4 in and 3/4 in cut depths are used to output varying feed rates by depth of cut and the material's percent. The calculation itself (interpolation, order of scaling) is still not spelled out anywhere found so far.
   *Test:* post a job with a known tool and a material at 100 percent, then at 80 percent, and compare the feed values in the G-code.
-- [ ] **M13. S2M Automatic Tool Selection logic and how the material CNC settings interact with S2M tool settings.** The CV help defers to the separate S2M CENTER Help, which isn't in the Knowledge Base.
-  *Test / source:* add the S2M CENTER Help (PDF or text) to `Reference/`, then document how a Feed % or chip option changes the selected tool and output.
+- [x] **M13. S2M Automatic Tool Selection logic and how the material CNC settings interact with S2M tool settings.** Resolved 2026-09-25: Jon obtained and added the S2M CENTER Help (`Reference/S2M Help/`, 4 PDFs + extracted text: Intro, Ribbonbar, Sidebar, Tid-Bits). The full tool-selection logic (by operation type: Part Outline, Vertical Hole, Horizontal Hole, Dado, Cutout/Pocket Route) is now written into `Materials & Schedules.md`'s CNC section. Note: the logic's reference charts (#1–#6) are diagrams that did not survive PDF-to-text conversion — read the source PDF directly if a chart is needed.
 
 ## CVData and SQL (`Cabinet Vision/CVData Materials & SQL.md`)
 
@@ -79,10 +86,17 @@ Last compiled: 2026-09-24.
   *Test:* compare against the feeds and speeds Jon already runs on his tools and materials; correct the tables to match.
 - [ ] **T2. Compression bit rules:** the 25 percent minimum depth, the 1 to 2 inch limit for downcut pockets, a quarter of the diameter as a downcut pass depth, and "compression feeds slower than upcut." Single-source claims.
   *Test:* Jon confirms or corrects them against his own shop practice.
-- [ ] **T3. CV "face chip = downcut, back chip = upcut."** An inference linking S2M's shear terms to up/down-cut terms (`04 Machining/Notes.md`).
+- [ ] **T3. CV "face chip = downcut, back chip = upcut."** An inference linking S2M's shear terms to up/down-cut terms (`04 Machining/Notes.md`). **Narrowed 2026-09-25:** Hexagon's own S2M CENTER help (now in `Reference/S2M Help/`) confirms CV's **own UI fields are literally named "Up Shear" and "Down Shear"** on a tool (Tool Catalog → Tool Set Properties → Tool Selection), and the Automatic Tool Selection Logic ties **Minimize Face Chip → a Down Shear bit** and **Minimize Back Chip → an Up Shear bit** (see `Materials & Schedules.md`'s CNC section). Up-shear/down-shear being the same thing as upcut/downcut is standard, well-established machining terminology (already assumed by `04 Machining/Products.md`), so the naming side of this is solid. What's still untested is the **live behavior**: does a real S2M run actually select the bit the logic describes.
   *Test:* set Minimize Face Chip only on a test material and check which bit S2M CENTER selects.
 - [ ] **T4. SFM to RPM formula:** one page printed it upside down. Confirm the correct form used in the files (RPM = 12 x SFM / (pi x diameter)) against a second source or a calculator.
   *Test:* work one example by hand (1/4 in bit, 1,000 SFM gives about 15,279 RPM).
+
+## Hardware (`Hardware/`)
+
+- [ ] **H1. Old TANDEM 569** (`Hardware/Blum/TANDEM/TANDEM Runners.md`). The claim that older Blum catalogs listed a
+  heavier-rated TANDEM 569 comes from general knowledge, not a catalog. (The MOVENTO heavy-duty half of this item
+  was confirmed on 2026-09-25 from the 2026 MOVENTO catalog: 769. is rated 170 lb static.)
+  *Test:* find an older TANDEM catalog, or ask Jon or a Blum rep.
 
 ## Still to document (not verification, but gaps)
 

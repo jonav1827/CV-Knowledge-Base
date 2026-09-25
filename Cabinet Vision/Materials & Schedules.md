@@ -410,21 +410,13 @@ The material's CNC section does not replace them; it works **with** the tool. Fr
   roughly 4000 to 24000, and some machines ignore it and use a preset speed).
 - **Maximum Depth Per Pass:** both the material and the tool have one, and the **smaller** is used.
 - **Climb Cut** (material) combines with the tool's **Rotate Clockwise** to set the toolpath direction.
-- **Minimize Face/Back Chip** guide S2M's **Automatic Tool Selection** logic. An operation's tool set to
-  **Auto Select** (the recommended default) follows that logic; a specifically chosen tool is used instead.
-  The logic itself is in the separate S2M CENTER Help, which is not in this Knowledge Base.
-
-**Tooling detail, to be covered when tooling is documented: how feed and speed are applied on output (from
-the help's Tools table reference; the exact math is inferred).** A tool stores its own **feed rate at a 1/4 in deep cut** and **at a 3/4 in deep cut**, plus a
-**descent rate** and a **spindle speed (RPM)**. The help says these are "used to dynamically output varying
-feed rates based on depth of cut and percentage value entered into Material Catalog." So the output feed
-rate for a cut depends on the **depth of that cut** (presumably worked out between the tool's 1/4 in and
-3/4 in values) and is then **adjusted by the material's Feed Rate Percent**. Spindle speed comes from the
-tool and is scaled by the material's Spindle Speed Percent. A **post processor** turns the result into
-G-code and handles units (the help's example: a MultiCAM post expects inches per minute but outputs inches
-per second). An RPM of 0 on a tool usually causes a G-code error, and some machines ignore the RPM value
-and use a preset speed for the tool. *(Inferred, not stated: the calculation order, and that feed is
-interpolated between the two depths.)*
+- **Minimize Face/Back Chip** guide S2M's **Automatic Tool Selection** logic — which tool it picks for an
+  operation. An operation's tool set to **Auto Select** (the recommended default, `ToolID = 0`) follows that
+  logic; a specifically chosen tool is used instead, and if that chosen tool won't work, it falls back to
+  automatic logic anyway. The full selection logic (which tool for which operation type) is in
+  `Machining.md`'s Tool Catalog section, since that's where the tools themselves are documented.
+- **Feed Rate Percent** and **Maximum Depth Per Pass** also affect the output feed rate and pass depth at the
+  tool level — see "How feed and speed are applied on output" in `Machining.md` for the mechanism.
 
 **CNC section (sheet and board stock):**
 - **Optimize:** whether the material is sent to the Optimizer/Nester. Set up sheet goods even if you
@@ -443,23 +435,14 @@ interpolated between the two depths.)*
 - **Feed Rate Percent / Spindle Speed Percent:** the percentage of the optimum tool feed rate / spindle
   speed to use with this material. **Jon's practice:** always 100.
 - **Minimize Face Chip:** the S2M Center's automatic tool selection tries for a down-shear bit.
-- **Minimize Back Chip:** it tries for an up-shear bit. With both on, it tries for a compression bit.
-  *(General CNC knowledge, not from the help and not yet confirmed by Jon: the three main spiral cutter types
-  are **up-shear** (up-cut, pulls chips up and out; leaves a clean bottom edge but can chip the top face),
-  **down-shear** (down-cut, pushes chips down and holds the sheet flat; leaves a clean top face but can
-  chip or burn the bottom), and **compression** (up-shear on the lower section and down-shear on the upper
-  section; clean on both faces, but the cut must go deep enough for the two sections to overlap the
-  material, so it suits full-depth through cuts better than shallow pockets and dados). "Face" is the side
-  that faces up on the nest, which S2M chooses; see `Unverified Knowledge.md` item M1.)*
-  **Jon's practice:** both options on for materials finished on **both sides**; **Face only** for one-sided
-  materials (unfinished back).
+- **Minimize Back Chip:** it tries for an up-shear bit. With both on, it tries for a compression bit. (For
+  what these bit types physically do, see `04 Machining/Products.md`, which covers the same three bits under
+  their common woodworking names — upcut, downcut, compression.) **Jon's practice:** both options on for
+  materials finished on **both sides**; **Face only** for one-sided materials (unfinished back).
 - **Climb Cut:** whether the material is cut with a climb cut. Together with the tool's **Rotate Clockwise**
   setting it decides the toolpath direction: with Climb Cut on, an outside pass runs in the same direction as
-  the tool's rotation, and an inside cut always runs opposite to an outside cut. *(General CNC knowledge, not
-  from the help: a climb cut has the bit rotating with the feed where it touches the material, which usually
-  gives a cleaner edge but pulls the bit along, so it needs a rigid machine and good hold-down; a conventional
-  cut rotates against the feed.)* **Jon's practice:** climb cutting is used primarily for **clean-up
-  passes**.
+  the tool's rotation, and an inside cut always runs opposite to an outside cut. **Jon's practice:** climb
+  cutting is used primarily for **clean-up passes**.
 - **Maximum Depth Per Pass:** the depth a tool can cut per pass in this material; the smaller of the
   material's and the tool's value is used. A cut deeper than this takes several passes. **Jon's practice:**
   it usually follows the tooling (leave it at the default) **unless the material is very thick, dense
@@ -471,12 +454,13 @@ interpolated between the two depths.)*
 - A fixed finish shows as a color swatch. **Automatic** means the finish comes from the
   job, room, assembly or part finish; choosing a finish **locks that color to the material**.
 - If a material has no pattern, give it the Blank texture.
-- **For CNC users, the textures decide whether the material is one-sided or two-sided (from the help;
-  UNVERIFIED, see `Unverified Knowledge.md` item M1, and Jon had not seen this behavior).** If the face and
-  back have the same texture (or none), the material is two-sided and the S2M Center may flip parts
-  over when one side has more operations. If the face and back textures differ, the material is
-  treated as one-sided and parts are not flipped. The S2M Center then decides which side faces up by
-  operation count and tells the operator which texture (by name) to put up.
+- **For CNC users, the textures decide whether the material is one-sided or two-sided.** If the face and
+  back have the same texture (or none), the material is two-sided and the S2M Center may flip parts over
+  when one side has more operations. If the face and back textures differ, the material is treated as
+  one-sided and parts are not flipped — the S2M Center decides which side faces up by operation count and
+  tells the operator which texture (by name) to load face-up or face-down. Confirmed directly in Hexagon's
+  S2M CENTER help (`Reference/S2M Help/S2M Intro.txt`, "Print" topic); still worth confirming against a real
+  S2M pattern printout on Jon's own system, see `Unverified Knowledge.md` item M1.
 
 **Operations tab:** lists operations that CV generates for hardware types such as drawer guides,
 hinges and pulls. It is covered in the help's New Material topic for each of those types.

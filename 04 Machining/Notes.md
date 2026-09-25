@@ -65,9 +65,18 @@ Schedules.md`):
 | **Maximum Depth Per Pass** | The tool's depth per pass; CV uses the smaller of the material's and the tool's value |
 
 That mapping of "face chip is downcut, back chip is upcut" is an inference from the tooling terms (the CV help
-gives the shear names but not the words upcut and downcut), so it is worth confirming. The sources also do not
-say how S2M CENTER converts a chip-load choice into an actual feed for a nested job; that logic lives in the
-S2M CENTER help, which is not in the repo yet.
+gives the shear names but not the words upcut and downcut), so it is worth confirming — though it's a naming
+equivalence, not a physical-behavior question: up-shear/down-shear and upcut/downcut are the same standard
+machining terms for the same bit geometry. **Update 2026-09-25:** the S2M CENTER help is now in the repo
+(`Cabinet Vision/Reference/S2M Help/`, added by Jon — see `Cabinet Vision/S2M Handoff.md`), and its full
+**Automatic Tool Selection Logic** is written up in `Cabinet Vision/Materials & Schedules.md`'s CNC section.
+It confirms CV's own UI literally uses "Up Shear" and "Down Shear" as tool properties, and spells out, by
+operation type (Part Outline, Hole, Dado, Cutout/Pocket Route), the exact order S2M tries bits in — Compression
+consistently comes up when both Minimize Face Chip and Minimize Back Chip are on. **It still does not say how a
+chip-load choice becomes an actual feed for a nested job** — the closest it gets is the same "feed rate at a
+1/4 in and 3/4 in deep cut, scaled by the material's percent" wording already in the CV help, with the exact
+interpolation left unstated (see `Unverified Knowledge.md` item M13a). See item T3 there for what's now settled
+versus what still needs a live S2M run to confirm.
 
 ### Open questions for Jon
 

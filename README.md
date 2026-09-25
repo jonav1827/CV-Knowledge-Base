@@ -60,7 +60,11 @@ by CV's own licensing structure rather than the generic Processes/Products/Notes
   "fundamentals," so they aren't split), plus `Cabinets.md`, `Closets.md`, `2D CAD.md`,
   `Bidding.md`, `Countertops.md`, `CRM.md`, `Optimizer.md`, `Rendering.md`, `Reporting.md`,
   `Shaping.md`, `Machining.md` — every module gets a file so nothing's missing, even ones that stay
-  thin because they're not in active use.
+  thin because they're not in active use. **`Machining.md`** now has real content: S2M CENTER's
+  workflow, Machine Catalog, Tool Catalog and Preferences, built from Hexagon's S2M help — see
+  **S2M Handoff.md** for how that material was obtained and what's still unmined in it. None of it
+  is hands-on confirmed yet (Ironwood has no CV/S2M license), same caveat as the other module files
+  before Jon checks them against a real install.
 - **Parameters.md** — foundational to Object Intelligence and xShaping: parameter types, the three
   parameter styles (Standard/Attribute/Note), Static vs. Equation values, parametric equations, and
   the 9 basic parameters every beginner should know. Big enough a topic to earn its own file rather
@@ -80,6 +84,37 @@ by CV's own licensing structure rather than the generic Processes/Products/Notes
   UCS:M (legacy) and UCS:JS (JavaScript) syntax, validated patterns, and hard-won gotchas.
 - **Notes.md** — anecdotes/gotchas that span multiple modules rather than belonging to one.
 - **Reference/** — downloaded source material (the Hexagon module-features PDF, help docs, etc.).
+
+## Hardware/
+
+Manufacturer hardware (drawer runners, hinges, lift systems and so on) gets its own top-level folder because
+the same product shows up in Engineering, Machining and Install. It has one subfolder per manufacturer, then
+one per product line. Each product line folder holds the write-up and its source catalog together, so there's
+no separate `Reference/` folder here.
+
+- **Blum/**
+  - **TANDEM/**
+    - `TANDEM Runners.md`: the TANDEM concealed runner family (563H, 563F, 563. and 554H). Covers the H vs F
+      difference, lengths and part numbers, drawer box deductions, shared parts, the lateral stabilizer, and
+      where "heavy duty" fits.
+    - Source: `TANDEM plus BLUMOTION Catalog (2025).pdf`.
+  - **MOVENTO/**
+    - `MOVENTO Runners.md`: the MOVENTO premium and heavy-duty runners (763H, 763., 769. and the 769R
+      waste/recycle set). Covers MOVENTO vs TANDEM drawer box differences, lengths and part numbers.
+    - Source: `MOVENTO Catalog (2026).pdf`.
+  - **AVENTOS/**
+    - `AVENTOS top Lift Systems.md`: the AVENTOS top family (HF, HS, HL and HK top, HK-S, HK-XS). Covers which
+      lift for which door, power-factor sizing, part numbers, crown clearance formulas, face frame brackets,
+      inset methods and SERVO-DRIVE.
+    - `AVENTOS HKi Lift.md`: the lift-up mechanism milled into the cabinet side. Covers fully vs
+      semi-integrated, power-factor sizing, part numbers and planning notes.
+    - Sources: `AVENTOS top Catalog (2026).pdf`, `AVENTOS HKi Catalog (2024).pdf`.
+  - **Hinges/**
+    - `Concealed Hinges.md`: the full concealed hinge program (CLIP top BLUMOTION, CLIP top, CLIP, angled
+      hinges, and COMPACT for face frames). Covers the overlay formula, part number patterns, each hinge's
+      opening angle, max door thickness and fixed distance, mounting plates, face frame adapter plates,
+      soft-close add-ons, TIP-ON and tools.
+    - Source: `Concealed Hinges Catalog (2025).pdf`.
 
 ## Other cross-cutting topics
 

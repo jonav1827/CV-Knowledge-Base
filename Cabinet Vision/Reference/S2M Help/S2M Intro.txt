@@ -1,0 +1,1492 @@
+What's New 2025                                                                                                   Page 1 of 56
+                                                                                                                    9/25/2026
+What's New 2025
+
+ General
+
+      · Felder F4 Label Applicator
+      · Support for Blum BXF2 Import
+      · Machine Set support for CABINET VISION | Paperless Traveller
+      · dbo.Rooms | RoomName field expanded to match CV room name character limit
+      · Optimizer Parameters Save button renamed Set As Machine Default and Moved to Valid Tabs - 2025.2
+      · Square Off Nest Offcut now Colored Green in Pattern View - 2025.2
+      · Add Offcuts reminder dialog can now be disabled for those that do not use S2M Offcut Management - 2025.2
+      · Add Offcuts button disabled after Offcuts have been added - 2025.2
+
+ +Label App
+
+      · Define Line Width for Part: Graphic on Label -
+
+ Machine Catalog
+
+      · Combine Face and Back for two side simultaneous machining
+      · Added Legacy Drill Optimization option for Multi-Drills - 2025.2
+
+ NC Links
+
+      · Control Dowel Insertion on ProEdge Lockdowel Machine - 2025.2
+      · CNC Workflow field added to Custom CUT File - 2025.2
+      · Part Parameter definition in Custom CUT File - 2025.2
+      · Option to Sync Material Description in Winstore - 2025.2
+
+ Legend
+
+         - +Label
+
+What's New 2024
+
+ General
+
+      · Show Part Sizes on Patterns -
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                                            Page 2 of 56
+                                                                                                             9/25/2026
+      · Show Part Names on Patterns -
+      · Machine, Tool, Materials, Offcut, & Part Library information moved from PSNC.accdb to CVData.mdf
+      · PSNC-xx.accdb change from MS Access (ACCDB) to SQL LocalDB (MDF)
+
+      · Control Legend Font Height Seperate from Part Label Font Height - 2024.2 -
+
+      · Double Click +Label Job Files to Open them - 2024.2 -
+
+      · CABINET VISION Paperless Traveller Setup - 2024.3 -
+
+      · CABINET VISION Paperless Traveller Output - 2024.3 -
+
+ +Label App
+
+      · Autotext for CABINET VISION Paperless Traveller WorkOrder - 2024.3
+
+ Machine Catalog
+
+      · Label Format and Zone Information added for Part Router - 2024.2 -
+      · Options added for ALPHACAM multi-drill support - 2024.3
+      · Specify Comment Characters for G-Code Output - 2024.3
+      · Specify Hover Tool Comp on Arc - 2024.3
+      · Display Machine ID on Machine Catalog screen - 2024.4
+
+ NC Links
+
+      · Control the Origin for the Holzma Saw Link - 2024.3
+      · Control the Origin for the SCM Ottimo Saw Link - 2024.3
+      · Control the Origin for the SCM PTX Saw Link - 2024.3
+      · Split XML into 1 XML per Pattern for the Selco XML Saw Link - 2024.3
+      · Selco XML Draw Parameter Improvements - 2024.4
+      · Drill & Dowel Link - Gannomat Express S1 - 2024.4
+
+ Nesting
+
+      · Square Off Nest improved to outline cut offcuts from largest to smallest within a nest - 2024.3 -
+      · Options added to cover the legacy Square Off Nest and the new Outline Offcuts - 2024.4 -
+
+ Reports
+
+      · New 'Large Format' style Pattern Reports (2 Patterns per page)
+      · Control max Font size for Part Sizes and Part Names on Patterns - 2024.3
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                             Page 3 of 56
+                                                                                              9/25/2026
+ Legend
+
+         - +Label
+         - +Router
+         - +Saw
+
+What's New 2023
+
+ General
+
+      · Checkbox selection in Part List View (2023.2)
+      · General performance improvements when importing a PNC (2023.3)
+
+ Links
+
+      · Saw Link: Ayza Spear Lanza P5 -
+      · Saw Link: Etalon Saw -
+      · Saw Link : Fimal Concept 350 -
+      · Saw Link: Fimal P3200 -
+      · Saw Link: SCM PTX (2023.3) -
+      · Define minimum clearance to rip fence for Altendorf Elmo (2023.3)
+      · Zcut to work off minimume Z-Cut with for Beamboard Link (2023.3)
+      · IncL and IncW values added in the Part ID sections for the Selco XML Link (2023.3)
+      · Add Banded Part Size for Custom CUT File link (2023.3)
+
+               RunDataBandedLength
+               RunDataBandedWidth
+
+ Optimization/Nesting
+
+      · Square Off Nest toolpath visible when viewing patterns
+      · Saw Optimization - Option to Set Material Finished Face Up/Down (2023.3)
+      · Set Trim Cuts for Offcuts (2023.4)
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                 Page 4 of 56
+                                                                                  9/25/2026
+ Reports
+
+      · New System Report - Parts Not Optimized (2023.3)
+
+ Tool Catalog
+
+     1. Set a work depth minimum for tools
+
+ +Label App
+
+      · Define QR code in +Label -
+      · +Label print preferences to set default print button action (2023.2) -
+      · Double click TLD file to open in +Label (2023.2) -
+      · Launch +Label with a specific job (2023.2) -
+
+ Legend
+
+         - +Label
+         - +Saw
+
+What's New 2022.x
+
+ General
+
+      · Compatibility with CABINET VISION Version 2022.1
+      · Compatibility with CABINET VISION Version 2022.2
+      · Compatibility with CABINET VISION Version 2022.3
+
+ Links
+
+      · Holzher Power Label - Auto Labelling
+      · Schelling HPO - Option to define final part size with/without banding
+      · Saw Link - Mayer PC6200
+      · Saw Link - Mayer PC7000
+
+ Optimization/Nesting
+
+      · Optimizer priority: Offer a greater range of values for Yield vs Labor
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                                           Page 5 of 56
+                                                                                                            9/25/2026
+      · Saw/Block Nest Offcut improvements
+               Give preference to offcut vs the whole sheet
+               Only use an offcut if it does not create a new offcut from it
+               If offcuts are used prefer similar from Offcut Manager
+               Prefer biggest offcut from Offcut Manager
+               Add Bin Name and option to save pieces as smallest size
+
+ +Label App
+
+      · xLabel App User Experience refreshed:
+               Option to display part size on parts in pattern view
+               Show CutWidth x CutLength In xLabel Part Selector
+               Swipe navigation between patterns in pattern view
+               Swipe navigation between labels in label view
+               Switch from old buttonbar to ribbonbar
+               New improved colors in user interface
+
+      · Material names in xLabel jobs no longer truncated and match name length from CV Material Manager
+
+What's New 2022.0
+
+ General
+
+      · Updated S2M CENTER from 32bit to 64bit
+      · Updated IntelliCAM engine from ALPHACAM 2016 (32bit) to ALPHACAM 2022 (64bit)
+      · S2M for ALPHACAM works with 64bit ALPHACAM 2016 and higher
+      · Updated PSNC.mdb to PSNC.accdb
+      · Updated PSNC-AC.mdb to PSNC-AC.accdb
+      · Updated PSNC-CV.mdb to PSNC-CV.accdb
+      · Updated PSNC-CW.mdb to PSNC-CW.accdb
+      · Updated PSNC-NC.mdb to PSNC-NC.accdb
+      · Updated PSNCLIB.mdb to PSNCLIB.accdb
+
+ Links
+
+      · BSA Label Applicator -
+
+      · Alpha Beam Saw -
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                              Page 6 of 56
+                                                               9/25/2026
+      · BeamBoard -
+      · Barbaric Material Handler -
+      · ProEdge Lockdowel -
+      · Updated PTX FIle Format -
+
+ Legend
+
+         - +Drill & Dowel
+         - +Label
+         - Material Handling
+         - +Saw
+
+What's New in 2021
+
+ General
+
+     Komo Auto Label Applicator -
+     S2M CENTER Product Configuration Reimagined
+     Customize Quick Access Toolbar
+     Customize the Ribbonbar
+     Add Keyboard Shortcuts for Ribbon Commands
+     Updated modern button images throughout user interface
+     New Modern User Interface Styles Available
+
+ +Label App
+
+      · User interface updates -
+
+ Links
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                       Page 7 of 56
+                                                                        9/25/2026
+      · Other Machine - Anderson MLS (Material Lift System) -
+      · Other Machine - Homag Edgebander -
+
+ Nesting
+
+      · Option to cut scrap up into manageable peices for disposal -
+
+ Legend
+
+         - +Label
+         - +Router
+         - +Special
+
+What's New in Version 12
+
+ General
+
+     Miters as Intelli-CAM Operation on Ordering Tab
+     Radial Right Click Menu Option
+
+ Label-IT
+
+      · Rotate Labels to Align with Sheet Length -
+
+ Links
+
+      · Saw Link - Kappa Automatic
+      · Saw Link - KDT XML
+      · Saw Link - SCM MaestroCUT
+      · Chop Saw - Supercut
+      · Drill & Dowel - CNC Factory Scorpion
+      · Dill & Dowel - TpaCAD
+      · Other Machine - OSync
+      · Other Machine - Pillar PLT
+      · Other Machine - Voorwood Shape and Sand
+      · Material Handling - Storemaster
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                   Page 8 of 56
+                                                                                    9/25/2026
+      · P2P Barcode Output Option For Mayer Saw Link
+
+ Machine Catalog
+
+      · Pre-Band Control in Machine Sets
+
+ Nesting
+
+      · Square Off Nest Machine Catalog Option
+
+ Reports
+
+     Label Image Available to Combit Reports -
+
+ Tool Catalog
+
+      · Add an adjustment to the Rabbet operation of Dovetail
+
+ Legend
+      - Label-IT Add-On
+
+What's New in Version 11
+
+ General
+
+     Option for One Click Optimize to Pattern Results
+     Backup Utility
+     Selection Copying in List View Fields
+     Cell Hover Hints for List View Fields
+     Banded Part Size Available for Reports
+     Scripts Can Now Be Specified Per Machine
+     Combine Multiple Diameter Drills in Single Multi-Drill Drops
+     Scripts Now Run After CncRun Creation
+     Improved Material Selection Combobox in Part List View
+     Manually Edit Banding Field in Part List
+     Control Size of Banding Markers in Advanced Report Properties
+     OK Button Has Focus After Optimize Run
+     Pass Material Parameters from Cabinet Vision to psnc-xx.mdb Materials table
+
+ Label-IT
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                             Page 9 of 56
+                                                                              9/25/2026
+     Expanded Label-IT Label Sort Order Options -
+     Control Size and Font Properties for Banding Markers - or
+     Banded Part Size Available - or
+
+ Links
+
+     D & D Link - Koch Sprint Plus II/L -
+     D & D Link - Omal Lockdowel -
+     D & D Link - Omal Velox -
+     D & D Link - Pillar Lockdowel -
+     D & D Link - T.O.P. Albatros -
+     Saw Link - Schelling HPO
+
+         Saw Link - SCM Ottimo
+         Other Link - Omal MTH -
+         Other Link - Pillar MTH -
+
+ Machine Catalog
+
+     Redesigned Machine Catalog
+     Mix Different Drill Diameters in Multi-Drill Drops
+     Saw Output Option For Offcut Placement (First or Last) In Strips
+     Option to Not Generate CncRun
+
+ Nesting
+
+     Option for Whether A or Z Program Gets Labeled for 6th Face
+     Three Sorting Options for Outline Cut Order
+     Operations Machining Order Follows More Logical Sequence Around Sheet
+
+ Optimization
+
+     Simple Part Ordering in Strips (Scrap, Offcut, Part)
+
+ Reports
+
+     Control Banding Symbol Size on Combit Reports -
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                             Page 10 of 56
+                                                                                9/25/2026
+ Tool Catalog
+
+     Profile Operation Type in Tool Sets
+     Redesigned Tool Catalog
+     Tool Shape Window Sizable
+     Drop Offset Functions with Open Paths
+
+ Legend
+      - Real-time Label Image Add-On
+      - Label-IT Add-On
+      - Available in S2M Ultimate
+
+What's New in Version 10
+
+ General
+
+       Define Workflows with Machine Sets - + or +
+       Pattern Sheet and Part Sheet Printouts now in Reports Area
+       Machining Simulation - or
+       Measure Tool in Pattern View
+       Print Offcut and Bins in Offcut Manager
+       Control Column Display and Order in Offcut Manager
+       Set Filters in Offcut Manager
+       Offcut Labels for Real-Time Label Image Add-On - or
+       S2M Center Part List Creator Application
+       Re-size Offcut Manager Window
+
+ Label-IT
+
+       Machine Set Work Flow Reporting - + or +
+
+ Links
+
+       Laguna Lockdowel -
+
+ Machine Catalog
+
+       Pass Operations Through All or Some Machines within a Machine Set -
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                        Page 11 of 56
+                                                                           9/25/2026
+       Set Full Graphic Path for Real-Time Label Output - or
+       Output Offcut Graphics for Real-Time Label Output - or
+       Specify Output Options for Advanced Drill and Dowel Machines -
+       Specify Trim and Maximum Sheet Size for Saw CUT Machines
+
+ Nesting
+
+       Perimeter Nesting
+       Start Point at Corner
+       Interior Boundary for Very Small parts
+
+ Tool Catalog
+
+       Import 2D DXF to Define Shaped Tools
+       Option to Allow Saw Tool for Stop Dado
+
+ Legend
+      - Real-time Label Image Add-On
+      - Label-IT Add-On
+      - Available in S2M Ultimate
+      - Machining Simulator Add-On
+
+What's New in Version 6
+
+ General
+
+       Miter Machining
+       Define Edge Miters via DXF Import
+       Output Z Position As Thickness For DXF Side Bore Rectangles
+       Apply Edgebanding to Parts
+       Create Clamex Operations in the Operation Editor
+       Import Cutlist
+       New Integrated Reporting Engine (Removed Crystal Reports)
+       Quick Thumbnail and Group Navigation Through Reports
+       Report Editor
+       Improved Printing Options
+       Setup Report Groups
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                           Page 12 of 56
+                                                                              9/25/2026
+       Updated and Improved Export Options
+       Composites Support Added to Label-IT
+       Syncing with SCM Flexstore
+       Set a Fixed Pre-Mill Amount for Edgebanding
+       Pre-Band Option Added for Drill and Dowel Machines
+       Ignore Grain Column in Part List View
+       Grain Column in Material View
+
+ Label-IT
+
+       Simplified and Expanded Flexibility of Calling Out Edgebanding
+             Banding: List Variable
+             Filtering Banding Letters
+
+       Specify Labels for Offcuts
+
+ Links
+
+       Grecon Dimter Opticut 104R Chop Saw NC Link
+       Dimter S90
+
+ Machine Catalog
+
+       Material Handling Machine Type
+       Part Program Matching for Like Parts
+       Output Part Geometry with Tool Compensation without Sloping Leads
+       Spoil Board Z Breach Checking
+
+ Material Catalog
+
+       Define Edgeband Indicators
+
+ Optimizer
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                   Page 13 of 56
+                                                                                      9/25/2026
+       Program Number Displayed In Pattern View for Optimized Sheets
+       Use the Left and Right Keyboard Arrow Keys for Pattern Navigation
+
+ Nesting
+
+       Specify Bridge Overlap For Linked Part Outlines
+
+ Tool Catalog
+
+       Define 5-Axis Saw Tool for Machining Miters with 4 ½ Axis Machines
+       Define V Router Bit for Machining Miters with 2 ½ Axis Machines
+
+What's New in Version 5
+
+ General
+
+       Save and Open Nested/Optimized "Ready for Output" Job State
+       Quick Invert Selection for Filters
+       Line Item Icons in Part List and Material List Views Now Display Tooltips
+       Define Edgebanding Via S2M Part List CncRun.txt File
+       Define Grain Matching Via S2M Part List CncRun.txt
+       Show Room Name Instead of Number on Pattern Printouts
+       Import Blum Dynaplan BXF Files
+       Edit DXF Layer Names on Import
+       Control Column Widths on Pattern Printouts
+       Part Shape Editor
+       Operations Editor
+       Show Square Off Nest Toolpath on Pattern Printouts
+       Print a Range of Pages
+       Print Secondary Part Drawing Sheets
+
+ Label-IT
+
+       Expanded Orientation Symbols for Drill & Dowel Machines
+       Part Cut Width and Length Text Variables
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                                            Page 14 of 56
+                                                                                                               9/25/2026
+       Part Nominal Width and Length Text Variables
+
+ Links
+
+       Biesse ELIX Drill and Dowel NC Link
+       Weinig French Miter Other NC Link
+       Gannomat Index Pro Drill and Dowel NC Link
+       Biesse Door Machine Other NC Link
+       Reverse Cut Order Option for SCM Wincut Saw NC Link
+
+ Machine Catalog
+
+       Face Up Option for Drill and Dowel Machines
+       Silent Mirror Programs for Shaped Drill and Dowel Machined Parts
+       Compensate for EDX/EDY Oversize Values for Full Outline Parts Machine
+
+ Optimizer
+
+       Major Improvements to Booking for Saws
+
+ Tool Catalog
+
+       Diameter Tolerance for Drills
+
+What's New in Version 4.1 (2012 R2)
+
+ General
+
+       Overwrite All Options in Setup Package Utility
+       Logic to Identify and Machine Only One Bore if Multiple of the Same Diameter Occupy the Same Space
+       General Improvements to Multi-drill Utilization
+
+ Label-IT
+
+       Auto-lookup for Text Variables in Label-IT Label Designer
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                         Page 15 of 56
+                                                                                            9/25/2026
+       {Part.ID} Variable Added to Label-IT
+       Expanded Available Fields for Label-IT Label Designer
+
+ Machine Catalog
+
+       Option for Sloped Arc Leads for Pockets
+       Setup Sheet Boundaries for Small and Very Small Parts (True Shape Nesting Only)
+       Specify ZPL Template Directory
+
+ Nesting
+
+       Ignore Operations Outside Part's Nest Boundary
+       Minimize 6th Face Patterns
+
+What's New in Version 4.0 (2012 R1)
+
+ Machine Catalog
+
+       Setup Tab Redesigned for Ease of Use
+       Define and Utilize Machine Sets
+       Define Banding Operation Tool For Edgebanding Applicator Point-to-Points
+       Pocket Waste Option
+
+ Tool Catalog
+
+       Establish a Tool Set as an Outline Tool
+       Enter Decimal Values for Feedrate
+       Tool Sets Optionally Follow Operation Depth
+       Tool Set Finish Operation Type
+
+What's New in Version 3.1 (2011 R2)
+
+ General
+
+       Determine Which Columns for the Part List are Included on Pattern Printouts
+       Part Comments Optionally Displayed on Pattern Printouts
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                Page 16 of 56
+                                                                                   9/25/2026
+       Change Unit of Measure Precision via Statusbar Menu
+       Setup Package Utility Added
+       Option to Combine Boring to Through Boring
+       Option to Control Labels General Position on Part
+       Keyword for Secondary Face Added to DXF Layer Schemes
+       Show Parts Not Set for Optimization or Output
+
+ Label-IT
+
+       Warning Displayed When Deleting Label Designs
+
+ Machine Catalog
+
+       First Pass Offset Part of Nest Gap Calculation
+
+ Tool Catalog
+
+       More Flexible Tool Machine Assignment Options
+       Control Whether a Tool is Available for Automatic Tool Selection Logic
+       More Flexible Tool Display Filter
+       Dovetail Fit Adjustment Option
+       Tool Number Assignment for Tool Sets for Use With DXF Imports
+       Definition of MDF Door Horizontal Slats
+
+What's New in Version 3.0 (2011 R1)
+
+ General
+
+       Allowances for Pre-Mill Edgebanding
+       Expanded Operation Options for Filters
+       Save and Recall Filters
+       Prioritize Operation Machining Order
+       Set Soft Corner Radius Added for MDF DoorMaker Doors
+       Ability to Batch Import DXF Files from 3rd Party CAD Applications
+       Mouse Scroll Wheel Zooming and Panning
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                 Page 17 of 56
+                                                                                    9/25/2026
+ Machine Catalog
+
+       New Drill Optimization Options for Older or Entry Level Machines
+       6th Face Nesting
+       Common Line Cutting
+       New Nest Rotation Options
+       Rough Cut for Onion Skins
+       Specify Part Spacing Pad for Outline Tool to Control Part Spacing
+
+ Nesting
+
+       Completely New True Shape Nesting Engine
+       Rotate Part Clockwise 90
+       Rotate Part Counter Clockwise 90
+       Rotate Part 180
+       Flip Part Over
+       Add a Blank Sheet
+       Ability to Save Optimizer Parameter Changes Back to the Machine Catalog
+
+What's New in Version 2.2
+
+ General
+
+       Go To Pattern Option in Pattern Navigator
+       Create and Save DXF Layer Schemes
+       Batch Import DXF's
+       Material Catalog Added to S2M Ultimate
+       Specify UNC Paths for Machine Output Directories
+       Renamed NcCenter to S2M Center
+       New Ribbonbar Interface
+       Grain Matching Capability for Nested Routers and Saws
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                       Page 18 of 56
+                                                                                          9/25/2026
+ Label-IT
+
+       Option to Display Part Position Within Nest Graphic on Label-IT Labels
+
+ Links
+
+       CUT File Export NC Link for 3rd Part Optimizers
+
+What's New in Version 2.1
+
+ General
+
+       Specify a Run Number Range for Each Workstation
+       Override Automatic Run Numbers
+       Part List Area Added to Pattern View
+       Clipbook Functionality Added to Pattern View
+       Define Dovetail Tools
+       Name of Open PNC Job Displayed in the Titlebar
+       Pattern Font Properties Controls Both View and Print Font Properties
+       Edit Parts and Add/Modify Operations Utilizing Alphacad (No Longer Available)
+
+ Label-IT
+
+       Label Placement Marker on Labels Part Graphic
+
+ Links
+
+       Accu-Systems HPMTH NC Link
+       New Machine Type "Other" Added
+       Hoffman/Razorgage Haunching System NC Link
+       Holzma PTX Saw NC Link Updated to v1.06
+       BandCode Added to Holzma Saw NC Link
+       Thermwood Direct Parts NC Link
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                                        Page 19 of 56
+                                                                                                           9/25/2026
+What's New in Version 2.0
+
+ General
+
+       Select Design Product Version for Advanced S2M Center Material Import
+       Specify Through Hole Outline Routing Only versus Pocketing
+       Crystal Report Engine Updated to Crystal Version XI
+       Change Zoom Window Function from Center Out to Corner to Corner (Stand-Alone S2M Center Only)
+       Assign A ToolSet as the Outline Tool for a Material
+       Escape key as hot key to Return/Home arrow
+       QTY field to the Part Program reports in S2M Center
+       Alpha-Numeric numbers for NC Run Numbers
+       S2M Center for Alphacam Introduced (Alphacam Advanced Router Required)
+       Part Library Added
+       Import User Defined Part DXF Files
+       Extend Dado Lengths by Tool Diameter
+       Specify that Operations Should be Milled from the Unfinished Side Where Possible
+       Redesigned and Expanded the Functionality of the Filter Parts Utility
+       Redesigned and Expanded the Reports Functionality
+       Redesigned and Expanded the Output NC Codes and Labels Utility
+       View Secondary Parts and Operations
+       Add Parts from the Library to a Sheet in the Patterns Area (Saw Optimization and Nesting)
+       Cut, Copy, and Paste Parts from/to a Sheet in the Patterns Area (Saw Optimization and Nesting)
+       Rotate Parts on a Sheet in the Patterns Area (Nesting)
+       Allow 3 decimal places in Metric
+       Support for Alphacam Version 6
+       Support for Alphacam Version 7
+       Post Option for Controls that do not Support Compensation on Arcs
+       License Not Found for XXX Post/Link Error Message - Changed to Prompt for Post Code Entry
+
+ Label-IT
+
+       Control Unit Output for Labels
+       2D Barcodes (Variable Driven)
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                         Page 20 of 56
+                                                                                            9/25/2026
+       Option to Output Self-Contained Label-IT Job File
+
+ Links
+
+       New Intelli-CAM Part NcLinks for Outputting Point-To-Point Part Outline Cutting
+       Casadei Saw NC Link
+       Vitap Thunder Drill and Dowel NC Link
+       Accu-Systems HPJ file format with Drill2 field NC Link
+       Zone Count option for Accusystem-HPJ NcLink
+       KOCH Maxi 5 Chop Saw NC Link
+       Option for a 3rd Phase Trim Cut on SCMI Sezonia Saw NC Link
+       Accusystems NC Link
+       PNL File Export NC Link for 3rd Party Optimizers
+       Ability to specify CPOUT NC program name
+       WoodWOP 5 NC Link
+       New CPOUT variation for Giben Panel Saws
+       Create new machine type and output for RazorGage
+       Added Support for Chop Saw Machine Types
+       Output barcode string in CPOUT file
+
+ Machine Catalog
+
+       Offset Lead In from Bottom of Part
+       Link Part Outlines for Nesting (Bridging)
+       Graphic Multi-Drill Tool Assignment
+       Output part image from S2M Center for Real Time Label Systems
+       Add a Finish Pass to Pockets (To Utilize Cutter Compensation)
+       Specify an Approach Offset for Lead-Ins
+       Enable VBA posts in S2M Center 2.0
+
+ Nesting
+
+       Combine Edge Operations with Part Outline
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                        Page 21 of 56
+
+     Nest by Cabinet
+
+Tool Catalog
+
+     4 and 5 Axis Router Support
+
+About S2M CENTER Help
+
+Thank you for choosing the S2M CENTER. These help files were created in order to make your experience with this product more enjoyable and productive. We welcome your feedback so please let us know if you find this
+information useful by emailing us at tech@cabinetvision.com.
+The format of these Help files should closely follow the layout of the S2M CENTER itself. Also, you may press the F1 key on your keyboard to see help on the current window.
+In order to get the most from using the S2M CENTER help files, it is important to first know some terms of communication that will be used throughout the Help System.
+First, any time that you are to navigate through menus to perform a certain function, the menu sequence will appear as follows:
+Main | Help | Help Topics
+This tells you that you should click on the Main tab, then click on Help, and finally, click on Help Topics in order to get to the specified location.
+
+Secondly, it is important to understand the terminology used in describing movements and clicks of the mouse.
+
+On a mouse with the typical configuration, the left button is used as a Select tool. The right button is used as an alternate select tool. Some mice have a third button or a wheel.
+
+With this typical configuration, if you see the word "click" used in these help files, that means to click one time with the left mouse button on the object specified. A "double-click" means to click two times in relatively rapid
+succession on the item or object specified. A "right-click" means to click one time with the right mouse button on the object specified. Also, you will be asked to "drag" objects with the mouse at certain times. This means that you
+will hold the mouse over the specified object, click and hold the left mouse button, then move the mouse while still holding the left button until you reach the area that you were instructed to move the object to. Some objects may be
+"dropped" by simply letting go of the left mouse button. Other objects must be "dropped" by clicking again when you reach the destination. This will be something that you will simply have to practice in order to master.
+
+Third, when describing buttons on the keyboard, they will appear as images like this:
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                                                                                                                                                                         Page 22 of 56
+
+If there is a sequence of buttons that need to be pressed, it will appear as follows:
+
++                     +
+
+The above keys must all be pressed in the sequence displayed and each remain depressed until the last key press is performed to get the desired result.
+
+Next, the help files will sometimes refer to "pull down" or "drop down" menus. Those are both the same type of menu and will be evidenced by an arrow to the right of the selections that you will click on to expand the choices.
+Here is an example:
+
+When you click on the arrow to expand the menu, you will see this:
+
+You will also see links to other topics in the help files. A link will appear like this: click here.
+
+Context Sensitive Help
+
+As you navigate through the S2M CENTER, you can press  for tips.
+
+S2M CENTER Additions and Machines
+
+The following S2M CENTER Products are available. The icons below will represent them throughout the Help file. This is how the Help file will identify which features are available in which Products.
+
+       - xMachining
+
+Additions
+
+       - +Label
+       - +Simulation
+
+Machines
+
+- +Chop Saw
+- +Drill & Dowel
+- +DXF
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                                                                                                                                   9/25/2026
+What's New 2025                                        Page 23 of 56
+
+       - +Material Handling
+       - +Part List
+       - +Point-to-Point
+       - +Router
+       - +Saw
+       - +Special
+
+Understanding the S2M CENTER Window
+
+When you start a new Job in the S2M CENTER, the main S2M CENTER window opens. This window is your primary work space. It contains a list of all the Parts that will be sent to your machines. The following illustration shows
+the primary sections of the S2M CENTER window.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                        Page 24 of 56
+
+ The File Menu                                         9/25/2026
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                        Page 25 of 56
+
+The File menu is located in the upper-left corner of the S2M CENTER . When you click the File menu, you see the same basic commands available in earlier releases of the S2M CENTER to Open, Save, and Print your Job.
+
+Quick Access Toolbar
+
+The Quick Access Toolbar is a toolbar containing a set of commands that are independent of the ribbonbar tab that is currently displayed.
+See the Quick Access Toolbar topic for more information.
+
+Titlebar
+
+The Titlebar displays the PNX Job you have open.
+
+Ribbonbar
+
+This section gives quick and easy access to tools specific to the area of the S2M CENTER you are in. The ribbon will change depending on which area of the S2M CENTER you are in. Options with small triangles below or to the
+right have flyouts containing options that invoke commands related to the first option shown. Click and hold down the first option to display the flyout.
+
+Minimize, Maximize, and Close Buttons
+
+These buttons hide the S2M CENTER window, enlarge it to fill the whole screen, and close it, respectively.
+
+Style Selection
+
+Allows you to choose the Style that the S2M CENTER interface will utilize. There are three choices.
+     Light - The default Style.
+     Dark
+
+Sidebar
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                                                                                                                                                              Page 26 of 56
+
+This section gives access to functions specific to the area of the S2M CENTER you are in. This section will change depending on which area of the S2M CENTER you are in.
+
+Parts and Materials List Area
+
+This is the actual working area of the S2M CENTER. This area's size varies, depending on the size of the S2M CENTER window and on the number of other elements that are displayed.
+
+Statusbar
+
+This bar contains the Company Name that the software is Licensed to.
+
+                 Statusbar Menu
+
+The Statusbar menu gives you quick access to control the status of 4 possible options:
+
+ Unit Selection  or - Allows you to toggle between Inches (Imperial) and Metric Units on the screen. You can turn this button On/Off and set its default Unit via the Preferences | Measurement Units tab.
+
+ Unit Precision - Selecting this button will allow you to change the Precision of the Unit selected. The default Unit Precision is set via File Menu | Preferences | Measurement Units tab.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                                                                                                                                       9/25/2026
+What's New 2025                                                                                                                                                                        Page 27 of 56
+
+     Snap Grid - This option turns the Grid display on. You will see a grid pattern in the window where you Edit Part Shapes or Edit Operations that you can Snap to. If this button is highlighted it means it is active simply click it
+       again to disable it. Go to Right Click Properties to set the Grid Spacing.
+
+     Snap to Points - Using this snap feature allows precise snapping of drawn entities. This option turns on the Dynamic Snapping functionality in the S2M CENTER. The snap to points appear as small dark dots in the corner of
+       the objects and all parts within the object. These are the snap to points. If these points are present and not desired, reset the snapping mode to OFF or another mode to eliminate them. If this button is highlighted it means it is
+       active simply click it again to disable it.
+
+Using a Mouse in the S2M CENTER
+
+You can choose options by left clicking them with your mouse. You also can use the mouse to select objects on the screen. With a two-button mouse, the left button is the select button used to select objects on the screen. The right
+button typically displays a shortcut menu.
+
+Scroll Wheel Mouse
+
+ Mouse Button Functions                                                                                                                                                                9/25/2026
+
+ The mouse provides feedback to the S2M CENTER regarding a variety of functions. Although a Scroll Wheel Mouse is optional, it is highly recommended. The functions are listed below:
+ Left Button
+
+       Click to select objects
+       Drag to select multiple objects
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                          Page 28 of 56
+
+ Click to specify locations
+
+Right Button
+
+ Click to cancel an event
+ Click within a window for window context sensitive (short cut) menu
+ Click on object for object context sensitive (short cut) menu
+
+Wheel Button (Optional)
+
+     Scroll forward and backward to zoom in and out.
+     Double click to Zoom All
+     Drag to Pan view
+A Scroll Wheel Mouse is typically a two-button mouse with a small wheel between the buttons. The left and right buttons behave the same as they do on a standard mouse. You can rotate the wheel by discrete values. You can use the
+wheel to zoom and pan in your drawing without using any S2M CENTER tools.
+The following table lists the mouse actions supported with a Scroll Wheel Mouse in the S2M CENTER.
+
+To...                        Do this...
+Zoom In or Out               Rotate the wheel forward to Zoom In, backward to Zoom Out.
+Zoom All                     Double-Click the Scroll Wheel button
+Pan                          Drag the Scroll Wheel button
+
+About S2M CENTER
+
+At anytime inside the S2M CENTER you have access to the About S2M CENTER information by clicking the small ? option at the top right of the screen. This informational window let's you know the exact Version, Revision, and
+Build of the S2M CENTER you are running. It also has information about how to contact Technical Support.
+
+The S2M Center Views
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                    9/25/2026
+What's New 2025                                        Page 29 of 56
+
+ The Parts and Material List View
+
+ Click one of the areas below for more Information
+
+ The Patterns and Parts View                           9/25/2026
+
+ Click one of the areas below for more Information
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                                                                             Page 30 of 56
+
+CABINET VISION Start Group
+
+In Windows 10 and 11 click the Windows Start Button  then select All apps         then scroll to and select the CABINET VISION 2025 Group.
+
+In previous versions of Windows go to Start | All Programs | CABINET VISION 2025
+
+There are five S2M CENTER related options in the Startup Group:
+
+1. +Label 2025 - Launches +Label. See the Using +Label in Production topic for more information.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                                                                       9/25/2026
+What's New 2025                                                                                                                        Page 31 of 56
+
+     2. S2M CENTER 2025 - Launches the S2M CENTER.
+     3. S2M CENTER 2025 Help - Opens this Help System.
+     4. Update S2M CENTER 2025 Databases - Launches the Update Database Utility which compacts and repairs S2M CENTER Database Files.
+
+File Menu
+
+         New                                                                                                                           9/25/2026
+
+              +
+ When you click on New, the S2M CENTER will start the Job Properties area to allow you to define a new Job.
+
+           Open
+
+              +
+ Clicking on Open will bring up a Windows Open window that you may use to browse to and open a PNX, PNC, SNX, or SNC Job file.
+ To open a PNX, PNC, SNX, or SNC file, simply click on the PNX, PNC, SNX, or SNC that you want to open and click the Open button.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                        Page 32 of 56
+
+              When opening an SNX or SNC file you will be opened directly into the Pattern/Part View area. If you choose to click the Return option you will be returned to the Material/Part List view and will loose the Job State.
+
+    Import PNC
+
+             +
+Import PNC allows you to build a single Job from multiple PNX or PNC Imports.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                        Page 33 of 56
+                                                           9/25/2026
+          Export PNC
+
+              +
+ Creates a PNX file of the Open Job.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                             Page 34 of 56
+                                                                                9/25/2026
+            Properties
+
+ There are three tabs available in Properties:
+
+       Information
+
+         Allows you to enter Job Information that will be used in Reports.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                             Page 35 of 56
+                                                                9/25/2026
+       Comment
+
+         Allows you to enter Comments for the current Job.
+
+       Schedule
+
+         Allows you to set Schedules for the current Job.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                          Page 36 of 56
+                                                                                             9/25/2026
+          Print
+
+              +
+ This option allows you to Print the current View; the following window will appear:
+
+ Simply choose the printer that you wish to use and click OK to print the current view.
+ See the Print topic for more information.
+
+              Print Setup
+
+              +
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                    Page 37 of 56
+
+ This option allows you to set Printer options; the following window will appear:
+
+Use this option to choose the settings for the printer that you plan to use with the S2M CENTER.
+
+          Preferences
+
+        Exit S2M
+
+Click here to exit the S2M CENTER.
+
+       Print
+
+When viewing Patterns this option will allow printing of Pattern diagrams for your Machine Operator which includes a graphic representation of the Pattern, a list of Parts, Program Name and bar code for the Pattern (If a Nest).
+With Nested output the print-out also indicates how the Material should be loaded on the Machine.
+In the example below, the material being machined is a "one-sided" material with different "sides" (a face-dependent material which has different textures on the material back/unfinished face and material front/finished face). In this
+example, the nest CNC program machining face indicator is indicating that the material should be loaded "Particle Board" side down for proper nest CNC program machining. "Particle Board" is the name of a texture ascribed to only
+one of the two "sides" of the material "1/4 1s Melamine."
+
+In the example below, the material being machined is a "one-sided" material with different "sides" (a face-dependent material which has different textures on the material back/unfinished face and material front/finished face). In this
+example, the nest CNC program machining face indicator is indicating that the material should be loaded "Particle Board" side up for proper nest CNC program machining. "Particle Board" is the name of a texture ascribed to only one
+of the two "sides" of the material "3/4 1s Melamine."
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                              9/25/2026
+What's New 2025                                        Page 38 of 56
+
+In the example below, the material being machined is a "two-sided" material with identical "sides" (a non-face-dependent material which has identical textures on both the material back/unfinished face and material front/finished face).
+As such, no nest CNC program machining face indicator is present since one is not required for proper nest CNC program machining.
+
+        Preferences
+
+ There are 7 tabs in the Preferences screen:           9/25/2026
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                        Page 39 of 56
+
+ General Tab
+
+There are three sections at the General Tab:
+     CNC Programs - This area allows you to select the Maximum Run Number and Run Number Range to utilize for Program Names.
+           Run Number Formats
+                   3 Digit Numeric - With this number type the first 3 characters in the program name are nnn. This allows up to 1000 outputs without repeat. (000-999)
+                   Alpha-Numeric - With this number type the first 3 characters in the program name are Rnn/Raa. This allows up to 1296 outputs without repeat. (R00-RZZ)
+                   Standard - With this number type the first 3 characters in the program name are Rnn. This allows up to 100 outputs without a repeat. (R00-R99)
+           Run Number Range
+                   This option will accommodate those shops that have multiple users outputting NC programs and want to assign allowing each user a range. Jeff = 0-99, Sally=100-199, John=200-299 etc. In addition the user can get
+                      a preview of the run number output by specifying the various number formats.
+
+                                     This feature is disabled if there is a preset run number (Cabnetware)
+     ALPHACAM - This area allows you to select which ALPHACAM Module is utilized by the S2M CENTER Ultimate.
+     Label Position - The first option, Rotate labels to align with sheet length, when enabled, will make it so the Labels are always aligned to the Sheet Length. This allows the operator to stick the Labels in the same orientation each
+
+       tie and the Part Graphic, if present, will rotate so operations further down stream are oriented properly. You can turn on an Annotation in your Pattern View denoting where the Label should be placed on the individual Parts. You
+       can specify which side of a 6th face nest to place the Label on. You can also control the size of this Annotation. You have ten choices for where the Label is placed on Parts:
+
+            Automatic
+            Bottom Center
+            Bottom Left
+            Bottom Right
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                        Page 40 of 56
+
+       Center
+       Center Left
+       Center Right
+       Top Center
+       Top Left
+       Top Right
+ Show Parts Not Set for Optimization or Output - This option allows you to turn on the capability to control whether a Part set to "Not Optimize" or "Not CNC" can be overridden. Doing this will turn on Right Click menu
+  options in the Part List. See the Parts topic for more information.
+ One Click Optimize To Pattern Results - Enable this option to go straight from clicking the Optimize button to the Pattern area.
+ Use Radial Menus - This feature changes the text style context (right click) menu to a graphical menu, similar to below.
+
+     · Enable Side Bar Redraw Clipping - This feature turns on a feature to redraw the side bar more frequently. This feature should only need to be enabled in a VM environment where the buttons are not always visible in the side
+       bar.
+
+Tool Warnings Tab
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                                                                                                                                  Page 41 of 56
+
+ This option allows you to turn off Warnings that may display during Optimization. Simply de-select the Check Boxes for the Warnings you do not want displayed.
+
+ Geometry
+
+There are 10 options on the Geometry Tab:
+     Extend Dado Lengths by Tool Diameter - This option will extend any rectangle path Dadoes on your Parts by the Tool Diameter.
+     Extend Single Pass Dado Lengths by Tool Diameter - This option will extend any single pass Dadoes on your Parts by the Tool Diameter.
+     Combine Edge Operations with Part Outline - This option will combine any Routes that cut through the Part and touch one of the Part edges together into a single Part Outline cut.
+     Combine Boring to Through Boring - This option will combine any Boring operations that originate from both the Front and Back face that meet or cross in depth and are the same diameter and in the exact same location. This
+       can reduce the number of Secondary programs necessary to generate through bores.
+     Mill Operations from the Unfinished Face Where Possible - This option will machine through Operations from the Unfinished Face.
+     Only Route Outline of Through Holes - This option, if enabled, will only cut the Outline of Holes that go through the Material.
+
+                     Under certain conditions Routing Holes with this option enabled can produce airborne off fall as the Tool leads out of the Hole.
+     Ignore Operations Outside of Part's Nest Boundary - This option, if enabled, will only machine Operations that fall within the Parts Outline. This does not include Operations which overlap the Outline to be combined into the
+
+       Outline.
+     Close Grain Match Gaps Larger Than - By default the S2M Center orients Grain Matching exactly as passed by the Design Software. Let's say you had an Upper Cabinet above a Base and they were grouped together. If this is
+
+       set to 0 then the space between the Upper and the Base would be included between the Doors in the Grain Match. You can set this to a value to determine when the S2M Center needs to close the Gap to the Nest Gap.
+
+                     A Grain Match Gap that is smaller than the Kerf is ignored. 0 or Kerf x 2 are the typical values used here.
+     Pre-Mill Edgebanding - The S2M CENTER will compensate for Edgebanders with Pre-Mill Stations; by selecting this option you are indicating to the S2M Center that your Edgebander has a Pre-Mill Station. If Max is selected
+
+       then the value is the maximum amount the banding machine will trim off the edge of the part during the banding operation. Typically the banding machine trims off a value equal to the banding thickness. If Fixed is selected this
+       is the amount the banding machine will trim off of the edge of the part that include banding.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                                                                                            9/25/2026
+What's New 2025                                        Page 42 of 56
+
+              Modifying the Max pre-mill edge banding will dynamically change the part size of banded parts.
+
+What Edges can be Pre-Milled / Pre-Banded
+
+Pre-Banded edges can only be the Left, Right, Top & Bottom of the part while it is still a rectangle. Even if the part is shaped and banded on all edges only the L, R, T & Bottom edges will show the part size extended as
+pre-banded since the part would be banded prior to being placed on the P2P / Router to be shaped.
+
+Pre-Milled edges can be any pre-banded edge as well as any other edge that could be fed into a banding machine. Edges that are excluded would be arcs or any edge that couldn't be fed into the machine due to a collision
+with another edge of the part. The part will be resized with only valid pre-mill edges extended.
+
+Below are examples of parts that are banded on all edges with 1" thick banding with the pre-mill max set to ½ inch. In this example the pre-mill and pre-band edges are the same. Note that none of the inside edges could be
+fed into a banding machine and therefore the part size was not extended for these edges.
+
+In this example the pre-mill edge is valid for all 5 edges while the pre-band edge would NOT be valid for the angle.
+
+              This marks a change from 2011 R1 as all sides of both shapes would have been extended on a pre-band shape.
+In this example the pre-mill edge is only valid for one edge. The edges adjacent to the radius have been excluded because if all edges were banded you would want a single piece of banding to span the radius and adjacent
+parts. Even if the radius was not banded, there is danger of the end trimmer cutting into the radius. For these reasons an edge adjacent to a radius is excluded.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                                                                                                      Page 43 of 56
+
+                               This marks a change from Version 5 as all banded sides would have been extended on a pre-band shape.  9/25/2026
+       Soft Corner Radius - Sets the Soft Corner radius for Doors set through MDF DoorMaker as having Soft Corners.
+
+                               The maximum Radius allowed is 1/4" (6.35mm).
+
+ Paperless Traveler
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                        Page 44 of 56
+
+There are three options here:
+     · Customer ID - Enter your Hexagon Customer ID listed in the Customer Portal, on your License delivery email, or Order.
+     · CV PT Token - Enter your CABINET VISION Paperless Traveller Token provided to you by the Nexus Connected Worker Team when they assisted you in setting up CABINET VISION Paperless Traveller.
+     · Work Center Manager - This button opens up the Work Center Manager.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                                                                                                                                 9/25/2026
+What's New 2025                                        Page 45 of 56
+
+       Enter the Number and Name of each of the Work Centers you setup in CABINET VISION Paperless Traveller here. Then select a Report from either CV or S2M to assign to each Work Center. It is not required to assign a report
+       to a Work Center. At the bottom of this screen you will also want to specify which of your Assembly Sheets to use as well as identify which Work Center the Assembly Sheet is used in. You can also specify if you want one
+       Assembly Sheet report per Assembly or if you want all Assemblies for a Work Center in a single Assembly Sheet report.
+
+CNC
+
+Allow Invalid Pre-Assigned Tools to be Substituted - The purpose of this preference is to ensure operations assigned an Invalid ToolID are still milled with an alternate tool. It is possible to assign a tool to a specific operation and
+have a tool assigned to specific machines thus ensuring that certain operations are only performed on specific machines. This option allows a fail-safe when a pre-assigned tool is invalid for a given operation. The S2M Center has a
+routine that validates a tool if it is pre-assigned. It will look to see if it is the proper tool type, size, etc. If ALL THIS CRITERIA IS PASSED, it then looks to see if the tool is available on the current machine. If not the operation is
+passed over for current machine, however, with this option on it would go into the "Auto-Select" routine to find a suitable alternate tool.
+
+Miter Options
+
+If you have Miters on your Parts coming from your manufacturing package this tab allows you to decide if you want the S2M Center to create Miter Operations and which tool to use to machine those miter options. If you have created
+a V Router Bit and have enabled the "Use V-Bit tool if angle matches miter" option then that tool will be used to machine the Miter. In certain scenarios such as a Toe Notch you may or may not want the Miter applied considering
+that it may show up inside the Assembly. Typically this allowed for with proper Deck/Bottom placement and if this is the case make sure to enable the "Allow miters on concave (unsafe) edges".
+
+              2 ½ Axis Miters are permitted on a nest, but restricted from 6th face nesting. It was determined that the miters might damage the integrity of the sheet when it needs to be flipped.
+
+4/5 Axis Miter operations are created on Workplanes and would require a properly configured multi-axis Tool be setup in the Tool Catalog and also a Machine and Machine Post which supports 4/5 axis movement..
+
+Ordering
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                        Page 46 of 56
+
+If you choose to order "By Cabinet", each sheet of Material will be restricted to contain Parts of only one Cabinet. For example, when Cabinet number 1 is completely cut out, you can begin assembly on it. If you choose to overlap
+Cabinets, you may control how many Cabinets may be on the same sheet.
+
+Minimize 6th Face Patterns - Enabling this option will force 6th Face Operations to as few Sheets as possible, at the expense of Material Yield.
+
+You also have the ability to control the order Operations are processed on your Nests and/or Parts. Simply select the Operation type and move it up or down the list. The first Operation in the list is the first operation type processed and
+so on.
+
+Reports
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                        Page 47 of 56
+
+Following are the main areas in the Reports Tab:
+
+      Part Report - Select which Report to use when Printing Secondary Part Sheets
+      Pattern Printouts
+
+       These options allow you to determine which Pattern Printout Reports to use by default.
+
+      Saw Optimization
+
+       These options allow you to select whether you want Offcuts and Gap Cuts (when Grain Matching) to be reported.
+
+Measurement Units
+
+The Measurement Units tab allows access to the area where your standard display unit of measure and its precision are set. Keep in mind that the S2M Center stores everything as a double integer in the Imperial (Inches) unit of
+measure. What you are selecting is how the S2M Center displays this stored information not how it is stored.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                        Page 48 of 56
+
+A double Integer consists of 15 unit places, meaning a measurement entered as 56mm is actually stored as 2.20472440944881" by the S2M Center. The measurement entered by you at 56mm would display as follows:
+
+Units as Millimeters
+Precision as 1 = 56
+Precision as 1.5 = 56.0
+Precision as 1.1 = 56.0
+Precision as 1.01 = 56.00
+Precision as 1.001 = 56.000
+
+Units as Inches
+Precision as 1 = 2
+Precision as 1.1 = 2.2
+Precision as 1.01 = 2.20
+Precision as 1.001 = 2.205
+Precision as 1.0001 = 2.2047
+Precision as 1.00001 = 2.20472
+Precision as 1.000001 = 2.204724
+Precision as 1/8 = 2 1/4
+Precision as 1/16 = 2 3/16
+Precision as 1/32 = 2 7/32
+Precision as 1/64 = 2 13/64
+
+              The important thing to remember is the S2M CENTER sees this number (56mm), no matter how you have the display units set, as 2.20472440944881".
+
+The "Trim trailing decimal zeros" will simply trim any trailing zeroes off of displayed decimal measurements.
+
+The "Allow unit-switch button on Status Bar" options turns on/off the Unit-switch button in the Statusbar Menu.
+
+Tools Tab (Accessible from Part Edit area)
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                                                                                                                                           9/25/2026
+What's New 2025                                        Page 49 of 56
+
+Smart-lines. In this section you can control the Snap Angle as well as the Tolerance setting of a drawn Line.
+       A Snap Angle of 45 and a high Tolerance (Sliding the bar all the way to the right) will snap lines only in 45 degree increments.
+       A Snap Angle of 45 and a low Tolerance (Sliding the bar all the way to the left) will basically disable the Snap feature. This will basically allow you to draw a free-hand line.
+
+Snap Lines. In this section you can control the Color and Type (Dashed or Solid) of line that Dynamic Snapping will use.
+Snapping Options. In this section you can control the Snap Hot-Keys as well as which Hot-Points are on for Dynamic Snapping.
+
+       Grid Snap - Snaps what you are currently placing to Grid points.
+       Point Snap - Snaps what you are currently placing to Snap points.
+Short-cut Keys. In this section you can modify the default Short-cut Keys for quick commands inside Solid. You may want to change these if they interfere with Short-cut Keys you may already have setup in Windows. There are five
+functions that can be controlled by short-cut keys:
+       Pan - The Pan function allows you to set a new View center. When activated the Pan feature will center your current view to the location of the cursor on the screen.
+       Refresh - The Refresh function instructs Solid to redraw the current View.
+Zoom Mode. In this section you control how the Windows for a Zoom Window is drawn.
+       From Corner - When using this and performing a Zoom Window you specify the corners of your Zoom area diagonally.
+       From Center - When using this and performing a Zoom Window you start from the Center of the View. This is the way Solid has normally performed a Zoom Window.
+       Factor - This slider sets the Zoom Factor for Scroll Wheel Zooming. The lower (left) the setting the smaller the Factor.
+       Reverse Scroll Wheel Zoom Direction - An option allowing you to reverse the Zoom In/Zoom Out direction on your Mouse Scroll Wheel.
+
+Dynamic Snapping
+
+Object Snapping
+
+The S2M CENTER provides a special kind of cursor snap in addition to the typical grid snap. This allows the cursor to automatically snap to different hot-points on or adjacent to an object; for example, end-points, mid-points, center-
+points, and intersections. These locations are commonly referenced when creating or editing geometry. For most functions, the cursor will also snap to the origin of the object.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm  9/25/2026
+What's New 2025                                                                                                                                                                                                      Page 50 of 56
+
+For example, you may want to create a line that is connected to the end of an arc. Start creating the line by locating the endpoint of the arc. When located, a round hot-point marker appears on the arc endpoint.
+
+Click the hot-point marker to start the line there. The start of the line snaps precisely to the end of the arc, connecting these objects end-to-end.
+You can choose what types of positions and conditions will automatically be located by enabling or disabling options in Preferences | Tools Tab.
+
+General Snapping Shortcut Keys
+
+Ignores snap to Grid and Points, and leaves the Smart-Lines angle snap on.
+
+Activates the "full grid snap" mode, forcing snap to the Grid over a position just aligned with a Point.
+
+Completely ignores snap, including Smart-Lines.
+             +
+
+Dynamic Snapping
+
+Solid also has the ability to Snap Dynamically (also known as Assumptive Snapping). When you are in line with a Snap Point on another Object within the Drawing space the S2M CENTER will project that position to your location.
+When this projection along with the associated hot-point marker is displayed you can be assured that the Object will be placed in-line with that Objects Snap Point.
+For Example you would like to draw two line Parallel to each other. After drawing the first line simply move your cursor in-line with the first lines Start Point and you will see a Snap Line projection assuring you they are in-line.
+
+ Hot-point Markers                                                                                                                                                                                                   9/25/2026
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                                                                                                          Page 51 of 56
+                                                                                                                                                                             9/25/2026
+ When the cursor moves over a valid snap location, the located position displays with a hot-point marker and a special cursor appears to identify the type of location.
+               The system will not display a hot-point marker for a particular location type if it is disabled in Preferences | Tools Tab.
+
+ The list below identifies these special cursors:
+        Cursor is snapping to one of the extremities (End Point) of an object.
+        Cursor is snapping to the middle position (Mid Point) of an object.
+        Cursor is snapping to the center of an arc or circle.
+        Cursor is snapping to the intersection of two objects.
+        Cursor has one coordinate aligned with any of the snap points.
+        Editing CAD line is extending along the original angle.
+        Editing CAD line is snapping to one of the smart line angles.
+        Editing CAD line has a locked angle.
+        Cursor is snapping to any of the points in the editing shape.
+        Cursor is snapping to the grid.
+        Cursor is snapping to the origin (0,0 position) in the view.
+
+Quick Access Toolbar
+
+ There are five possible options in the Quick Access Toolbar.
+
+   New
+   Open
+   Print
+   Undo
+
+              +
+ This menu option allows you to "Undo" the last several changes you made.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                        Page 52 of 56
+
+   Redo
+
+              +
+ This menu option allows you to "Redo" the last "Undo" you initiated.
+
+ Customize Quick Access Toolbar
+
+ The QAT can be located in one of two places:
+      · Above the Ribbon (default location)
+
+      · Below the Ribbon
+
+If you don't want the QAT to be displayed in its current location, you can move it to the other location. If you find that the default location above the ribbon is too far from your work area to be convenient, you may want to move it
+closer to your work area. The location below the ribbon does encroach on the work area; therefore, if you want to maximize the work area, you may want to keep the QAT in its default location.
+
+   1. Click Customize Quick Access Toolbar .
+   2. In the list, click Show Below the Ribbon.
+There are several other options available in the Customize Quick Access Toolbar (QAT) menu.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                  9/25/2026
+What's New 2025                                                                                                                                             Page 53 of 56
+
+ Any commands listed at the top with checkmark can be removed from the QAT by clicking the checkmark.
+ You can also use the QAT to Minimize the Ribbon. Or to quickly Minimize/Maximize the ribbonbar simply double click a ribbonbar tab.
+
+ More Commands...
+
+ The More Commands option allows you to Customize the commands available in both the QAT and the Ribbon.
+
+ The quickest method to add a command to the QAT is to simply right click that command in the Ribbon and select the Add to Quick Access Toolbar... option.  9/25/2026
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm
+What's New 2025                                                                                                                                                                                              Page 54 of 56
+
+ Quick Access Toolbar
+
+ From the sidebar you can select the Quick Access Toolbar option in order to modify the currently active QAT.
+
+The list on the right represents the current QAT. You can select a command and move it up or down in the list to control its order. YOu can Remove a command from the QAT by selecting the <<Remove option.
+On the left is where you can select from a list of available commands to add to the QAT using the Add>> option.
+Select the Choose commands from: option.
+There are four main options here:
+Popular Commands - Popular commands.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                                                                                                                                        9/25/2026
+What's New 2025                                                                                                             Page 55 of 56
+
+ Commands not in the Ribbon - Commands that are not in the ribbon.
+ All Commands - All commands are available here.
+ File - Commands from the File menu.
+ Depending upon which view you open from the remaining options will simply list the Ribbons available in the current View.
+
+ Customize Ribbon
+
+ From the sidebar you can select the Customize Ribbon option in order to modify the currently active Ribbons.
+
+The list on the right represents the currently available Ribbon Tabs. You can select a group or command and move it up or down in the list to control its order. You can Remove a command from the QAT by selecting the <<Remove
+option. You can add new Tabs and Groups by clicking the New Tab and/or New Group buttons. You can rename a Tab or Group by clicking the Rename... button.
+On the left is where you can select from a list of available commands to add to the Ribbon using the Add>> option.
+Select the Choose commands from: option.
+There are four main options here:
+Popular Commands - Popular commands.
+Commands not in the Ribbon - Commands that are not in the ribbon.
+All Commands - All commands are available here.
+File - Commands from the File menu.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                                                       9/25/2026
+What's New 2025                                                                                                                         Page 56 of 56
+
+ Main Tabs - Depending upon which view you open from the remaining options will simply list the Ribbons available in the current View.
+
+Keyboard Shortcuts
+
+Clicking the Keyboard Shortcuts Customize... button gives you the ability to add Keyboards shortcuts to the commands in S2M CENTER.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hh895F.htm                                                                                   9/25/2026
+

@@ -1,0 +1,966 @@
+Sidebar                                                Page 1 of 49
+                                                         9/25/2026
+Sidebar
+
+ At Parts and Material List View
+
+ Click one of the buttons below for more information
+
+  View with Primary Machine Selected
+
+  View without Primary Machine Selected
+
+ At the Pattern/Part View
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                Page 2 of 49
+
+The sidebar will have two different appearances depending on whether you are Optimizing or Nesting.
+
+Optimizing
+
+There are four selectable areas in the Optimizing sidebar:
+
+     Cut Patterns - This area displays all optimized sheets. To view the Patterns simply click on the stack image in this area. If you have multiple Primary Machines (Machine Sets) you
+       are outputting to you can use the Machine Selector to view Patterns for each Primary Machine here.
+
+     Reports - Allows you to view and print the S2M CENTER Reports.
+
+     NC Code & Labels - Allows you to output NC Code & Labels.
+
+     Cost and Time Report - Clicking this button will print out a Cost and Time Report. The costs and times shown in this report are based on the numbers provided in the Machine
+       Catalog for your saw. This button is only available if you are Optimizing using a Saw.
+
+Nesting
+
+Following are the selectable areas in the Nesting sidebar:
+
+     Machine Set Selection - If you are running multiple Machine Sets there will be a combobox above the Cut Patterns which will allow you to select which Machine Set results you
+       want to see in this view.
+
+     Cut Patterns - This area displays all nested sheets. To view the Patterns simply click on the stack image in this area. If you have multiple Primary Machines (Machine Sets) you are
+       outputting to you can use the Machine Selector to view Patterns for each Primary Machine here.
+
+     Reports - Allows you to view and print the S2M CENTER Reports.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                                                                                                 Page 3 of 49
+
+ NC Code & Labels - Allows you to output NC Code & Labels.
+
+ Show Tool Path - Clicking this button will display the Tool Path in the Sheet Display Area.
+
+          There are three colors used by Show Tool Path.
+              Red = Default (Centerline)
+              Cyan = Left Compensation
+              Magenta = Right Compensation
+
+ Machining Simulation - Clicking this button will take the currently selected Pattern to the Machine Simulator.
+
+Right Click Options
+
+In the Cut Patterns are there are five possible right click options:
+
+         Optimize - Clicking the Optimize command will allow you to re-optimize the selected material. Used in conjunction with the Properties command available here you can
+
+  improve your optimization on a per material basis.
+
+         Print - Clicking the Print command will Print the selected pattern.
+
+         Properties - Clicking the Properties command will bring up the optimization/nesting properties for the selected material. This works like an override. The Properties you
+
+  change here will be for the selected Material only. This will allow you to re-optimize with different results and not adversely affect the other materials for this PNC file.
+
+         Add Blank Sheet - Clicking the Add Blank Sheet option will add a Blank Sheet for the selected Material.
+
+         Remove Blanks Sheets - This option will only be active if there are Blank Sheets for the selected Material and will allow you to remove them.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                                                                                            9/25/2026
+Sidebar                                                Page 4 of 49
+
+Optimizer Parameters
+
+There are two different types of Optimizer Parameter Screens depending on whether you are using a Machine that needs Saw Optimization or a Machine that needs Nesting.
+
+Saw Optimization
+
+There are four tabs in the Saw Optimization Optimize Properties screen:
+
+Patterns Tab
+
+          The Set As Machine Default option here will allow you to save any changes made on the current tab directly to your selected Primary Machine in the Machine
+
+Catalog.
+
+Following are the main options in the Patterns Tab:
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                                                                                   9/25/2026
+Sidebar                                                                                                                                                               Page 5 of 49
+
+1. You can control the which face is up on the sheet. There are three options:
+       1. Finished Side Down
+       2. Finished Side Up
+       3. Most Operations Up
+
+2. You can control whether you want your first cut on the saw to be a Rip (Cut with the grain), a Cross/Y Cut (Cut across the grain), or Either.
+3. You can control how you want your Strips sorted. The image below has 2 Strip sets, the vertical containing a single strip and the horizontal containing 5 strips.
+
+         A Strip is single element from a Strip Set. A Strip will always have Cross-Cuts or (Y-Cuts) and possibly Z-Cuts.                                             9/25/2026
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                Page 6 of 49
+
+   All the cuts that produce a part on this pattern are Y-Cuts except the Z-Cut displayed in red. A Y-Cut or Cross-Cut runs in the opposite direction of a strip producing either a Part or
+   setting up to produce a Part.
+
+3. You can control how you want your Parts within the each Strip to be sorted.
+
+4. You can eliminate Z-Cuts. A Z-Cut is the "Third Phase" cut on any given strip. A "Z-Cut" and "Third Phase Cut" are the same as long as they are cut from the 1st strip set in a
+   pattern. However, we allow the strip series to change directions a maximum of 6 times, the Z-Cut could occur on the 3rd, 4th, 5th,6th, 7th, or 8th phase. Allowing Z-Cuts can cause
+   a dramatic improvement in Yield but at the cost of time spent on the Saw. This can cause the operator to make multiple cuts to bring a part to its finished size.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 7 of 49
+
+                     Eliminating Z-Cuts will affect the type of patterns that are generated but it will not reduce the phase count. Make certain to set up the Phase Count for your Saw in the
+               Machine Catalog Setup Tab.
+   6. You can eliminate T-Cuts.
+
+                     T-Cuts are cuts made to break a sheet apart prior to Ripping and/or Cross-Cutting. Allowing T-Cuts can cause an improvement in Yield but like Third Phase Cuts can
+               also cost time spent on the Saw.
+   7. You can control whether Offcuts and Waste are cut from strips first or last.
+   8. You can control the Quality of your Optimization. Moving the slider to the right improves the results of the Optimization but slows the optimization process.
+   9. Yield and Labor are used to determine how well the job will be booked (stacks). A selection of Labor would favor fewer cycles over Material optimization. A selection of Yield
+       would favor less Material over fewer cycles.
+
+                     Make certain to set up Booking for your Saw in the Machine Catalog Setup Tab.
+
+Restrictions Tab
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 8 of 49
+
+          The Set As Machine Default option here will allow you to save any changes made on the current tab directly to your selected Primary Machine in the Machine
+
+Catalog.
+
+There are two main options in the Restrictions Tab:
+
+1. You can control the Minimum and Maximum Strip Lengths and Widths the Optimization returns. Some Saws have limitations, this allows you to instruct the S2M CENTER
+   Optimizer on your Saws limitations.
+
+2. You can control the Minimum and Maximum T-Cuts Lengths and Widths the Optimization returns. Some Saws have limitations, this allows you to instruct the S2M CENTER
+   Optimizer on your Saws limitations.
+
+Trim Tab
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                            Page 9 of 49
+
+             The Set As Machine Default option here will allow you to save any changes made on the current tab directly to your selected Primary Machine in the Machine
+
+Catalog.
+
+There are two main options in the Waste/Trim Tab:
+
+1. You can control the width of Trim (Dust Cut) around each edge of your sheet.
+
+2. You can control the width of Trim (Dust Cut) around each edge of your offcuts.
+
+Offcuts Tab
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                              9/25/2026
+Sidebar                                                Page 10 of 49
+
+Following are the possible options on the Offcuts Tab:
+   1. You can control the Minimum Offcut Lengths and Widths the Optimization returns. This option is available with Optimization, Block Nesting, and TrueShape Nesting.
+   2. You can control if you Prefer Full Sheets or Offcuts.
+   3. You can control if you want the Offcut Bin selection to favor yield or have fewer bins. Basically if you favor yield then the sawyer may have to pull from several different bins
+       where the fewer bins option means the sawyer may only pull offcuts from a few bins.
+   4. You can control whether you prefer to use the largest Offcuts over the smallest.
+   5. You can control whether to only use an Offcut if it use would not create a new Offcut.
+
+Nesting
+
+There are three tabs in the Nesting Optimize Properties screen:
+
+Patterns Tab
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                                                                                        Page 11 of 49
+
+            The Set As Machine Default option here will allow you to save any changes made on the current tab directly to your selected Primary Machine in the Machine
+
+Catalog.
+
+Following are the main options in the Patterns Tab:
+
+1. You can select your Nest type. The standard Nest Type is Block nesting.
+
+2. You can Restrict the Rotation in TrueShape to 90 Degrees. This is the rule that allows you to restrict TrueShape Nesting to only be able to Rotate Parts on 90 degree increments.
+   This restriction, if disabled, can significantly increase processing time.
+
+3. You can control the Quality of your Nest. Moving the slider to the Right improves the results of the Nest at the cost of speed of nesting.
+
+4. You can control the Pack direction of your Parts in the nest with this option.
+
+Horizontal
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                                                          9/25/2026
+Sidebar                                                                                                                                                Page 12 of 49
+
+Vertical
+
+   5. Common Line Cutting. This option allows you to turn on Common Line Cutting, set your Maximum Retrace, and set whether Small Parts are retraced.
+
+Trim Tab
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                                                                  9/25/2026
+Sidebar                                                                                                 Page 13 of 49
+
+               The Set As Machine Default option here will allow you to save any changes made on the current tab directly to your selected Primary Machine in the Machine
+
+Catalog.
+
+Following are the options on the Trim Tab:
+
+1. You can control the width of Trim (Dust Cut) around each edge of your sheet.
+
+2. YOu can control the width of Trim (Dust Cut) around each edge of your offcuts.
+
+3. If you are using TrueShape Nesting then you can also set the True Shape Nest Sheet Boundaries here.
+
+Offcuts Tab
+
+Block Nesting
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                   9/25/2026
+Sidebar                                                Page 14 of 49
+                                                           9/25/2026
+ TrueShape Nesting
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                Page 15 of 49
+
+Following are the options in the Offcuts Tab:
+   1. You can control the Minimum Offcut Lengths and Widths the Nesting returns.
+   2. You can enable the Create Offcuts function. There are two options:
+           1. Outline Offcuts - This option will locate available offcuts within the sheet largest to smallest and outline cut them into the largest possible offcuts honoring your machine and
+               offcut settings.
+           2. Square Off Sheet - This will add an additional Route operation to your Nests to Square off your Sheet leaving a single Offcut.
+   3. For Block Nesting you can control if you Prefer Full Sheets or Offcuts.
+   4. For Block Nesting you can control if you want the Offcut Bin selection to favor yield or have fewer bins. Basically if you favor yield then the sawyer may have to pull from several
+       different bins where the fewer bins option means the sawyer may only pull offcuts from a few bins.
+   5. For Block Nesting you can control whether you prefer to use the largest Offcuts over the smallest.
+   6. For Block Nesting you can control whether to only use an Offcut if it use would not create a new Offcut.
+   7. If you are using TrueShape Nesting you will have some additional options here. Prioritize Sheets instructs the TrueShape Nester in what priority to utilize the available sheet goods.
+       You can Prioritize by Price, Size, or Best Fit. Let's say you Add Offcuts to the Job and you had a 100 potential Offcuts that could be used for your Optimization run and each of
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                                                                                        Page 16 of 49
+
+       these varied in both Price and in Size. The True Shape Nester wants to know what you want to use first. Do you want to use up the Cheapest Offcut Sheets/Normal Sheets first
+       (Prioritize by Price) or do you want to use up the Smallest Offcut Sheets/Normal Sheets first (Prioritize by Size) or do you not care and just want to get the best Yield from the
+       Offcut Sheets and normal Sheets (Prioritize by Yield).
+
+Add Offcuts
+
+This button will add all Offcuts, utilizing Materials currently in the Job, from the Offcut Manager for use in your Optimization.
+
+Filter Parts
+
+The Filter Parts option is a very powerful feature that allows you to include or exclude parts from your machines based on specific criteria.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                                                          9/25/2026
+Sidebar                                                Page 17 of 49
+
+There are four Filter Types you can choose in the Part Filter:
+   1. New Filter - This option will not take into account any currently selected Parts or Previously Filtered Parts.
+   2. Add to Selected Items - This option will build a Filter that will not de-select any Parts manually selected from the Parts View.
+             For Example: If you enter the Filter Parts screen and select Room 1 and exit the Filter and upon entering the Parts View realize you also want Cabinet #2 in Room 2. You
+               can reenter the Parts Filter select Add to Selected Items and then Select Cabinet #2 in Room 2 and not loose your previous selection.
+   3. Filter on Previous Selection - This option will allow you to continue building a Filter based on previously defined criteria.
+             For Example: Let's say I have a Job with 100 Cabinets in it, and I need to cut only the ¼ Material for Cabinet 1, 8, and 47. So I start a New Filter and select 1, 8, and 47. Then
+               switch to "Filter On Previous Selection" then select my ¼ Material. The only items selected when I return to the Parts List would be the ¼ Material for Cabinets 1, 8, and 47.
+   4. Remove Selected Items - This option will build a Filter that will de-select any Parts manually selected from the Parts View.
+
+There are five Tabs in the Part Filter:
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 18 of 49
+
+Assemblies
+
+The Assemblies Tab allows you to include or exclude Jobs, Rooms, and/or Cabinets from your Machine processing. You can include or exclude Cabinets individually or you can include
+or exclude Cabinets by Room or by Job.
+
+                     A check in the box instructs the S2M CENTER to include items in the NC Output. Removing the check mark from the item instructs the S2M CENTER to exclude the
+               item from NC Output.
+Simply click the Invert Selection button to quickly reverse your selection.
+
+Materials
+
+The Materials Tab allows you to include or exclude any or all Materials from Machining.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 19 of 49
+
+                     A check in the box instructs the S2M CENTER to include items in the NC Output. Removing the check mark from the item instructs the S2M CENTER to exclude the
+               item from NC Output.
+Simply click the Invert Selection button to quickly reverse your selection.
+
+Parts
+
+The Parts Tab allows you to include or exclude any or all Parts from Machining.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 20 of 49
+
+                     A check in the box instructs the S2M CENTER to include items in the NC Output. Removing the check mark from the item instructs the S2M CENTER to exclude the
+               item from NC Output.
+Simply click the Invert Selection button to quickly reverse your selection.
+
+Other
+
+The Other Tab is divided into three Categories.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 21 of 49
+
+              A check in the box instructs the S2M CENTER to include items in the NC Output. Removing the check mark from the item instructs the S2M CENTER to exclude the
+       item from NC Output.
+
+Operations
+
+           1. Part Shape - There are two options for Part Shape:
+                     Shaped - This Filter will, when selected, only select Shaped parts for your processing.
+                     Rectangular - This Filter will, when selected, only select Rectangular parts for your processing.
+
+           2. Part Face - There are three options for Part Face:
+                     None - This Filter will, when selected, only select Parts which have no Machining on either Face.
+                     Single - This Filter will, when selected, only select Parts which have Machining on only one Face.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                                                                                           Page 22 of 49
+                                                                                                                                                      9/25/2026
+                              Double - This Filter will, when selected, only select Parts which have Machining on both Faces.
+                    3. Horizontal Boring - There are three options for Horizontal Boring:
+
+                              With Horizontal Boring - This Filter will, when selected, only select parts with Horizontal Boring.
+                              Without Horizontal Boring - This Filter will, when selected, only select parts without Horizontal Boring.
+                              Only Horizontal Boring - This Filter will, when selected, only select parts that only have Horizontal Boring.
+                    4. Vertical Boring - There are two options for Vertical Boring:
+                              With Vertical Boring - This Filter will, when selected, only select parts with Vertical Boring.
+                              Without Vertical Boring - This Filter will, when selected, only select parts without Vertical Boring.
+                              Only Vertical Boring - This Filter will, when selected, only select parts that only have Vertical Boring.
+                    5. Route Operations - There are three options for Route Operations:
+                              With Route Ops - This Filter will, when selected, only select parts with Route Operations.
+                              Without Route Ops -This Filter will, when selected, only select parts without Route Operations.
+                              Only Route Ops - This Filter will, when selected, only select parts that only have Route Operations.
+                    6. Drill/Dowel Operations - There are three options for Drill/Dowel Operations:
+                              With Drill/Dowel Ops - This Filter will, when selected, only select parts with Drill & Dowel Operations.
+                              Without Drill/Dowel Ops - This Filter will, when selected, only select parts without Drill & Dowel Operations.
+                              Only Drill/Dowel Ops - This Filter will, when selected, only select parts that only have Drill & Dowel Operations.
+                    7. Cut To Size Operations - There are three options for Cut To Size Operations:
+                              With Cut Ops - This Filter will, when selected, only select parts with Cut To Size Operations.
+                              Without Cut Ops - This Filter will, when selected, only select parts without Cut To Size Operations.
+                              Only Cut Ops - This Filter will, when selected, only select parts that only have Cut To Size Operations.
+                    8. Other Machine Operations - There are three options for Other Machine Operations:
+                              With Other Ops - This Filter will, when selected, only select parts with Other Machine Operations.
+                              Without Other Ops - This Filter will, when selected, only select parts without Other Machine Operations.
+                              Only Other Ops - This Filter will, when selected, only select parts that only have Other Machine Operations.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                                                                                                                                Page 23 of 49
+
+     Machines
+
+                  1. Optimize - There are two options for Optimize:
+                            Tagged for Optimization - This Filter will, when selected, only select parts tagged for Optimization for your processing.
+                            Not Tagged for Optimization - This Filter will, when selected, only select parts not tagged for Optimization for your processing.
+
+                  2. CNC - There are two options for CNC:
+                            Tagged for CNC - This Filter will, when selected, only select parts tagged for CNC for your processing.
+                            Not Tagged for CNC - This Filter will, when selected, only select parts not tagged for CNC for your processing.
+
+     Output
+
+                  1. Primary Machine - There are two options for Primary Machine
+                            Output to Machine - This Filter will, when selected, only select parts that have already been output to the machine for your processing.
+                            Not Output to Machine - This Filter will, when selected, only select parts that have yet to be output to the machine for your processing.
+
+                  2. Secondary Machine - There are two options for Secondary Machine
+                            Output to Machine - This Filter will, when selected, only select parts that have already been output to the machine for your processing.
+                            Not Output to Machine - This Filter will, when selected, only select parts that have yet to be output to the machine for your processing.
+
+                  3. Drill/Dowel Machine - There are two options for Drill/Dowel Machine
+                            Output to Machine - This Filter will, when selected, only select parts that have already been output to the machine for your processing.
+                            Not Output to Machine - This Filter will, when selected, only select parts that have yet to be output to the machine for your processing.
+
+                  4. Cut To Size Machine - There are two options for Cut To Size Machine
+                            Output to Machine - This Filter will, when selected, only select parts that have already been output to the machine for your processing.
+                            Not Output to Machine - This Filter will, when selected, only select parts that have yet to be output to the machine for your processing.
+
+Saved
+
+The Saved Tab allows you to Save and manage your Saved Filters.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                                                                                  9/25/2026
+Sidebar                                                Page 24 of 49
+
+Optimize
+
+The Optimize button, once depressed, will either begin the Optimization or Nesting process, depending on whether the selected Primary machine is a Panel Saw or Nested Based Router.
+Once selected the Optimizing Screen will appear.
+With a Nest Router Selected
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 25 of 49
+
+With a Saw Selected
+
+You can override the Run Number here if necessary. The run number displayed is based on the RunCounter field in the DBINFO table of the PSNC database. This field is incremented
+each time a user optimizes or Exports CNC (unless there is a preset run number). This number is then used to determine the actual run number for the Job. The RunCounter is divided by
+the user defined Run Number Range and its remainder is added to the minimum range.
+
+For example:
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 26 of 49
+
+If the RunCounter is 723. That number is divided by 100 (600-500=100) and you get a remainder of 23.
+That remainder is added to the minimum range (500) and the result is 523.
+The Run Number is displayed at each of the Nest, Optimize and P2P dialogs. You can override the current run number by typing in a new value (disabled for a preset number).
+
+              If you change the run number to 100 for example. The next time a/the job is optimized the Run Number will default back to your normal range and the next increment based
+       on the calculations above.
+   1. Click on the Run button to begin the Optimization process.
+
+   2. Once the Optimization is completed this screen will display each Material optimized with the total number of sheets, the Used percentage, the Offcut percentage, and the Waste
+       percentage. Also displayed are any Tool selection Errors or Warnings.
+
+       Warnings in this area reflect the Warnings you have selected to display in the Preferences area. Warnings do not necessarily reflect a major problem. Typically they point out a
+       Tool that was selected for an Operation which may not be ideal.
+
+       Errors in this area typically reflect a major problem. Usually they point out an Operation that does not have a Tool available. You will probably need to create a new Tool to handle
+       this Operation.
+
+       You can at this point Print the completed section by clicking the Print button or by clicking the OK button you can accept the results and move on to the Patterns Area of the S2M
+       CENTER.
+
+Output CNC Operations
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                                          Page 27 of 49
+
+If you are in the S2M CENTER and see this button this means you either have not selected a Primary Machine and only have a Secondary Machine, such as a Point-to-Point, selected or
+you have not purchased either the Nesting or Optimization packages. Clicking the Output CNC Operations button will generate the type of output your Router and/or Point to Point has
+setup, via NC Link, in the Machine Catalog.
+
+Clicking Print on this screen will print out the list of parts exactly as shown on this screen.
+Click OK to enter the Patterns Section.
+
+Machine Sets
+
+If you have Machine Sets available in your Machine Catalog this is where you choose whether to Manually Output (Manual option) and or to Output to your different available Machine
+Sets. If you simply select one of the Machine Sets in the Part List you will see the Parts going to that Machine Set highlighted. You can also use the Sel Column to quickly see which Part
+will be output to which Machine Set.
+
+Primary Machine
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                            9/25/2026
+Sidebar                                                Page 28 of 49
+
+Use the drop down selector here to select your Primary Machine , it must be either a Sheet Saw or Sheet Router. If you do not have an available machine to select here this means that you
+have either not created a Sheet Machine or you have not selected an NC Link that is valid for use as a Sheet Machine. See the Topic on the Machine Catalog for how to create a Sheet
+Machine.
+
+Secondary Machine
+
+Use the drop down selector here to select your Secondary Machine , it must be either a Parts Point to Point or a Parts Router. If you do not have an available machine to select here this
+means that you have either not created a Parts Machine or you have not selected an NC Link that is valid for use as a Parts Machine. See the Topic on the Machine Catalog for how to
+create a Parts Machine.
+There is another option in the Secondary Machine selector.
+Pre-Band - This instructs the S2M Center whether you band your cut to size parts prior to placing them on your secondary machine. If you do this set Pre-Band to Yes, this will take into
+account edge banding thickness in Secondary machining operations, otherwise, leave it at the default of No.
+
+Drill and Dowel Machine
+
+Use the drop down selector here to select your Drill & Dowel Machine. If you do not have an available machine to select here this means that you have either not created a Drill & Dowel
+Machine or you have not selected an NC Link that is valid for use as a Drill & Dowel Machine. See the Topic on the Machine Catalog for how to create a Drill & Dowel Machine.
+
+Pre-Band - This instructs the S2M CENTER whether you band your cut to size parts prior to placing them on your Drill and Dowel machine. If you do this set Pre-Band to Yes, this will
+take into account edge banding thickness in Secondary machining operations, otherwise, leave it at the default of No.
+
+Chop Saw
+
+Use the drop down selector here to select your Chop Saw. If you do not have an available machine to select here this means that you have either not created a Chop Saw or you have not
+selected an NC Link that is valid for use as a Chop Saw. See the Topic on the Machine Catalog for how to create a Chop Saw.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 29 of 49
+
+Reports
+
+When your CNC Output is complete, the Reports area allows you to print information about your Output.
+The Reports area is also used to select, and organize your Reports into "Report Groups" that you create and maintain. A Report Group is a collection of Reports organized under one
+heading or name. Using Report Groups makes it easy to print multiple Reports; you just select a "Report Group" to print, and then click on the "Print Reports In Group" button and all the
+Reports contained in that "Report Group" will print.
+While it is true that you can start printing information about your Output as soon as your output is complete, as the S2M Center comes preset up with sample Report Groups. It is also true
+that those Report Groups might not contain the Reports you would like them too. Therefore you will have some preliminary setup work to do to customize the Reports area to your way of
+doing things. See the Setup Reports section later in this topic.
+Once you have the Reports area setup to your satisfaction printing is just a matter of clicking on the "Reports" button then selecting the "Report Group" to print and then click on the "Print
+Reports In Group" button.
+
+Ribbonbar
+
+           Return
+
+       Probably the most used option in the ribbon. This option allows you to go back to the previous screen and/or mode of operation.
+       Keystroke
+
+      Zoom Group
+
+             In - Will incrementally Zoom In your Report
+             Out - Will incrementally Zoom Out your Report.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 30 of 49
+
+      Page - Will Zoom to fit the entire page in the Viewing area.
+
+      Page Width - Will Zoom to fit the page's Width in the viewing area.
+
+Navigator
+
+This tool allows you to navigate from Page to Page in the currently visible Report.
+
+     Export Report
+
+The Export option allows you to Export the currently active Report to another Application or File for further modification. Finished reports can be exported to a number of popular
+formats, such as spreadsheet, word processor, HTML, XML, and other common data interchange formats. This makes the distribution of information easier. For example, you may
+want to use the report data to project trends in a spreadsheet package or to enhance the presentation of data in a desktop publishing package.
+The exporting process requires you to specify a format via the Direct to... option.
+
+Export Direct To... Types
+
+The export formats supported by the Reports area can be broadly categorized in two groups: page-based formats and record-based formats. Page-based formats tend to produce a
+more exact output. The emphasis of these formats is layout representation and formatting. Formatting refers to attributes such as font style, text color, text alignment, background
+color, and so on. Layout refers to object position, object size, and the relationship between these attributes and other objects. Depending on the format of the Report, it may not be
+possible for the program to preserve all layout and formatting perfectly, but page-based formats, in general, preserve these properties as closely as possible.
+With record-based formats, the emphasis is on data rather than the layout and formatting. However, in some formats--such as Microsoft Excel - Data only--you will notice that
+some formatting is exported.
+Please consider:
+
+     Due to the format, the layout cannot always be taken over 1:1 because there are specific restrictions when converting to these formats.
+     The Microsoft® Word export format creates DOCX files that are compatible with Microsoft® Office 2007 and higher. Tables will be exported on continuous pages to support
+
+       later editing.
+Many formats have various possibilities for configuration. You can make use of these by clicking the "Options" button.
+
+     With Excel formats, you can reduce the number of columns and rows to the minimum required by means of the "Only data from table object(s)" option. Also all pages can be
+       exported into one sheet and the output formats 'xls' as well as 'xlsx' are available.
+
+     The picture export to JPEG, TIFF and PNG supports optional automatic cropping of the results to the content. An exported barcode is therefore only exactly as large as
+       required to display the complete content.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                   Page 31 of 49
+                                                                              9/25/2026
+         Following are the supported Outputs:
+               Adobe PDF Format
+               Microsoft Excel Format
+               Microsoft Word Format
+               Rich Text Format (RTF)
+               XHTML/CSS Format
+               Multi-Mime HTML Format
+               Text (CSV) Format
+               Text (Layout) Format
+               XML Format
+               Bitmap Picture
+               JPEG Picture
+               Metafile Picture (EMF)
+               PNG Picture
+               TIFF Picture (Multi-Page)
+               TIFF Picture
+               Pinwriter (TTY)
+               Printer Binary File
+
+ Sidebar
+
+ Print Reports In Group
+
+ This button will print all of the Reports in the selected Report Group.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                                                                                                                                    Page 32 of 49
+
+ Setup Reports
+
+Setup Reports
+
+Report Groups may be created to contain Reports that are similar to each other OR Report Groups could be created to contain all Reports needed for a certain type of Job.
+
+Creating a Report Group
+
+When you click Setup Reports, you will see the following screen:
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                                                                                      9/25/2026
+Sidebar                                                Page 33 of 49
+
+This is a list of the Reports that are available in the S2M CENTER. In the sidebar is a list of all of the Report Groups that have been created. To create a new report group, simply click
+the Add button and then enter the name that you want to use for this group. When you click OK the new group will be added to the list of Report Groups.
+
+After you have created your new Report Group, you will need to begin assigning Reports to that Group. To add a Report to a Group, click on that Report and then click the check box to
+add a check next to the desired Report Group. As you scroll down the right side of your screen you will notice that some of the Reports have a green S2M icon in front of them. This green
+S2M icon lets you know that the Report has been assigned to a Group. If you click on that Report you will see a check mark next to one or more of the Report "Groups" in the sidebar.
+Reports can be assigned to more than one group if you like.
+
+      Report Group
+
+       The Report Group area in the Setup Reports sidebar allows you to view the currently available Report Groups.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                               Page 34 of 49
+
+              Add a Report Group
+
+The Add button in the Setup Reports sidebar allows you to create a new Report Group.
+
+                     Delete a Report Group
+
+       The Delete button in the Setup Reports sidebar allows you to delete the selected Report Group.
+
+                     You should remove all Reports from a Group before you delete the Group. This means you will have to click on every Report in the Report List that has or icons,
+               and check to see if it is a member of the group you are preparing to delete.
+
+Report List area
+
+         / Adding a Report to a Group
+
+       To add a Report to a Group click on the Report you would like to add to a Group, so that it is highlighted. Then in the "Groups" window click on the check box next to the name of
+       the Group you would like to add the highlighted Report to. Once added the Report icon will either be or .
+
+           = Active System Report
+          = Active User Created Report
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                 9/25/2026
+Sidebar                                                Page 35 of 49
+
+         / Removing a Report from a Group
+
+       To remove a Report from a Group click on that Report, so that it is highlighted. Then in the "Groups" window, click on the check box next to the name of the Group you would like
+       to remove the highlighted Report from, to remove the Report remove the check mark. Once removed from all Groups the Report icon will either be or .
+
+           = Inactive System Report
+          = Inactive User Created Report
+
+Ribbonbar
+
+Report Mode
+
+Before adding a Report to a Report Group, you may wish to preview that Report to determine whether it is the correct format for your needs. To preview a Report, simply click on
+that Report and then click the View Mode option in the Report Mode drop-down. As a preview of the Report, you will see a the Report with the information from the current Job.
+
+       Magnify
+
+Only active in View Mode this option allows you to Zoom In and Out on the Preview.
+
+      Edit Report
+
+This ribbon option opens the Report Editor. See the Report Editor Help file for more information. The Report Editor Help file is accessible via the help button at the top right as
+illustrated below.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 36 of 49
+
+         Report Properties
+
+This option allows you to edit the Name, Description, and source data for the selected Report. You can also determine if the Report needs a Part Graphic (including Type and Size),
+the Banding Symbol Size, and whether to display Part Sizes and Part Names (For Pattern Printouts).
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                                                Page 37 of 49
+
+              Copy Report                                                                              9/25/2026
+
+         Will Copy the selected Report giving you the ability to give it a new Title and Description.
+
+              Delete Report
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                                     Page 38 of 49
+
+         Will Delete the selected Report. Only available for User Reports.
+
+ Right Click Options
+
+     Copy
+
+Will Copy the selected Report giving you the ability to give it a new Title and Description.
+
+     Delete
+
+Will Delete the selected Report. Only available for User Reports.
+
+     Edit
+
+Will Open the selected Report in the Report Editor. If it is a System Report you will be prompted to Copy the Report first as System Reports can not be edited directly.
+
+    Properties
+
+Opens the Report Properties utility allowing you to change the Title, Description, and/or source data of the selected Report.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                                                                                     9/25/2026
+Sidebar                                                                                                                         Page 39 of 49
+
+ Report Names and Descriptions                                                                                                  9/25/2026
+
+ The S2M Center comes with the following predefined reports, simply select the report from the sidebar you would like to view.
+ 4013 Part Labels - PLAB01
+ Part labels with enlarged barcode field for Avery label style 4013
+ 4013 Part Labels NP - PLAB02
+ Part labels with enlarged barcode field for Avery label style 4013 - No Primary
+ 4013 Part Labels PO - PLAB03
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                                                           Page 40 of 49
+                                                                                                      9/25/2026
+ Part labels with enlarged barcode field for Avery label style 4013 - Primary Only
+ 4013 PicPart Labels - PLAB09
+ Picture part labels with enlarged barcode field for Avery label style 4013
+ 4013 PicPart Labels NP - PLAB08
+ Picture part labels with enlarged barcode field for Avery label style 4013 - No Primary
+ 4013 PicPart Labels PO - PLAB07
+ Picture part labels with enlarged barcode field for Avery label style 4013 - Primary Only
+ 5161 PicPart Labels - PLAB19
+ Picture part labels for Avery label style 5161
+ 5161 PicPart Labels - PLAB20
+ Picture part labels for Avery label style 5161. Displays barcodes for front and back operations
+ 5366 Part Labels - PLAB04
+ Part labels for Avery label style 5366
+ 5366 Part Labels - PLAB17
+ Part labels for Avery label style 5366, Includes Room Name and Room Number
+ 5366 Part Labels NP - PLAB05
+ Part labels for Avery label style 5366 - No Primary
+ 5366 Part Labels NP - PLAB16
+ Part labels for Avery label style 5366 - No Primary, Includes Room Name and Room Number
+ 5366 Part Labels PO - PLAB06
+ Part labels for Avery label style 5366 - Primary Only
+ 5366 Part Labels PO - PLAB18
+ Part labels for Avery label style 5366 - Primary Only, Includes Room Name, and Room Number
+ 5366 PicPart Labels - PLAB11
+ Picture part labels for Avery label style 5366
+ 5366 PicPart Labels - PLAB14
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                                                                                            Page 41 of 49
+                                                                                                                                       9/25/2026
+ Picture part labels for Avery label style 5366, Includes Room Name and Room Number
+ 5366 PicPart Labels NP - PLAB10
+ Picture part labels for Avery label style 5366 - No Primary
+ 5366 PicPart Labels NP - PLAB13
+ Picture part labels for Avery label style 5366 - No Primary, Includes Room Name and Room Number
+ 5366 PicPart Labels PO - PLAB12
+ Picture part labels for Avery label style 5366 - Primary Only
+ 5366 PicPart Labels PO - PLAB15
+ Picture part labels for Avery label style 5366 - Primary Only, Includes Room Name and Room Number
+ Material Summary - MSUM01
+ Material summary that groups the sheets used in this run by the material name, then provides a breakout of the sheet sizes used.
+ Nest Cut List (Legacy) - NEST01
+ This is a recreation of the old nested cut list from previous versions.
+ Nest Cut List - Landscape - NEST02
+ This is a recreation of the old nested cut list from previous versions rotated to the Landscape position.
+ Nest Cut List - Large Format - NEST09
+ Nest Cut List.
+ Nest Cut List - Simple - NEST05
+ This is a simple cut list that shows the part name, size, and comment.
+ Nest Cut List - Simple Landscape - NEST06
+ This is a simple cut list that shows the part name, size, and comment rotated for the Landscape position.
+ Nest Cut List Extended - NEST03
+ Nest cut list with more information than the legacy cut list.
+ Nest Cut List Extended - Landscape - NEST04
+ Nest cut list with more information than the legacy cut list rotated for Landscape position.
+ Nest Pattern - Large Format NPN - NPLF02
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                                                                                        Page 42 of 49
+                                                                                                                                   9/25/2026
+ Large format nest pattern sheet, part width, part length, and part number. Two sheets for page.
+ Nest Pattern - Large Format PN - NPLF01
+ Large format nest pattern sheet, part width, part length, part number, and part name. Two sheets for page.
+ Nest Program List NEST07
+ This is a list of all of the primary programs generated for the job.
+ Nest Program List w/ Picture NEST08
+ This is a list of all of the primary programs generated for the job, provides a picture of the nest as well as the barcodes.
+ Outline Tools - OTL001
+ List of the outline tools assigned to each material per machine.
+ Part List (Asm) - PLLASM
+ Part list with programs, grouped by cabinet
+ Part List (Mat) - PLLMAT
+ Part list with programs, grouped by material
+ Part List (Part) - PLLPRT
+ Part list with programs, grouped by part description
+ Part List (Program) - PLLPRG
+ Part list with programs, grouped by program
+ Part Printout (Legacy) - PART01
+ This is a recreation of the old part printouts from previous versions
+ Part Printout (Legacy) - Landscape - PART03
+ This is a recreation of the old part printouts from previous versions rotated for Landscape Position
+ Part Printout w/Ops - PART02
+ Displays an image of the part with a list of all operations assigned to it.
+ Part Printout w/Ops - Landscape - PART04
+ Displays an image of the part with a list of all operations assigned to it, rotated for Landscape position.
+ Part Program List (Asm) - PPLASM
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                                                                  Page 43 of 49
+                                                                                                             9/25/2026
+ Part program list, grouped by cabinet
+ Part Program List (Mat) - PPLMAT
+ Part program list, grouped by material
+ Part Program List (Part) - PPLPRT
+ Part program list, grouped by part description
+ Part Program List (Program) - PPLPRG
+ Part program list, grouped by program
+ Parts Not Optimized - NOPT01
+ List of Parts not included in the optimization.
+ Saw Cut List (Legacy) - SAW001
+ This is a recreation of the old saw cut list from previous versions.
+ Saw Cut List - Landscape - SAW002
+ This is a recreation of the old saw cut list from previous versions rotated to the Landscape position.
+ Saw Cut List - Large Format - SAW007
+ Saw Cut List.
+ Saw Cut List - Simple - SAW005
+ This is a simple cut list that shows the part name, size, and comment.
+ Saw Cut List - Simple Landscape - SAW006
+ This is a simple cut list that shows the part name, size, and comment rotated for Landscape position.
+ Saw Cut List Extended - SAW003
+ Saw cut list with more information than the legacy cut list.
+ Saw Cut List Extended - Landscape - SAW004
+ Saw cut list with more information than the legacy cut list rotated for the Landscape position.
+ Saw Optimization - Large Format NPN - SOLF02
+ Large format saw optimization sheet, part width, part length, and part number. Two sheets for page.
+ Saw Optimization - Large Format PN - SOLF01
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm
+Sidebar                                                Page 44 of 49
+
+Large format saw optimization sheet, part width, part length, part number, and part name. Two sheets for page..
+Secondary Part Labels (Avery 4013) - SPLAB1
+Part Labels for the Avery 4013 style label. This report outputs a label for each machine that the part has been output to in your machine set
+Secondary Part Labels (Avery 5366) - SPLAB2
+Part Labels for the Avery 5366 style label. This report outputs a label for each machine that the part has been output to in your machine set
+
+Part labels
+
+All existing part label reports have indicators on each part label which indicate if a part will run in a "normal" or "mirror" part machining "zone" (M) and, also, if the part has two part
+CNC programs (2nd):
+
+How to "read" the M and 2nd indicators:
+
+Part on label has one part CNC program (that which is referenced on the part label) that will run in a "normal" part machining "zone".
+
+Part on label has one part CNC program (that which is referenced on the part label) that will run in a "mirror" part machining "zone".
+
+Part on label has two part CNC programs. The part CNC program which is referenced on the part label itself will run in a "normal" part machining "zone." The second part CNC program
+(referenced implicitly) will run in a "mirror" part machining "zone" (opposite of that indicated for part CNC program referenced on the part label).
+
+Part on label has two part CNC programs. The part CNC program which is referenced on the part label itself will run in a "mirror" part machining "zone." The second part CNC program
+(referenced implicitly) will run in a "normal" part machining "zone" (opposite of that indicated for part CNC program referenced on the part label).
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 45 of 49
+
+In addition to this the name of the part program itself also indicates which Face the Program is output to machine.
+F - Front CNC program for operations machined from the part face (finished face of material) (example: r01f0001)
+B - Back CNC program for operations machined from the part back (unfinished face of material) (example: r01b0001)
+
+Program lists:
+
+All program list reports place an indicator (M) beside each part CNC program to be run in a "mirror" part machining "zone." Those part CNC programs lacking the (M) indicator are to be
+run in a "normal" part machining zone:
+
+NC Code & Labels
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 46 of 49
+
+Clicking NC Code & Labels brings up the Output Data window. Simply select which data you would like to output. The Output Tasks area will be categorized by each active Machine Set
+you are outputting to. Each Category has three main areas:
+
+   1. NC Machine Data (Machine Set Name) - The Create Output option can be turned off to not Output Codes for the Machines in this set. All the Machines within the Machine Set
+       along with their Output Directories will be listed here. This includes Primary Machine (Saw/Router), Secondary Machine (P2P/Router), Drill & Dowel, Chop Saw, and/or Other
+       machines.
+
+   2. +Label - Checking this option, typing a +Label Job name, and clicking run will output data for your +Label Station.
+
+   3. Label Images - Checking this option, will output Image files for your Saws or Routers labeling system to utilize.
+
+   4. CV Paperless Traveller - There are three options for the CV Paperless Traveller category:
+
+             CV PT Upload Work Order - Will create the CV Paperless Traveller data and send it to the cloud.
+
+             CV PT Work Order Name - Enter the name for the Work Order here. THis is the name shop personnel see when using the CV Paperless Traveller app.
+
+             CV PT Work Order Path - Local location for the CV Paperless Traveller data.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                                                                      Page 47 of 49
+
+                   CV Paperless Traveller has the capability to "Scan Parts" this capability expects a QR Code containing the "work order" and Part ID (WorkOrder_PartID) with an
+
+           underscore delimiter. You can define a QR Code in +Label utilizing {WorkOrder}_{Part.ID} or in a custom Report/Label utilizing {PSNC-CV.mdf | RunInfo | rGUID}_
+
+           {PSNC-CV.mdf | Parts | ID}.
+
+5. Save Job State - There are three options for the Save Job State category:
+
+          Create Output File - Will create an SNC file of the current Job at it's "Ready for Output" state.
+
+          SNC File Name - Specifies the file name for your Job State file.
+
+          SNC Output Path - Specifies the folder to Save the Job State file to.
+
+           See the File Menu topic for information on Opening SNC files.
+
+CncRun.txt File Format
+
+^Job : Job Name
+
+^Description : Job Description
+
+^Date : Monday, Jun 26 2020
+
+^Parts/Sheets : 1
+
+r01p0001.dxf,Bottom(BO),304.00,889.00,19.05,3/4 2s White Melamine,5,1,0,B,0,
+
+         Field #                                      Description
+            1      Program Name
+            2      Parts Name
+            3      Part Width
+            4      Part Length
+            5      Material Thickness
+            6      Material Name
+            7      Cabinet Number
+            8      Part Quantity
+            9      Material Grain (0 - False, 1 - True)
+           10      Program Face (F - Front, B - Back)
+           11      Material Face Dependent (0 - False, 1 - True)
+           12      Machine Tag Code
+           13      Machine Name
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm                                                        9/25/2026
+Sidebar                                                Page 48 of 49
+
+Machining Simulation -
+
+Clicking this button will take the currently selected Part or Pattern to the Machining Simulator. The Machining Simulator will only simulate programs which are generated through Intelli-
+CAM links. To see the Machining Simulation you will want to maximize the ALPHACAM session in the Windows Taskbar.
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+Sidebar                                                Page 49 of 49
+
+file:///C:/Users/celav/AppData/Local/Temp/~hhE22F.htm  9/25/2026
+
