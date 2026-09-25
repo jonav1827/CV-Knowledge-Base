@@ -73,6 +73,17 @@ Last compiled: 2026-09-24.
 - [ ] **C3. Stack Dimensions:** what it does. Not in the help; Jon has never figured it out.
   *Test:* toggle it in a job with stacked items and compare the dimensions.
 
+## Machining and tooling (`04 Machining/`)
+
+- [ ] **T1. All feeds-and-speeds numbers** (chip load tables, SFM ranges, the 16,000 to 22,000 RPM range, depth-of-cut rules). Web sources, mostly one source per number; not tested on Ironwood's machine.
+  *Test:* compare against the feeds and speeds Jon already runs on his tools and materials; correct the tables to match.
+- [ ] **T2. Compression bit rules:** the 25 percent minimum depth, the 1 to 2 inch limit for downcut pockets, a quarter of the diameter as a downcut pass depth, and "compression feeds slower than upcut." Single-source claims.
+  *Test:* Jon confirms or corrects them against his own shop practice.
+- [ ] **T3. CV "face chip = downcut, back chip = upcut."** An inference linking S2M's shear terms to up/down-cut terms (`04 Machining/Notes.md`).
+  *Test:* set Minimize Face Chip only on a test material and check which bit S2M CENTER selects.
+- [ ] **T4. SFM to RPM formula:** one page printed it upside down. Confirm the correct form used in the files (RPM = 12 x SFM / (pi x diameter)) against a second source or a calculator.
+  *Test:* work one example by hand (1/4 in bit, 1,000 SFM gives about 15,279 RPM).
+
 ## Still to document (not verification, but gaps)
 
 - [ ] **Assembly Wizard.** Jon: "another VERY important area to cover." It sets the Shadowline Channel type, among other things.
