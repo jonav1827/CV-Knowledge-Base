@@ -98,6 +98,10 @@ in the job file.
 **IDs.** Objects copied from CVData keep their CVData `ID`. Objects created in the job (cabinets,
 door parts, scenes) take IDs from one counter shared by the whole job.
 
+**Same scheme elsewhere.** The binary mesh blobs in CVData's `AssemblyShape` table
+(`CoordinateData`, `FaceData`) are serialized the same way — a `NewCXSchema` header then a
+`CVTemplate3d` / `CVVertexNode` / `CVFaceData` object graph. See `CVData Materials & SQL.md` §2.4.
+
 ## 3. Parameters
 
 A parameter is stored as: name, description, a formula count, flags, a type, the value, any

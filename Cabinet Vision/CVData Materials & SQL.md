@@ -127,15 +127,40 @@ top of the General tab.
 material is two-sided and parts may be flipped. If the textures differ, S2M may not flip parts on that
 material, and it tells the operator which named texture must face up on the nest.
 
-### 2.4 `Shape`: the 3D meshes
+### 2.4 `Shape` and `AssemblyShape`: the geometry
+
+Geometry is stored twice: an editable XML form (`Shape`) and a compiled binary mesh (`AssemblyShape`).
+
+**`Shape` — the editable form:**
 
 | Column | Meaning |
 |---|---|
 | `ShapeTypeID` | 1 = 2D Operation, 2 = 2D Profile, 3 = 3D Model. All hardware geometry is type 3. |
-| `Shape` | XML of the form `<Shape size="X Y Z"><IndexedFaceSet coordIndex="…" …>`: a vertex-indexed mesh. |
+| `Shape` | XML of the form `<Shape size="X Y Z"><IndexedFaceSet coordIndex="…" XEdgeFlags="…" solid="true"><Coordinate point="x y z  x y z …"/></IndexedFaceSet></Shape>`. |
 
-CV generates these itself when you create a hardware material, so they are not practical to author by
-hand.
+The XML is a vertex-indexed mesh, VRML-style: `point` is a flat list of X Y Z vertices (millimetres,
+matching `size`); `coordIndex` lists the faces as indices into that list, each face terminated by
+`-1`; `XEdgeFlags` parallels `coordIndex` and marks which edges are visible.
+
+**`AssemblyShape` — the compiled mesh CV renders and nests from:**
+
+| Column | Meaning |
+|---|---|
+| `CoordinateCount`, `FaceCount` | Vertex and face counts. |
+| `Width`, `Height`, `Depth` | Bounding box, in millimetres. |
+| `ReferenceCount` | How many parts share this exact mesh — CV stores each distinct mesh once and references it. |
+| `CoordinateData`, `FaceData` | The mesh as binary blobs. |
+
+`CoordinateData` and `FaceData` are **not** raw float arrays — each is a serialized object stream
+that uses the same scheme as the job file (`FF FF` + schema number + name-length + ASCII type name;
+see `CVJ File Format.md` §2). The stream opens with a `NewCXSchema` header and then a small object
+graph: a `CVTemplate3d` (the bounding box as a size vector, plus a transform), an array of
+`CVVertexNode` (each a vertex), and a `CVFaceData` (the face/edge index array). **The binary stores
+coordinates in inches** — the size vector times 25.4 equals the `Width`/`Height`/`Depth` columns in
+millimetres.
+
+CV generates all of this itself when you create a hardware material, so neither form is practical to
+author by hand.
 
 ---
 
